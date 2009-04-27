@@ -18,6 +18,8 @@ public interface UserGeoHistoryRepository extends MongoRepository<UserGeoHistory
 
     public List<UserGeoHistory> findByTimestampBetweenAndUserName(long starttime, long endtime, String userName);
 
+    public List<UserGeoHistory> findByPositionWithinAndTimestampBetweenAndUserName(Circle c, long starttime, long endtime, String userName);
+
     public List<UserGeoHistory> findByUserName(String userName);
 
     public List<UserGeoHistory> findByPositionNear(Point p, Distance d);
