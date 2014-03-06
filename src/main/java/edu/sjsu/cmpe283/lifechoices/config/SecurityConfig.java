@@ -17,8 +17,11 @@ public class SecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("client").password("secret").roles("USER");
+        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER", "ADMIN");
+        auth.inMemoryAuthentication().withUser("user1").password("password1").roles("USER");
+        auth.inMemoryAuthentication().withUser("user2").password("password2").roles("USER");
+        auth.inMemoryAuthentication().withUser("user3").password("password3").roles("USER");
+        auth.inMemoryAuthentication().withUser("user4").password("password4").roles("USER");
     }
 
 
