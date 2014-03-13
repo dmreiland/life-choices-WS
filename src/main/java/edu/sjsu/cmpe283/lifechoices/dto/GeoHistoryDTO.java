@@ -12,4 +12,6 @@ public class GeoHistoryDTO {
     private Long userId;
     private long latitude;
     private long longitude;
+    private long time;
+
 }
