@@ -25,7 +25,7 @@ public class DBConfig extends AbstractMongoConfiguration {
 
     String userName = "lifechoicesuser";
     String password = "zzzzzz";
-    String mongoDb = "ifechoices_mdb";
+    String mongoDb = "lifechoices_mdb";
 
 
     @Override
