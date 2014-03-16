@@ -20,6 +20,5 @@ UserGeoHistory
 ------------|-----------|--------------|
 | id        | Long      | Primary key of a record |
 | time      | long      | UNIX Timestamp of the recorded location in milliseconds |
-| longitude | long      | Geo location - longitude |
-| latitude  | long      | Geo location - latitude |
-| user      | User      | User to whom this location belong |
+| position  | double[]  | Geo location - [ latitude, longitude ] |
+| userName  | String    | User to whom this location belong |

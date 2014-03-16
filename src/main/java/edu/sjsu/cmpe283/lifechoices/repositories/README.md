@@ -1,6 +1,3 @@
-
-
-
 Spring Data Mongo
 
 Geo Special info:
