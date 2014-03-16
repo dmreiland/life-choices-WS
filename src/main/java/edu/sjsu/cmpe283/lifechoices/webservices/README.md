@@ -2,8 +2,11 @@ New geo location
 ----------------------
 
 URI: **/v1/geo/**
+
 Method: **POST**
+
 Consume type: **application/json**
+
 Request Payload:
 
 ```json
@@ -14,7 +17,9 @@ Request Payload:
     "longitude" : -122.089803
  }
 ```
+
 Response type: **application/json**
+
 Response Payload Sample:
 
 ```json
@@ -26,15 +31,21 @@ Response Payload Sample:
     "userName":"maksim"
 }
 ```
+
 Response Status: **201 Created**
 
 User Location History
 ---------------------
 URI: **/v1/geo/history/{username}?starttime=123&endtime=234** *(starttime & endtime are optional. Default value will be a time BETWEEN now and 1 hr ago)*
+
 Method: **GET**
+
 Consume type: N/A
+
 Request Payload: N/A
+
 Response type: **application/json**
+
 Response Payload Sample:
 
 Example URL: **/v1/geo/history/maksim?starttime=1394939000&endtime=1394939999**
