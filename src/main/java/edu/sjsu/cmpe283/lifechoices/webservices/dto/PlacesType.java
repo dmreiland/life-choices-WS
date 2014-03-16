@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.webservices.dto;
 
+import java.util.Arrays;
+
 /**
  * User: maksim
  * Date: 3/16/14 - 11:20 AM
@@ -106,19 +108,20 @@ public enum PlacesType {
      * Prep all types in one pipe per google doc here: https://developers.google.com/places/documentation/search
      * @return
      */
-    public static String allInPipe(){
-        String typeString = "";
-
-        int size = 0;
-        for (PlacesType placesType : PlacesType.values()) {
-            typeString += placesType;
-            if (size < PlacesType.values().length)
-                typeString += "|";
-
-            size++;
-        }
-
-        return typeString;
+    public static String allInPipe() {
+        return Arrays.toString(PlacesType.values()).replaceAll("\\s|\\[|\\]","").replaceAll(",", "|");
+//        String typeString = "";
+//
+//        int size = 0;
+//        for (PlacesType placesType : PlacesType.values()) {
+//            typeString += placesType;
+//            if (size < PlacesType.values().length)
+//                typeString += "|";
+//
+//            size++;
+//        }
+//
+//        return typeString;
     }
 
 }
