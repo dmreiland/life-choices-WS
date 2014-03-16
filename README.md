@@ -98,9 +98,9 @@ Spring Boot - Actuator
 | URL                                   | Description       |
 |---------------------------------------|-------------------|
 | http://54.193.8.183:8080/health       | Returns basic HTTP status of a server                  |
-| http://54.193.8.183:8080/trace        | TBD                  |
-| http://54.193.8.183:8080/metrics      | TBD                  |
-| http://54.193.8.183:8080/dump         | TBD                  |
+| http://54.193.8.183:8080/trace        | View details of every call                  |
+| http://54.193.8.183:8080/metrics      | View stats of calls to the server                 |
+| http://54.193.8.183:8080/dump         | View detailed server info                  |
 
 
 
