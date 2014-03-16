@@ -1,7 +1,6 @@
 package edu.sjsu.cmpe283.lifechoices.services;
 
 import edu.sjsu.cmpe283.lifechoices.LifeChoicesApp;
-import edu.sjsu.cmpe283.lifechoices.entities.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +23,6 @@ public class UserServiceTest {
 
     @Test
     public void testSave() throws Exception {
-
-        User u = new User();
-        u.setName("Maksim");
-        u = userService.save(u);
-
-        System.out.println("User id: " + u.getId());
     }
 
     @Test

@@ -9,7 +9,8 @@ import lombok.Data;
 @Data
 public class GeoHistoryDTO {
 
-    private Long userId;
-    private long latitude;
-    private long longitude;
+    private String userName;
+    private float latitude;
+    private float longitude;
+    private long timestamp;
 }

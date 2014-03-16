@@ -9,4 +9,4 @@ spring:main:
     web_environment: false   #
     show_banner: false       # not to print Spring message in the command line
 
-debug: false
+debug: true

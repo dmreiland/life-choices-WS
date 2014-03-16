@@ -1,8 +1,8 @@
 package edu.sjsu.cmpe283.lifechoices.entities;
 
 import lombok.Data;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * User's Geo Location history
@@ -10,6 +10,7 @@ import org.springframework.data.annotation.Id;
  * Date: 3/9/14 - 9:50 PM
  */
 @Data
+@Document
 public class UserGeoHistory {
 
     @Id
@@ -18,34 +19,27 @@ public class UserGeoHistory {
     /**
      * Time stamp in milliseconds
      */
-    private long time;
+    private long timestamp;
 
     /**
-     * Geo location - latitude
+     * Position (  [x(lat),y(lon)]  )
      */
-    private long latitude;
-
-    /**
-     * Geo location - longitude
-     */
-    private long longitude;
+    private double[] position;
 
     /**
      * User to whom this location belong
      */
-    private User user;
+    private String userName;
 
     /**
-     *
-     * @param time
-     * @param latitude
-     * @param longitude
+     * @param timestamp Time Stamp
+     * @param position  Location point
+     * @param userName
      */
-    public UserGeoHistory(long time, long latitude, long longitude, User user){
-        this.time = time;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.user = user;
+    public UserGeoHistory(long timestamp, double[] position, String userName) {
+        this.timestamp = timestamp;
+        this.position = position;
+        this.userName = userName;
     }
 
 }
