@@ -2,7 +2,8 @@
 
 Java
 ====
-This project will only compile with Java 7 (1.7) [Download Here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)
+This project will only compile with Java 7 (1.7) [Download Here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
+
 [This](https://github.com/spring-projects/spring-boot/pull/497) is a REASON/Problem why it is not possible to execute this project with Java 1.6
 
 #### RUN PROJECT: Using IDE (IntelliJ) *PREFERABLE
@@ -25,9 +26,8 @@ or in one shot:
 `$ mvn clean package && java -jar target/lifeChoices-web-service-1.0-SNAPSHOT.jar`
 
 
-
 #### Test
-For testing navigation to this user [http://localhost:8080/v1/geo/](http://localhost:8080/v1/geo/)
+Try [THIS](http://localhost:8080/v1/geo/)
 
 ### Documentation
 - [Web services](https://github.com/cmpe273-indexzero/life-choices-WS/tree/master/src/main/java/edu/sjsu/cmpe283/lifechoices/webservices)
@@ -37,18 +37,13 @@ For testing navigation to this user [http://localhost:8080/v1/geo/](http://local
 
 ### Configure Server
 
-- connect: ssh -i ~/.ssh/cmpe273-lifechoices-key.cer ubuntu@54.193.8.183
+- connect: `ssh -i ~/.ssh/cmpe273-lifechoices-key.cer ubuntu@54.193.8.183`
 
-- Install Java 7 ( [Source](http://stackoverflow.com/a/16263651/51230) ):
+- Install Java 7 ( [Source](http://stackoverflow.com/a/16263651/51230) ) and other packages:
 
     ```
     sudo apt-get update
-    sudo apt-get install openjdk-7-jdk
-    ```
-
-- Other installations:
-    ```
-    sudo apt-get install maven git supervisor
+    sudo apt-get install openjdk-7-jdk maven git supervisor
     ```
 
 - A. Check out the code:
@@ -78,21 +73,34 @@ For testing navigation to this user [http://localhost:8080/v1/geo/](http://local
     stderr_logfile=/home/ubuntu/life-choices-WS/log-cmpe273-life-choices-WS-stderr.log
     ```
 
-- To control the application you would need to execute supervisorctl, which will present
-you with a prompt where you could start, stop, status of the app you specified in the cmpe273-life-choices-WS.conf file.
+- To control the application you would need to execute **supervisorctl**, which will present
+you with a prompt where you could `start`, `stop`, and see the `status` of the app you specified in the `cmpe273-life-choices-WS.conf` file.
 
     ```
-    sudo supervisorctl
+    $ sudo supervisorctl
     cmpe273-life-choices-WS RUNNING   pid 123123, uptime 1 day, 15:00:00
-    supervisor> stop cmpe273-life-choices-WS
-    supervisor> start cmpe273-life-choices-WS
+    $ supervisor> stop cmpe273-life-choices-WS
+    $ supervisor> start cmpe273-life-choices-WS
     ```
 
-- Restart the server `sudo reboot`l
+- Restart the server `sudo reboot`
 
 - Try to access services
 
     http://54.193.8.183:8080/v1/places/-33.8665433/151.1956316?radiusinmeters=500
 
     http://54.193.8.183:8080/v1/geo/
+
+
+Spring Boot - Actuator
+----------------------
+
+| URL                                   | Description       |
+|---------------------------------------|-------------------|
+| http://54.193.8.183:8080/health       | Returns basic HTTP status of a server                  |
+| http://54.193.8.183:8080/trace        | View details of every call                  |
+| http://54.193.8.183:8080/metrics      | View stats of calls to the server                 |
+| http://54.193.8.183:8080/dump         | View detailed server info                  |
+
+
 
