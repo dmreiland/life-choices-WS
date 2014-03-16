@@ -26,4 +26,5 @@ gwt_unitCache/
 .project
 .classpath
 .settings/
+tmp/
 
