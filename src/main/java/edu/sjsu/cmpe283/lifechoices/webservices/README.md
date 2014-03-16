@@ -20,14 +20,13 @@ Request Payload:
 
 Response type: **application/json**
 
-Response Payload Sample:
+**Response** Payload Sample:
 
 ```json
 {
-    "id":"5324fb6803647201bbbfe4da",
-    "timestamp":1.39493261E9,
-    "latitude":37.415363,
-    "longitude":-122.089806,
+    "id":"53253c320364423e12a41b74",
+    "timestamp":1394939032,
+    "position":[37.41536331176758,-122.08980560302734],
     "userName":"maksim"
 }
 ```
