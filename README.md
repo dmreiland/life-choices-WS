@@ -51,10 +51,16 @@ For testing navigation to this user [http://localhost:8080/v1/geo/](http://local
     sudo apt-get install maven git supervisor
     ```
 
-- Check out the code:
+- A. Check out the code:
     ```
     git clone https://github.com/cmpe273-indexzero/life-choices-WS.git
     ```
+
+- B. Update, if already checked out:
+    ```
+    git pull
+    ```
+
 
 - Configure diamon
 
