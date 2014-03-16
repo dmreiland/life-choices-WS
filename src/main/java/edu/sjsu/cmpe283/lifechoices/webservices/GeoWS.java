@@ -1,6 +1,6 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
-import edu.sjsu.cmpe283.lifechoices.dto.GeoHistoryDTO;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.GeoHistoryDTO;
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
 import edu.sjsu.cmpe283.lifechoices.services.UserGeoHistoryService;
 import org.apache.commons.logging.Log;

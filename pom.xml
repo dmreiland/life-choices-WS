@@ -98,6 +98,17 @@
             <artifactId>snakeyaml</artifactId>
         </dependency>
 
+        <!-- Google API Client -->
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>1.17.0-rc</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.places-api-client</groupId>
+            <artifactId>places-api-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
 
 

@@ -1,4 +1,4 @@
-package edu.sjsu.cmpe283.lifechoices.dto;
+package edu.sjsu.cmpe283.lifechoices.webservices.dto;
 
 import lombok.Data;
 
