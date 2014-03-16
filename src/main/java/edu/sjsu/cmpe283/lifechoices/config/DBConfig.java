@@ -20,26 +20,21 @@ public class DBConfig extends AbstractMongoConfiguration {
     private static Log logger = LogFactory.getLog(DBConfig.class);
 
 
-    String mongoHost = "oceanic.mongohq.com";
-    int mongoPort = 10032;
 
-    String userName = "lifechoicesuser";
-    String password = "zzzzzz";
-    String mongoDb = "lifechoices_mdb";
 
 
     @Override
     protected String getDatabaseName() {
-        return mongoDb;
+        return Props.mongoDb;
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        logger.debug("Connecting to MongoDB: [" + userName + ":" + password + "@" + mongoHost + ":" + mongoPort + "/" + mongoDb);
+        logger.debug("Connecting to MongoDB: [" + Props.userName + ":" + Props.password + "@" + Props.mongoHost + ":" + Props.mongoPort + "/" + Props.mongoDb);
 
-        MongoCredential credential = MongoCredential.createMongoCRCredential(userName, mongoDb, password.toCharArray());
+        MongoCredential credential = MongoCredential.createMongoCRCredential(Props.userName, Props.mongoDb, Props.password.toCharArray());
 
-        MongoClient mongoClient = new MongoClient(new ServerAddress(mongoHost, mongoPort), Arrays.asList(credential));
+        MongoClient mongoClient = new MongoClient(new ServerAddress(Props.mongoHost, Props.mongoPort), Arrays.asList(credential));
 
         logger.debug("Connected to MongdoDB: " + mongoClient.debugString());
         return mongoClient;
