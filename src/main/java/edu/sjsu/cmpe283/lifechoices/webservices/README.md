@@ -70,7 +70,7 @@ Google Places Service
 
 | URI                                                                                                               |  Method    | RESPONSE       | Sample URI |
 |-------------------------------------------------------------------------------------------------------------------|------------|----------------|------------|
-|/v1/places/{latitude}/{longitude}?radiusinmeters={integer : default=500}&type={string : if empty will return all } | GET        | List of places | /v1/places/-33.8665433/151.1956316?radiusinmeters=500&type=park |
+|/v1/places/{latitude}/{longitude}?radiusinmeters={integer : default=500}&type={string : if empty will return places for all types } | GET        | List of places | /v1/places/-33.8665433/151.1956316?radiusinmeters=500&type=park |
 |/v1/places/types                                                                                                   | GET        | List of ALL Place Types | |
 
 ###Google Places Types ( [Source](https://developers.google.com/places/documentation/supported_types) )
