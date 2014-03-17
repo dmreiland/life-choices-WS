@@ -1,7 +1,44 @@
 ### Instruction to start web service:
 
-Java
-====
+Architecture
+=============
+
+                                  +-----------------------------------+
+                                  |          Life Choices             |      +-------------------+
+                                  |       (Spring Boot v1.0)          |      |                   |
+                                  |                                   |      |                   |
+                                  |   +---------------------------+   |      |                   |
+                                  |   |    RESTful Web Services   |<--|-----+|     iOS Client    |
+                                  |   |    (Spring Web Services)  |+--|----->|                   |
+                                  |   +---------------------------+   |      |                   |
+     +------------------+         |         |             ^           |      |                   |
+     | Google Places API|+------+ |         v             |           |      +-------------------+
+     +------------------+       | |   +---------------------------+   |
+                                | |   |       Services            |   |
+                                +-|---+    (Business Logic)       |   |
+     +------------------+       | |   +---------------------------+   |
+     |    Yelp API      |+------+ |         |             ^           |
+     +------------------+         |         v             |           |
+                                  |   +---------------------------+   |
+                                  |   |       DB Repository       |   |
+                                  |   |  (Spring Data MongoDB)    |   |
+                                  |   +---------------------------+   |
+                                  |         |             ^           |
+                                  |         v             |           |
+                                  |   +---------------------------+   |
+                                  |   |                           |   |
+                                  |   |        MONGODB            |   |
+                                  |   | Hosted on www.mongohq.com |   |
+                                  |   |                           |   |
+                                  |   +---------------------------+   |
+                                  |                                   |
+                                  +-----------------------------------+
+
+*Edit diagram [HERE](http://www.asciiflow.com/#Draw916687349784866310/284750133)*
+
+Dev Environment Requirements
+=============================
+
 This project will only compile with Java 7 (1.7) [Download Here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
 
 [This](https://github.com/spring-projects/spring-boot/pull/497) is a REASON/Problem why it is not possible to execute this project with Java 1.6

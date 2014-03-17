@@ -25,16 +25,16 @@ public class DBConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return Props.mongoDb;
+        return Props.MONGODB_NAME;
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        logger.debug("Connecting to MongoDB: [" + Props.userName + ":" + Props.password + "@" + Props.mongoHost + ":" + Props.mongoPort + "/" + Props.mongoDb);
+        logger.debug("Connecting to MongoDB: [" + Props.MONGODB_USER + ":" + Props.MONGODB_PASSWORD + "@" + Props.MONGODB_HOST + ":" + Props.MONGODB_PORT + "/" + Props.MONGODB_NAME);
 
-        MongoCredential credential = MongoCredential.createMongoCRCredential(Props.userName, Props.mongoDb, Props.password.toCharArray());
+        MongoCredential credential = MongoCredential.createMongoCRCredential(Props.MONGODB_USER, Props.MONGODB_NAME, Props.MONGODB_PASSWORD.toCharArray());
 
-        MongoClient mongoClient = new MongoClient(new ServerAddress(Props.mongoHost, Props.mongoPort), Arrays.asList(credential));
+        MongoClient mongoClient = new MongoClient(new ServerAddress(Props.MONGODB_HOST, Props.MONGODB_PORT), Arrays.asList(credential));
 
         logger.debug("Connected to MongdoDB: " + mongoClient.debugString());
         return mongoClient;
