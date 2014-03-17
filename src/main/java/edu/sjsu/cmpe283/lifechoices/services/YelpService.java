@@ -24,7 +24,7 @@ public class YelpService {
     private Token accessToken;
     
     /**
-     * Returns 
+     * Returns Yelp Businesses
      * @param searchTerm search term
      * @param latitude Latitude
      * @param longitude Location
@@ -37,7 +37,6 @@ public class YelpService {
             this.service = new ServiceBuilder().provider(YelpServiceProvider.class).apiKey(Props.YELP_CONSUMER_KEY).apiSecret(Props.YELP_COSUMER_SECRET).build();
             this.accessToken = new Token(Props.YELP_TOKEN_KEY, Props.YELP_TOKEN_SECRET);
         }
-        
         
         // Create and send request
         OAuthRequest request = new OAuthRequest(Verb.GET, Props.YELP_API_URL);
