@@ -70,6 +70,7 @@ Try [THIS](http://localhost:8080/v1/geo/)
 ### Documentation
 - [Web services](https://github.com/cmpe273-indexzero/life-choices-WS/tree/master/src/main/java/edu/sjsu/cmpe283/lifechoices/webservices)
 - [Entities](https://github.com/cmpe273-indexzero/life-choices-WS/tree/master/src/main/java/edu/sjsu/cmpe283/lifechoices/entities)
+- [Repository](https://github.com/cmpe273-indexzero/life-choices-WS/tree/master/src/main/java/edu/sjsu/cmpe283/lifechoices/repositories)
 - [Configs](https://github.com/cmpe273-indexzero/life-choices-WS/tree/master/src/main/java/edu/sjsu/cmpe283/lifechoices/config)
 
 
