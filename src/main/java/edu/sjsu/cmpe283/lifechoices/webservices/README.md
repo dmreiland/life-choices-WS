@@ -182,9 +182,9 @@ Google Places Service
 
 Yelp Service
 ----------------------
-| URI                                                                                                               |  Method    | RESPONSE       | Sample URI |
-|-------------------------------------------------------------------------------------------------------------------|------------|----------------|------------|
-|/v1/food/{latitude}/{longitude}?keyword={string (defaults to 'restaurants'}                                      | GET        | List of places | /v1/food/-33.8665433/151.1956316 |
+| URI                                                                         |  Method    | RESPONSE       | Sample URI                        |
+|-----------------------------------------------------------------------------|------------|----------------|-----------------------------------|
+|/v1/food/{latitude}/{longitude}?keyword={string (defaults to 'restaurants'}  | GET        | List of places | /v1/food/-33.8665433/151.1956316  |
 
 
 Response type: **application/json**
