@@ -1,4 +1,4 @@
-DB Config (Mongo)
+DB Config (MongoDB)
 ==================
 
 Connection config
@@ -9,5 +9,7 @@ Mongo DB Service info on MongoHQ
 --------------------------------
 
 user: **lifechoicesuser**
+
 pass: **lifechoicesuserpa$5**
-uri : mongodb://<user>:<password>@oceanic.mongohq.com:10032/lifechoices_mdb
+
+uri : **mongodb://<user>:<password>@oceanic.mongohq.com:10032/lifechoices_mdb**
