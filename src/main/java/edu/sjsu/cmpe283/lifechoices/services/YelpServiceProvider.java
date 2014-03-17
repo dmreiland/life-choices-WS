@@ -1,6 +1,5 @@
 package edu.sjsu.cmpe283.lifechoices.services;
 
-
 import org.scribe.model.Token;
 import org.scribe.builder.api.DefaultApi10a;
 
@@ -11,21 +10,21 @@ import org.scribe.builder.api.DefaultApi10a;
  * Date: 3/16/14 - 4:00 PM
  */
 public class YelpServiceProvider extends DefaultApi10a {
-
-  @Override
-  public String getAccessTokenEndpoint() {
-    return null;
-  }
-
-  @Override
-  public String getAuthorizationUrl(Token arg0) {
-    return null;
-  }
-
-  @Override
-  public String getRequestTokenEndpoint() {
-    return null;
-  }
-
+    
+    @Override
+    public String getAccessTokenEndpoint() {
+        return null;
+    }
+    
+    @Override
+    public String getAuthorizationUrl(Token arg0) {
+        return null;
+    }
+    
+    @Override
+    public String getRequestTokenEndpoint() {
+        return null;
+    }
+    
 }
 

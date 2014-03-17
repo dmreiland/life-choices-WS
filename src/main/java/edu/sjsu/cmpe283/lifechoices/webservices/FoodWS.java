@@ -32,7 +32,7 @@ public class FoodWS {
             @RequestParam(value = "keyword", required = false) String searchTerm
 
     ) {
-        logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], type=[" + searchTerm + "]");
+        logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "]");
         String response = yelpService.getFoodPlaces(searchTerm, latitude, longitude);
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
