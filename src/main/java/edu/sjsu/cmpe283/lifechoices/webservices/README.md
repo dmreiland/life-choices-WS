@@ -188,6 +188,7 @@ Yelp Service
 
 
 Response type: **application/json**
+
 **Sample Response**:
 ```json
 {
