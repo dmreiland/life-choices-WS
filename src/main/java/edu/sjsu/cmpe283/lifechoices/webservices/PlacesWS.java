@@ -25,18 +25,16 @@ public class PlacesWS {
     @Autowired
     GooglePlacesService googlePlacesService;
 
-    @RequestMapping(value = "/{latitude}/{longitude}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity userGeoHistory(
-            @PathVariable("latitude") double latitude,
-            @PathVariable("longitude") double longitude,
+            @RequestParam("latitude") Double latitude,
+            @RequestParam("longitude") Double longitude,
 
             @RequestParam(value = "type", required = false) String type,
             @RequestParam(value = "radiusinmeters", defaultValue = "500", required = false) Integer radiusinmeters
 
     ) {
-
         logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], type=[" + type + "], radiusinmeters=[" + radiusinmeters + "]");
-
 
         if (type == null) {
             type = PlacesType.allInPipe();

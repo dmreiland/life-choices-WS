@@ -1,17 +1,15 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
+import edu.sjsu.cmpe283.lifechoices.services.YelpService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import edu.sjsu.cmpe283.lifechoices.services.YelpService;
 
 /**
  * User: srkarra
@@ -25,10 +23,10 @@ public class FoodWS {
     @Autowired
     YelpService yelpService;
 
-    @RequestMapping(value = "/{latitude}/{longitude}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity userGeoHistory(
-            @PathVariable("latitude") double latitude,
-            @PathVariable("longitude") double longitude,
+            @RequestParam("latitude") double latitude,
+            @RequestParam("longitude") double longitude,
             @RequestParam(value = "keyword", required = false) String searchTerm
 
     ) {
