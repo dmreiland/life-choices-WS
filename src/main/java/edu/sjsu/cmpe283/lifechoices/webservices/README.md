@@ -68,10 +68,10 @@ Example URL: **/v1/geo/history/maksim?starttime=1394939000&endtime=1394939999**
 Google Places Service
 ----------------------
 
-| URI                                                                                                               |  Method    | RESPONSE       | Sample URI |
-|-------------------------------------------------------------------------------------------------------------------|------------|----------------|------------|
-|/v1/places/{latitude}/{longitude}?radiusinmeters={integer : default=500}&type={string : if empty will return places for all types } | GET        | List of places | /v1/places/-33.8665433/151.1956316?radiusinmeters=500&type=park |
-|/v1/places/types                                                                                                   | GET        | List of ALL Place Types | |
+| URI                                                                                                                                              |  Method    | RESPONSE                  | Sample URI |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|------------|---------------------------|------------|
+|/v1/places?latitude={double}&longitude={double}&radiusinmeters={integer : default=500}&type={string : if empty will return places for all types } | GET        | List of places            | /v1/places?latitude=-33.8665433&longitude=151.1956316&radiusinmeters=500&type=park |
+|/v1/places/types                                                                                                                                  | GET        | List of ALL Place Types   |            |
 
 ###Google Places Types ( [Source](https://developers.google.com/places/documentation/supported_types) )
 
@@ -182,9 +182,9 @@ Google Places Service
 
 Yelp Service
 ----------------------
-| URI                                                                         |  Method    | RESPONSE       | Sample URI                        |
-|-----------------------------------------------------------------------------|------------|----------------|-----------------------------------|
-|/v1/food/{latitude}/{longitude}?keyword={string (defaults to 'restaurants'}  | GET        | List of places | /v1/food/-33.8665433/151.1956316  |
+| URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
+|-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
+|/v1/food?latitude={double}&longitude={double}&keyword={string (defaults to 'restaurants'}  | GET        | List of places | /v1/food?latitude=-33.8665433&longitude=151.1956316  |
 
 
 Response type: **application/json**
