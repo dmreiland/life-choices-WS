@@ -120,6 +120,8 @@ you with a prompt where you could `start`, `stop`, and see the `status` of the a
     cmpe273-life-choices-WS RUNNING   pid 123123, uptime 1 day, 15:00:00
     $ supervisor> stop cmpe273-life-choices-WS
     $ supervisor> start cmpe273-life-choices-WS
+    $ supervisor> restart cmpe273-life-choices-WS
+
     ```
 
 - Restart the server `sudo reboot`
