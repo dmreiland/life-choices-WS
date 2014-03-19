@@ -16,8 +16,8 @@ Official Google Doc for this library can be found [HERE](https://code.google.com
 Yelp Services (YelpService)
 ---------------------------------------------
 
-Consumer Key: *HhUFhxHEFpJartgRhUmtqg*
-Consumer Secret: *J04t8KeDuN6qO6tSOsvJKmE38NY*
+Consumer Key: *HhUFhxHEFpJartgRhUmtqg* 
+Consumer Secret: *J04t8KeDuN6qO6tSOsvJKmE38NY* 
 Token: *EzK9COybRspVOhDt3dKN7Ka6gHyUXU8s*
 Token Secret: *dzEarOMVMVW8pg1bb_6_9FepsRw*
 
