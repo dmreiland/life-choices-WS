@@ -25,6 +25,6 @@ Token Secret: *dzEarOMVMVW8pg1bb_6_9FepsRw*
 
  
 Yelp Links:
+
 - [Official Yelp Documentation] (http://www.yelp.com/developers/documentation/v2/search_api)
-- 
 - [Sample Code on GitHub](https://github.com/Yelp/yelp-api/blob/master/v2/java/)
