@@ -28,11 +28,12 @@ public class FoodWS {
             @RequestParam("latitude") double latitude,
             @RequestParam("longitude") double longitude,
             @RequestParam(value = "keyword", required = false) String searchTerm,
-            @RequestParam(value = "radius", required = false) int radius
+            @RequestParam(value = "radius", required = false) int radius,
+            @RequestParam(value = "deals", required = false) boolean hasDeals
 
     ) {
-        logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "]");
-        String response = yelpService.getFoodPlaces(searchTerm, latitude, longitude, radius);
+        logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "], hasDeals=[" + hasDeals + "]");
+        String response = yelpService.getFoodPlaces(searchTerm, latitude, longitude, radius, hasDeals);
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 }

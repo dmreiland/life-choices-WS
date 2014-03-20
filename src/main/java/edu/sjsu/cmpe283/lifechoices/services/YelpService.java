@@ -30,9 +30,11 @@ public class YelpService {
      * @param searchTerm search term
      * @param latitude Latitude
      * @param longitude Location
+     * @param radius radius filter for results
+     * @param hasDeals - filter for results if they have deals available
      * @return Yelp JSON response
      */
-    public String getFoodPlaces(String searchTerm, double latitude, double longitude, int radius) {
+    public String getFoodPlaces(String searchTerm, double latitude, double longitude, int radius, boolean hasDeals ) {
         String response = "";
         // Configure OAuth
         if(service == null || accessToken == null) {
