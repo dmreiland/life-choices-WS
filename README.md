@@ -128,7 +128,8 @@ you with a prompt where you could `start`, `stop`, and see the `status` of the a
 
 - Try to access services
 
-    http://54.193.8.183:8080/v1/places/-33.8665433/151.1956316?radiusinmeters=500
+    http://54.193.8.183:8080/v1/places/?latitude=-33.8665433&longitude=151.1956316&radiusinmeters=500
+    http://54.193.8.183:8080/v1/food/?latitude=-33.8665433&longitude=151.1956316&deals=true
 
     http://54.193.8.183:8080/v1/geo/
 
