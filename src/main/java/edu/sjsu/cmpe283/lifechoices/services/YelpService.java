@@ -42,6 +42,7 @@ public class YelpService {
             this.accessToken = new Token(Props.YELP_TOKEN_KEY, Props.YELP_TOKEN_SECRET);
         }
         
+        // Validate Radius
         if(radius == null || radius <= 0) {
             radius = 1610 * 3; // meters in three miles
         }
@@ -49,12 +50,17 @@ public class YelpService {
             radius = MAX_AREA_SIZE; // default to maximum = 25 miles
         }
         
+        // Validate Deals
+        if(hasDeals == null || (!hasDeals.equalsIgnoreCase("true") && !hasDeals.equalsIgnoreCase("false"))) {
+            hasDeals = "false";
+        }
+        
         // Create and send request
         OAuthRequest request = new OAuthRequest(Verb.GET, Props.YELP_API_URL);
         request.addQuerystringParameter("term", searchTerm == null ? "restaurants" : searchTerm);
         request.addQuerystringParameter("ll", latitude + "," + longitude);
         request.addQuerystringParameter("radius_filter", String.valueOf(radius));
-        request.addQuerystringParameter("deals_filter", String.valueOf(radius));
+        request.addQuerystringParameter("deals_filter", hasDeals);
         this.service.signRequest(this.accessToken, request);
         try {
             response =  request.send().getBody();
