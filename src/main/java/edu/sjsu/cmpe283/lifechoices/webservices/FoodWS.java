@@ -28,8 +28,8 @@ public class FoodWS {
             @RequestParam("latitude") double latitude,
             @RequestParam("longitude") double longitude,
             @RequestParam(value = "keyword", required = false) String searchTerm,
-            @RequestParam(value = "radius", required = false) int radius,
-            @RequestParam(value = "deals", required = false) boolean hasDeals
+            @RequestParam(value = "radius", required = false) Integer radius,
+            @RequestParam(value = "deals", required = false) String hasDeals
 
     ) {
         logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "], hasDeals=[" + hasDeals + "]");

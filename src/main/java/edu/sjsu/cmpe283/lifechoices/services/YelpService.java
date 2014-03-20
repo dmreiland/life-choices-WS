@@ -34,7 +34,7 @@ public class YelpService {
      * @param hasDeals - filter for results if they have deals available
      * @return Yelp JSON response
      */
-    public String getFoodPlaces(String searchTerm, double latitude, double longitude, int radius, boolean hasDeals ) {
+    public String getFoodPlaces(String searchTerm, double latitude, double longitude, Integer radius, String hasDeals ) {
         String response = "";
         // Configure OAuth
         if(service == null || accessToken == null) {
@@ -42,11 +42,11 @@ public class YelpService {
             this.accessToken = new Token(Props.YELP_TOKEN_KEY, Props.YELP_TOKEN_SECRET);
         }
         
-        if(radius <= 0) {
-            radius = 1610; // meters in a mile
+        if(radius == null || radius <= 0) {
+            radius = 1610 * 3; // meters in three miles
         }
         else if(radius > MAX_AREA_SIZE) {
-            radius = MAX_AREA_SIZE;
+            radius = MAX_AREA_SIZE; // default to maximum = 25 miles
         }
         
         // Create and send request
