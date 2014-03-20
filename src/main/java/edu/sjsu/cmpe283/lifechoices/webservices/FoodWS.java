@@ -27,11 +27,12 @@ public class FoodWS {
     public ResponseEntity userGeoHistory(
             @RequestParam("latitude") double latitude,
             @RequestParam("longitude") double longitude,
-            @RequestParam(value = "keyword", required = false) String searchTerm
+            @RequestParam(value = "keyword", required = false) String searchTerm,
+            @RequestParam(value = "radius", required = false) int radius
 
     ) {
-        logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "]");
-        String response = yelpService.getFoodPlaces(searchTerm, latitude, longitude);
+        logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "]");
+        String response = yelpService.getFoodPlaces(searchTerm, latitude, longitude, radius);
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 }

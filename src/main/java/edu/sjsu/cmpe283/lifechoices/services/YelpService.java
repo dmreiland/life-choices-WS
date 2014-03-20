@@ -20,6 +20,8 @@ public class YelpService {
     
     private static Log logger = LogFactory.getLog(GooglePlacesService.class);
     
+    private static final int MAX_AREA_SIZE = 40000;
+    
     private OAuthService service;
     private Token accessToken;
     
@@ -30,7 +32,7 @@ public class YelpService {
      * @param longitude Location
      * @return Yelp JSON response
      */
-    public String getFoodPlaces(String searchTerm, double latitude, double longitude) {
+    public String getFoodPlaces(String searchTerm, double latitude, double longitude, int radius) {
         String response = "";
         // Configure OAuth
         if(service == null || accessToken == null) {
@@ -38,10 +40,18 @@ public class YelpService {
             this.accessToken = new Token(Props.YELP_TOKEN_KEY, Props.YELP_TOKEN_SECRET);
         }
         
+        if(radius <= 0) {
+            radius = 1610; // meters in a mile
+        }
+        else if(radius > MAX_AREA_SIZE) {
+            radius = MAX_AREA_SIZE;
+        }
+        
         // Create and send request
         OAuthRequest request = new OAuthRequest(Verb.GET, Props.YELP_API_URL);
         request.addQuerystringParameter("term", searchTerm == null ? "restaurants" : searchTerm);
         request.addQuerystringParameter("ll", latitude + "," + longitude);
+        request.addQuerystringParameter("radius_filter", String.valueOf(radius));
         this.service.signRequest(this.accessToken, request);
         try {
             response =  request.send().getBody();
