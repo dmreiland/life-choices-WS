@@ -54,6 +54,7 @@ public class YelpService {
         request.addQuerystringParameter("term", searchTerm == null ? "restaurants" : searchTerm);
         request.addQuerystringParameter("ll", latitude + "," + longitude);
         request.addQuerystringParameter("radius_filter", String.valueOf(radius));
+        request.addQuerystringParameter("deals_filter", String.valueOf(radius));
         this.service.signRequest(this.accessToken, request);
         try {
             response =  request.send().getBody();
