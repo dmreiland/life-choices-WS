@@ -2,6 +2,7 @@ target/
 .DS_Store
 .arc
 .phutil_module_cache
+*.log
 
 # idea project files
 .idea/
