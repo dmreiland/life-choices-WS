@@ -13,7 +13,8 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<!--<version>1.0.0.RC3</version> -->
 		<!--<version>1.0.0.RC4</version> -->
-		<version>1.0.0.BUILD-SNAPSHOT</version>
+		<version>1.0.0.RC5</version>
+		<!--<version>1.0.0.BUILD-SNAPSHOT</version>-->
 	</parent>
 	<dependencies>
 
@@ -21,13 +22,18 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-webmvc</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 
 		<!-- MongoDB -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
-			<version>1.4.0.RELEASE</version>
 		</dependency>
 
 		<!-- Monitoring -->
@@ -110,11 +116,11 @@
 		</dependency>
 	
 		<!-- Sprockets (Wrapper for Google Places API) -->
-		<dependency>
-			<groupId>net.sf.sprockets</groupId>
-			<artifactId>sprockets</artifactId>
-			<version>1.3.0</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>net.sf.sprockets</groupId>-->
+			<!--<artifactId>sprockets</artifactId>-->
+			<!--<version>1.3.0</version>-->
+		<!--</dependency>-->
 
 		<!-- Scribe (OAuth API for Yelp) -->
 		<dependency>
@@ -134,7 +140,17 @@
 			</snapshots>
 		</repository>
 
-		<!-- Scribe (OAuth API for Yelp) -->
+            <repository>
+                <id>spring-milestones</id>
+                <name>Spring Milestones</name>
+                <url>http://repo.spring.io/milestone</url>
+                <snapshots>
+                    <enabled>false</enabled>
+                </snapshots>
+            </repository>
+
+
+        <!-- Scribe (OAuth API for Yelp) -->
 		<repository>
 			<id>scribe-java-mvn-repo</id>
 			<url>https://raw.github.com/fernandezpablo85/scribe-java/mvn-repo/</url>

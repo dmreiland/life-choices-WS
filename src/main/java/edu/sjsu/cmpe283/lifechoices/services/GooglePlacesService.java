@@ -6,9 +6,9 @@ import com.googlecode.placesapiclient.client.entity.Place;
 import com.googlecode.placesapiclient.client.exception.ErrorCodeException;
 import com.googlecode.placesapiclient.client.service.PlacesService;
 import com.googlecode.placesapiclient.client.service.impl.PlacesServiceImpl;
-import edu.sjsu.cmpe283.lifechoices.config.Props;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +23,8 @@ public class GooglePlacesService {
 
     private static Log logger = LogFactory.getLog(GooglePlacesService.class);
 
+    @Value("${google.places.apikey}")
+    String GOOGLE_PLACES_API_KEY;
 
     /**
      *
@@ -34,7 +36,7 @@ public class GooglePlacesService {
      * @throws ErrorCodeException
      */
     public List<Place> getGooglePlaces(String type, double lat, double lon, Integer radius) {
-        PlacesService placesService = new PlacesServiceImpl(Props.GOOGLE_PLACES_API_KEY);
+        PlacesService placesService = new PlacesServiceImpl(GOOGLE_PLACES_API_KEY);
         placesService.init();
 
         // Prepare search arguments
