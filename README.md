@@ -128,8 +128,10 @@ you with a prompt where you could `start`, `stop`, and see the `status` of the a
     ```
 All available commands for **supervisorctl**:
 
+    ```
     add    clear  fg        open  quit    remove  restart   start   stop  update
     avail  exit   maintail  pid   reload  reread  shutdown  status  tail  version
+    ```
 
 
 
