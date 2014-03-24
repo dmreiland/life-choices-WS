@@ -40,11 +40,13 @@ Architecture
 Dev Environment Requirements
 =============================
 
+!!! **Before starting any code make sure that applications.properties file is configured** See [THIS](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/README.md) instructions
+
 This project will only compile with Java 7 (1.7) [Download Here](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html).
 
 [This](https://github.com/spring-projects/spring-boot/pull/497) is a REASON/Problem why it is not possible to execute this project with Java 1.6
 
-#### RUN PROJECT: Using IDE (IntelliJ) *PREFERABLE
+#### RUN PROJECT: Using IDE (IntelliJ *PREFERABLE*)
 
 Install [lombok plugin](http://plugins.jetbrains.com/plugin/6317
 
@@ -76,7 +78,7 @@ Try [THIS](http://localhost:8080/v1/geo/)
 
 ### Configure Server
 
-- connect: `ssh -i ~/.ssh/cmpe273-lifechoices-key.cer ubuntu@54.193.8.183`
+- connect: `ssh -i ~/.ssh/{key_file} ubuntu@54.193.8.183`
 
 - Install Java 7 ( [Source](http://stackoverflow.com/a/16263651/51230) ) and other packages:
 

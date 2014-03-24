@@ -6,7 +6,7 @@ These classes responsible for the business logic. They can be treated as busines
 Google Places Services (GooglePlacesServices)
 ---------------------------------------------
 
-Google API Key: *AIzaSyCtqOYumCWBcjHH2ixhts9EL5BiPaXoH6s*
+Add Google Places API Key to *applications.properties* file located under [resources](https://github.com/cmpe273-indexzero/life-choices-WS/tree/master/src/main/resources) folder. Read more details how to configure application.properties file [HERE](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/README.md)
 
 **IMPORTANT**: Need to allow your IP in [THE CONSOLE](https://console.developers.google.com/project/apps~life-choices/apiui/credential) for Google Places API to be called
 
@@ -15,13 +15,7 @@ Official Google Doc for this library can be found [HERE](https://code.google.com
 
 Yelp Services (YelpService)
 ---------------------------------------------
-Consumer Key: *HhUFhxHEFpJartgRhUmtqg*
-
-Consumer Secret: *J04t8KeDuN6qO6tSOsvJKmE38NY* 
-
-Token Key: *EzK9COybRspVOhDt3dKN7Ka6gHyUXU8s*
-
-Token Secret: *dzEarOMVMVW8pg1bb_6_9FepsRw*
+Add Yelp Services API Key to *applications.properties* file located under [resources](https://github.com/cmpe273-indexzero/life-choices-WS/tree/master/src/main/resources) folder. Read more details how to configure application.properties file [HERE](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/README.md)
 
  
 Yelp Links:
