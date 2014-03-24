@@ -117,14 +117,21 @@ Try [THIS](http://localhost:8080/v1/geo/)
 - To control the application you would need to execute **supervisorctl**, which will present
 you with a prompt where you could `start`, `stop`, and see the `status` of the app you specified in the `cmpe273-life-choices-WS.conf` file.
 
-    ```
-    $ sudo supervisorctl
-    cmpe273-life-choices-WS RUNNING   pid 123123, uptime 1 day, 15:00:00
-    $ supervisor> stop cmpe273-life-choices-WS
-    $ supervisor> start cmpe273-life-choices-WS
-    $ supervisor> restart cmpe273-life-choices-WS
+
+
 
     ```
+    $ sudo supervisorctl stop cmpe273-life-choices-WS
+    $ sudo supervisorctl start cmpe273-life-choices-WS
+    $ sudo supervisorctl restart cmpe273-life-choices-WS
+
+    ```
+All available commands for **supervisorctl**:
+
+    add    clear  fg        open  quit    remove  restart   start   stop  update
+    avail  exit   maintail  pid   reload  reread  shutdown  status  tail  version
+
+
 
 - Restart the server `sudo reboot`
 
