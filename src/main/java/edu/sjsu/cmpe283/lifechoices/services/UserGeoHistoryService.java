@@ -40,12 +40,19 @@ public class UserGeoHistoryService {
     /**
      * Find all location history for a user
      * @param userName User name
-     * @return all location history
+     * @return all location history for a user
      */
     public List<UserGeoHistory> findByUserName(String userName){
         return userGeoHistoryRepository.findByUserName(userName);
     }
 
 
+    /**
+     * Finds all history locations in the database
+     * @return  all location history
+     */
+    public List<UserGeoHistory> findAll(){
+        return userGeoHistoryRepository.findAll();
+    }
 
 }

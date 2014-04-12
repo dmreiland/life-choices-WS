@@ -22,7 +22,7 @@ public class UserGeoHistory {
     private long timestamp;
 
     /**
-     * Position (  [x(lat),y(lon)]  )
+     * Position (  [x,y] where x is latitude, and y is longitude )
      */
     private double[] position;
 
