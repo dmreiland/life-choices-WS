@@ -1,7 +1,9 @@
-package edu.sjsu.cmpe283.lifechoices.services;
+package edu.sjsu.cmpe283.lifechoices.utils;
 
 import com.notnoop.apns.APNS;
 import com.notnoop.apns.ApnsService;
+
+import java.net.URL;
 
 /**
  * User: maksim
@@ -23,13 +25,14 @@ public class APNService {
      * Denial-of-Service (DOS) attack and may prevent your provider
      * from sending push notifications to your applications.
      */
-
     private static ApnsService init() {
 
         if (service == null) {
+            URL url = ApnsService.class.getResource("/Certificates.p12");
+
             service = APNS
                     .newService()
-                    .withCert("/Users/maksim/Desktop/cmpe273-indexzero/life-choices-WS/src/main/resources/Certificates.p12", "lifechoices14")
+                    .withCert(url.getPath(), "lifechoices14")
                     .withSandboxDestination()
                     .build();
         }

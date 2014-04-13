@@ -4,7 +4,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
@@ -16,7 +15,6 @@ import javax.servlet.ServletContextListener;
  * Date: 3/12/14 - 5:40 PM
  */
 @Configuration
-@EnableScheduling
 public class AppConfig {
 
     private static Log logger = LogFactory.getLog(AppConfig.class);
