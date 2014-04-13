@@ -24,7 +24,7 @@ public class FoodWS {
     YelpService yelpService;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity userGeoHistory(
+    public ResponseEntity userFoods(
             @RequestParam("latitude") double latitude,
             @RequestParam("longitude") double longitude,
             @RequestParam(value = "keyword", required = false) String searchTerm,
