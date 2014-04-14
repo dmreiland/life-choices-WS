@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO.Destinations;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.GoogleMapsDirections;
 
 @Service
@@ -50,31 +51,30 @@ public class GoogleMapsService {
     
     
     
-    public List<UpdatesDTO> getDirections(Double originLatitude, Double originLongitude, Integer width, Integer height) throws IOException {
-        List<UpdatesDTO> updates = new ArrayList<UpdatesDTO>();
+    public UpdatesDTO getDirections(Double originLatitude, Double originLongitude, Integer zoom, Integer width, Integer height) throws IOException {
+        UpdatesDTO updates = new UpdatesDTO();
+        updates.setLatitude(originLatitude);
+        updates.setLongitude(originLongitude);
         
         for (SimpleEntry<Double, Double> seed : getRandomSeedDataForUpdates()) {
             // NOTE: I'm "hacking" here, should move this to an object instead of the SimpleEntry Object
-            String originLat = String.valueOf(originLatitude);
-            String originLong = String.valueOf(originLongitude);
-            String destinationLat = String.valueOf(seed.getKey());
-            String destinationLong = String.valueOf(seed.getValue());
             
-            UpdatesDTO update = new UpdatesDTO();
-            update.setOriginLatitude(originLatitude);
-            update.setOriginLongitude(originLongitude);
-            update.setDestinationLatitude(seed.getKey());
-            update.setDestinationLongitude(seed.getValue());
+            Destinations destination = new Destinations();
+            destination.setLatitude(seed.getKey());
+            destination.setLongitude(seed.getValue());
             
-            update.setRawDirections(getDirections(originLat, originLong, destinationLat, destinationLong));
-            update.setGoogleMapsDistanceToDestination(update.getRawDirections().getRoutes().get(0).getLegs().get(0).getDistance().getText());
-            update.setGoogleMapsTimeToDestination(update.getRawDirections().getRoutes().get(0).getLegs().get(0).getDuration().getText());
+            // Get directions
+            destination.setRawDirections(getGoogleDirections(originLatitude, originLongitude, seed.getKey(), seed.getValue()));
+            destination.setDistanceToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDistance().getText());
+            destination.setTimeToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDuration().getText());
             
-            update.setGoogleMapsStaticLink(getGoogleStaticMapsURL(width, height, originLat, originLong, destinationLat,destinationLong, update.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
+            // Get Static Map
+            destination.setGoogleMapsStaticLink(getGoogleStaticMapsURL(zoom, width, height, originLatitude, originLongitude, seed.getKey(), seed.getValue(), destination.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
             
-            updates.add(update);
+            
+            // Store Destination
+            updates.addDesination(destination);
         }
-        
         
         return updates;
     }
@@ -104,8 +104,8 @@ public class GoogleMapsService {
      * @throws ClientProtocolException
      * @throws IOException
      */
-    public GoogleMapsDirections getDirections(String originLatitude, String originLongitude, String destinationLatitude, String destinationLongitude) throws IOException {
-        // Contruct URL
+    public GoogleMapsDirections getGoogleDirections(double originLatitude, double originLongitude, double destinationLatitude, double destinationLongitude) throws IOException {
+        // Construct URL
         String directionURL = String.format("https://maps.googleapis.com/maps/api/directions/json?sensor=false&key=%s&origin=%s,%s&destination=%s,%s", GOOGLE_PLACES_API_KEY, originLatitude, originLongitude, destinationLatitude, destinationLongitude);
         
         // Send GET Request
@@ -147,23 +147,13 @@ public class GoogleMapsService {
     
     
     
-    public String getGoogleStaticMapsURL(Integer width, Integer height, String originLat, String originLong, String destinationLat, String destinationLong, String points) {
-//        TODO Markers are not working:
-//        String url = String.format("http://maps.google.com/maps/api/staticmap?size=%dx%d&maptype=roadmap&sensor=false&markers=%s,%s|%s,%s&path=weight:3|color:blue|enc:%s"
-//                , width, height, originLat, originLong, destinationLat, destinationLong, points);
+    public String getGoogleStaticMapsURL(Integer zoom, Integer width, Integer height, double originLat, double originLong, double destinationLat, double destinationLong, String points) {
+        String url = String.format("http://maps.google.com/maps/api/staticmap?key=%s&size=%dx%d&maptype=roadmap&sensor=false&markers=%s,%s|%s,%s&path=weight:3|color:blue|enc:%s"
+                , GOOGLE_PLACES_API_KEY, width, height, originLat, originLong, destinationLat, destinationLong, points);
         
-        String url = String.format("http://maps.google.com/maps/api/staticmap?size=%dx%d&maptype=roadmap&sensor=false&path=weight:3|color:blue|enc:%s"
-              , width, height, /* originLat, originLong, destinationLat, destinationLong, */ points);
+//        String url = String.format("http://maps.google.com/maps/api/staticmap?size=%dx%d&maptype=roadmap&sensor=false&path=weight:3|color:blue|enc:%s", width, height, points);
         
         return url;
     }
-    /*
-    http://maps.googleapis.com/maps/api/staticmap?center=63.259591,-144.667969&zoom=6&size=400x400
-    &markers=color:blue|label:S|62.107733,-145.541936
-    &markers=color:green|label:D|%s,%s
-    &sensor=false
-    
-    */
-    
     
 }
