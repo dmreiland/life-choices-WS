@@ -24,10 +24,9 @@ public class UpdateWS {
     GoogleMapsService googleMapsService;
     
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity userGeoHistory(
+    public ResponseEntity updates(
             @RequestParam(value = "latitude", defaultValue = "37.334679", required = false) Double latitude,
             @RequestParam(value = "longitude", defaultValue = "-121.881113", required = false) Double longitude,
-            @RequestParam(value = "zoom", defaultValue = "14", required = false) Integer zoom,
             @RequestParam(value = "width", defaultValue = "640", required = false) Integer width,
             @RequestParam(value = "height", defaultValue = "480", required = false) Integer height
     ) {
@@ -40,7 +39,7 @@ public class UpdateWS {
 //            SJ Mineta Intl:   37.3653473, -121.9157925 
 //            Great America:    37.390052, -121.9781685 
 //            
-            return new ResponseEntity<UpdatesDTO>(googleMapsService.getDirections(latitude, longitude, zoom, width, height), HttpStatus.OK);
+            return new ResponseEntity<UpdatesDTO>(googleMapsService.getDirections(latitude, longitude, width, height), HttpStatus.OK);
         }
         catch (Exception e) {
             logger.error(e);

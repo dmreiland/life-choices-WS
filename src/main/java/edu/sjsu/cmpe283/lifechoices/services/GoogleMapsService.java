@@ -35,7 +35,10 @@ public class GoogleMapsService {
     String GOOGLE_PLACES_API_KEY;
     
     
-    
+    /**
+     * TODO REMOVE
+     * @return
+     */
     public List<SimpleEntry<Double, Double>> getRandomSeedDataForUpdates() {
         List<SimpleEntry<Double, Double>> seedData = new ArrayList<SimpleEntry<Double,Double>>();
         
@@ -50,15 +53,25 @@ public class GoogleMapsService {
     
     
     
-    
-    public UpdatesDTO getDirections(Double originLatitude, Double originLongitude, Integer zoom, Integer width, Integer height) throws IOException {
+    /**
+     * Returns the directions/maps link/weather for all of the user's location 
+     * 
+     * 
+     * @param originLatitude
+     * @param originLongitude
+     * @param zoom
+     * @param width
+     * @param height
+     * @return
+     * @throws IOException
+     */
+    public UpdatesDTO getDirections(Double originLatitude, Double originLongitude, Integer width, Integer height) throws IOException {
         UpdatesDTO updates = new UpdatesDTO();
         updates.setLatitude(originLatitude);
         updates.setLongitude(originLongitude);
         
         for (SimpleEntry<Double, Double> seed : getRandomSeedDataForUpdates()) {
             // NOTE: I'm "hacking" here, should move this to an object instead of the SimpleEntry Object
-            
             Destinations destination = new Destinations();
             destination.setLatitude(seed.getKey());
             destination.setLongitude(seed.getValue());
@@ -69,7 +82,7 @@ public class GoogleMapsService {
             destination.setTimeToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDuration().getText());
             
             // Get Static Map
-            destination.setGoogleMapsStaticLink(getGoogleStaticMapsURL(zoom, width, height, originLatitude, originLongitude, seed.getKey(), seed.getValue(), destination.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
+            destination.setGoogleMapsStaticLink(getGoogleStaticMapsURL(width, height, originLatitude, originLongitude, seed.getKey(), seed.getValue(), destination.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
             
             
             // Store Destination
@@ -147,12 +160,9 @@ public class GoogleMapsService {
     
     
     
-    public String getGoogleStaticMapsURL(Integer zoom, Integer width, Integer height, double originLat, double originLong, double destinationLat, double destinationLong, String points) {
+    public String getGoogleStaticMapsURL(Integer width, Integer height, double originLat, double originLong, double destinationLat, double destinationLong, String points) {
         String url = String.format("http://maps.google.com/maps/api/staticmap?key=%s&size=%dx%d&maptype=roadmap&sensor=false&markers=%s,%s|%s,%s&path=weight:3|color:blue|enc:%s"
                 , GOOGLE_PLACES_API_KEY, width, height, originLat, originLong, destinationLat, destinationLong, points);
-        
-//        String url = String.format("http://maps.google.com/maps/api/staticmap?size=%dx%d&maptype=roadmap&sensor=false&path=weight:3|color:blue|enc:%s", width, height, points);
-        
         return url;
     }
     
