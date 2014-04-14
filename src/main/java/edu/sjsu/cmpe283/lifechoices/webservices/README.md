@@ -249,3 +249,106 @@ Response type: **application/json**
 
 ```
 
+
+
+User Updates
+----------------------
+| URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
+|-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
+|/v1/updates?latitude={double}&longitude={double}&width={int}&height={height} Defaults to SJSU, 640x480              | GET        | List of Map/ETA/Distance/Weather for places | /v1/food?latitude=-33.8665433&longitude=151.1956316&width=320&240  |
+
+
+Response type: **application/json**
+
+**Sample Response**:
+```json
+{
+  "latitude": 37.334679,
+  "longitude": -121.881113,
+  "weather": null,
+  "destinations": [
+    {
+      "latitude": 37.390052,
+      "longitude": -121.9781685,
+      "weather": null,
+      "maps_url": "http:\/\/maps.google.com\/maps\/api\/staticmap?key={key}}&size=640x480&maptype=roadmap&sensor=false&markers=37.334679,-121.881113|37.390052,-121.9781685&path=weight:3|color:blue|enc:_{zbF|x{fVjGeEvCmBtLiIfEhLfBrEVW\\SPGRCT?^JXRT^p@jBd@rALLRFLZVx@fBnEdAvCr@~Bh@vB\\fBb@dCPnAGl@?XZ~EHjBEl@B~B?x@Al@EdAQ`BS~@IVIXm@rAW\\{@bAuCvCeBhB_@l@m@f@gAx@qAt@kE~AmEdBg@Po@PKJWJODaAVoBb@yDh@eBLcK~@kD^qCn@i@Pc@LMRiC`A{At@yChB}KfHgDrBuBfAgDrAqDxAsBjAa@X{@p@_C|BwAlB}AlCgAbC{A~D_AjBgBpC_AfAsBlBmAv@uA|@{FbCuGxCsCzAw@d@_B|@gCfBkLxHcLvHkSfN}B|AaChBqEnD_A~@{BpCmB|C}DtHiEbIcBbDg@v@gAjAwAjAw@b@y@\\eAT{HxAsA\\oAl@i@`@o@p@o@|@k@vAc@dBG`@E~@SpCk@fGe@`DYlBKnAOrAAh@mD~ZoAnLS~AwGfk@iAdJKtA_AxHq@dFoAlI{ErV}CfQyBtKiGn[gBlJ}AhIW\\Qt@u@dD{@nCq@vAk@p@mArAg@b@_@`@OHE@]f@u@`AWNe@DkAM[EM@IBOC_@G_AGsCGsCB{BL_C^wBh@yAf@mAh@`BvHp@zCFZZKp@YXOVS\\[FH`@j@XLF_@CAKMAOb@e@n@_@v@S",
+      "distance": "8.8 mi",
+      "eta": "13 mins",
+      "raw_directions": {
+        "status": "OK",
+        "routes": [
+          {
+            "bounds": {
+              "northeast": {
+                "lat": 37.3926107,
+                "lng": -121.8774402
+              },
+              "southwest": {
+                "lat": 37.3249114,
+                "lng": -121.979107
+              }
+            },
+            "copyrights": "Map data \ufffd\ufffd2014 Google",
+            "legs": [
+              {
+                "distance": {
+                  "text": "8.8 mi",
+                  "value": 14187
+                },
+                "duration": {
+                  "text": "13 mins",
+                  "value": 753
+                },
+                "steps": [
+                  {
+                    "distance": {
+                      "text": "0.3 mi",
+                      "value": 554
+                    },
+                    "duration": {
+                      "text": "2 mins",
+                      "value": 97
+                    },
+                    "polyline": {
+                      "points": "_{zbF|x{fVdBmAHEjAw@nAy@hAu@lAw@jCkBhH}E"
+                    },
+                    "maneuver": null,
+                    "end_location": {
+                      "lat": 37.3301083,
+                      "lng": -121.8774402
+                    },
+                    "start_location": {
+                      "lat": 37.3344009,
+                      "lng": -121.8806304
+                    },
+                    "travel_mode": "DRIVING",
+                    "html_instructions": "Head <b>southeast<\/b> on <b>S 7th St<\/b> toward <b>E San Salvador St<\/b>"
+                  },
+                  {
+                  /* ... */
+                  }
+                ],
+                "end_address": "2813 Mission College Boulevard, Santa Clara, CA 95054, USA",
+                "start_address": "200 South 7th Street, San Jos\ufffd\ufffd State University, San Jose, CA 95112, USA",
+                "end_location": {
+                  "lat": 37.3900517,
+                  "lng": -121.9781716
+                },
+                "start_location": {
+                  "lat": 37.3344009,
+                  "lng": -121.8806304
+                }
+              }
+            ],
+            "summary": "CA-87 N",
+            "overview_polyline": {
+              "points": "_{zbF|x{fVjGeEvCmBtLiIfEhLfBrEVW\\SPGRCT?^JXRT^p@jBd@rALLRFLZVx@fBnEdAvCr@~Bh@vB\\fBb@dCPnAGl@?XZ~EHjBEl@B~B?x@Al@EdAQ`BS~@IVIXm@rAW\\{@bAuCvCeBhB_@l@m@f@gAx@qAt@kE~AmEdBg@Po@PKJWJODaAVoBb@yDh@eBLcK~@kD^qCn@i@Pc@LMRiC`A{At@yChB}KfHgDrBuBfAgDrAqDxAsBjAa@X{@p@_C|BwAlB}AlCgAbC{A~D_AjBgBpC_AfAsBlBmAv@uA|@{FbCuGxCsCzAw@d@_B|@gCfBkLxHcLvHkSfN}B|AaChBqEnD_A~@{BpCmB|C}DtHiEbIcBbDg@v@gAjAwAjAw@b@y@\\eAT{HxAsA\\oAl@i@`@o@p@o@|@k@vAc@dBG`@E~@SpCk@fGe@`DYlBKnAOrAAh@mD~ZoAnLS~AwGfk@iAdJKtA_AxHq@dFoAlI{ErV}CfQyBtKiGn[gBlJ}AhIW\\Qt@u@dD{@nCq@vAk@p@mArAg@b@_@`@OHE@]f@u@`AWNe@DkAM[EM@IBOC_@G_AGsCGsCB{BL_C^wBh@yAf@mAh@`BvHp@zCFZZKp@YXOVS\\[FH`@j@XLF_@CAKMAOb@e@n@_@v@S"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+
+```
