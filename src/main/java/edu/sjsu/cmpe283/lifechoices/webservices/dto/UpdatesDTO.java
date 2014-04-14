@@ -1,20 +1,31 @@
 package edu.sjsu.cmpe283.lifechoices.webservices.dto;
 
-import edu.sjsu.cmpe283.lifechoices.services.GoogleMapsService;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.GoogleMapsDirections;
 import lombok.Data;
 
 public class UpdatesDTO {
-    
+    @JsonProperty("origin_lat")
     Double originLatitude;
+    @JsonProperty("origin_long")
     Double originLongitude;
+    @JsonProperty("destination_lat")
     Double destinationLatitude;
+    @JsonProperty("destination_long")
     Double destinationLongitude;
     
+    @JsonProperty("maps_url")
     String googleMapsStaticLink;
+    
+    @JsonProperty("distance")
     String googleMapsDistanceToDestination;
+    
+    @JsonProperty("eta")
     String googleMapsTimeToDestination;
     
+    
+    @JsonProperty("raw_directions")
     GoogleMapsDirections rawDirections;
 
     
