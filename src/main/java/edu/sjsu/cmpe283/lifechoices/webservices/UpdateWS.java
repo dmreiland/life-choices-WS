@@ -37,7 +37,7 @@ public class UpdateWS {
 //            SJSU 37.334679,-121.881113
 //            Moffett Field 37.412985, -122.053472
             
-            return new ResponseEntity<List<UpdatesDTO>>(googleMapsService.getDirections(latitude, longitude), HttpStatus.OK);
+            return new ResponseEntity<List<UpdatesDTO>>(googleMapsService.getDirections(latitude, longitude, width, height), HttpStatus.OK);
         }
         catch (Exception e) {
             logger.error(e);

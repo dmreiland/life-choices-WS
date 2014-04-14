@@ -50,25 +50,27 @@ public class GoogleMapsService {
     
     
     
-    public List<UpdatesDTO> getDirections(Double originLatitude, Double originLongitude) throws IOException {
+    public List<UpdatesDTO> getDirections(Double originLatitude, Double originLongitude, Integer width, Integer height) throws IOException {
         List<UpdatesDTO> updates = new ArrayList<UpdatesDTO>();
         
         for (SimpleEntry<Double, Double> seed : getRandomSeedDataForUpdates()) {
             // NOTE: I'm "hacking" here, should move this to an object instead of the SimpleEntry Object
             String originLat = String.valueOf(originLatitude);
             String originLong = String.valueOf(originLongitude);
-            String destinationLatitude = String.valueOf(seed.getKey());
-            String destinationLongitude = String.valueOf(seed.getValue());
+            String destinationLat = String.valueOf(seed.getKey());
+            String destinationLong = String.valueOf(seed.getValue());
             
             UpdatesDTO update = new UpdatesDTO();
             update.setOriginLatitude(originLatitude);
             update.setOriginLongitude(originLongitude);
             update.setDestinationLatitude(seed.getKey());
-            update.setDestinationLatitude(seed.getValue());
+            update.setDestinationLongitude(seed.getValue());
             
-            update.setRawDirections(getDirections(originLat, originLong, destinationLatitude, destinationLongitude));
+            update.setRawDirections(getDirections(originLat, originLong, destinationLat, destinationLong));
             update.setGoogleMapsDistanceToDestination(update.getRawDirections().getRoutes().get(0).getLegs().get(0).getDistance().getText());
             update.setGoogleMapsTimeToDestination(update.getRawDirections().getRoutes().get(0).getLegs().get(0).getDuration().getText());
+            
+            update.setGoogleMapsStaticLink(getGoogleStaticMapsURL(width, height, originLat, originLong, destinationLat,destinationLong, update.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
             
             updates.add(update);
         }
@@ -144,6 +146,24 @@ public class GoogleMapsService {
     
     
     
+    
+    public String getGoogleStaticMapsURL(Integer width, Integer height, String originLat, String originLong, String destinationLat, String destinationLong, String points) {
+//        TODO Markers are not working:
+//        String url = String.format("http://maps.google.com/maps/api/staticmap?size=%dx%d&maptype=roadmap&sensor=false&markers=%s,%s|%s,%s&path=weight:3|color:blue|enc:%s"
+//                , width, height, originLat, originLong, destinationLat, destinationLong, points);
+        
+        String url = String.format("http://maps.google.com/maps/api/staticmap?size=%dx%d&maptype=roadmap&sensor=false&path=weight:3|color:blue|enc:%s"
+              , width, height, /* originLat, originLong, destinationLat, destinationLong, */ points);
+        
+        return url;
+    }
+    /*
+    http://maps.googleapis.com/maps/api/staticmap?center=63.259591,-144.667969&zoom=6&size=400x400
+    &markers=color:blue|label:S|62.107733,-145.541936
+    &markers=color:green|label:D|%s,%s
+    &sensor=false
+    
+    */
     
     
 }
