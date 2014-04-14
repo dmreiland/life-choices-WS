@@ -1,7 +1,5 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +27,20 @@ public class UpdateWS {
     public ResponseEntity userGeoHistory(
             @RequestParam(value = "latitude", defaultValue = "37.334679", required = false) Double latitude,
             @RequestParam(value = "longitude", defaultValue = "-121.881113", required = false) Double longitude,
+            @RequestParam(value = "zoom", defaultValue = "14", required = false) Integer zoom,
             @RequestParam(value = "width", defaultValue = "640", required = false) Integer width,
             @RequestParam(value = "height", defaultValue = "480", required = false) Integer height
     ) {
         try {
-//            Sample Data: SJSU to Moffett Field
-//            SJSU 37.334679,-121.881113
-//            Moffett Field 37.412985, -122.053472
-            
-            return new ResponseEntity<List<UpdatesDTO>>(googleMapsService.getDirections(latitude, longitude, width, height), HttpStatus.OK);
+//            Sample Data:
+//            SJSU:             37.334679,-121.881113
+//            Moffett Field:    37.412985, -122.053472
+//            Spartan Stadium:  37.3212995, -121.8696786 
+//            SFO Intl :        37.6191050, -122.3752372 
+//            SJ Mineta Intl:   37.3653473, -121.9157925 
+//            Great America:    37.390052, -121.9781685 
+//            
+            return new ResponseEntity<UpdatesDTO>(googleMapsService.getDirections(latitude, longitude, zoom, width, height), HttpStatus.OK);
         }
         catch (Exception e) {
             logger.error(e);
