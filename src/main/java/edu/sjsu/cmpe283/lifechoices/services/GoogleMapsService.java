@@ -159,7 +159,17 @@ public class GoogleMapsService {
     
     
     
-    
+    /**
+     * Construct the url for Google Maps Static images
+     * @param width
+     * @param height
+     * @param originLat
+     * @param originLong
+     * @param destinationLat
+     * @param destinationLong
+     * @param points
+     * @return
+     */
     public String getGoogleStaticMapsURL(Integer width, Integer height, double originLat, double originLong, double destinationLat, double destinationLong, String points) {
         String url = String.format("http://maps.google.com/maps/api/staticmap?key=%s&size=%dx%d&maptype=roadmap&sensor=false&markers=%s,%s|%s,%s&path=weight:3|color:blue|enc:%s"
                 , GOOGLE_PLACES_API_KEY, width, height, originLat, originLong, destinationLat, destinationLong, points);
