@@ -268,11 +268,11 @@ Response type: **application/json**
 APN (Apple Push Notification) Web Service
 ------------------------------------------
 
-This webservice is to send Apple Push Notification to an iOS device. All parameters are optional
+This webservice is to send Apple Push Notification to an iOS device. **All parameters are optional**
 
 | URI                                           |  Method    | RESPONSE    | Sample URI                                                                           | Notes          |
 |-----------------------------------------------|------------|-------------|--------------------------------------------------------------------------------------|----------------|
-|/v1/apn?badge={int}&token={str}&message={str}  | GET        | Status JSON | /v1/apn?badge=2&token=AAAAA+BBBBB+CCCCC+DDDDD+EEEEE+FFFFF&message=Traffic+on+101+N.  | **token** - unique device token, **message** - message to be sent to the device, **badge** - is a notfication icon                |
+|/v1/apn?badge={int}&token={str}&message={str}&send=true  | GET        | Status JSON | /v1/apn?badge=2&token=AAAAA+BBBBB+CCCCC+DDDDD+EEEEE+FFFFF&message=Traffic+on+101+N.  | **send** - true = send, otherwise message will not be send to the device, **token** - unique device token, **message** - message to be sent to the device, **badge** - is a notfication icon                |
 
 
 ```json
