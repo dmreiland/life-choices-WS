@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
+import edu.sjsu.cmpe283.lifechoices.utils.APNService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Apple Push Notification Web Service
@@ -33,7 +33,8 @@ public class ApnWS {
     public ResponseEntity sendAPNToRob(
             @RequestParam(value = "message", required = false) String message,
             @RequestParam(value = "token", required = false) String token,
-            @RequestParam(value = "badge", required = false) Integer badge
+            @RequestParam(value = "badge", required = false) Integer badge,
+            @RequestParam(value = "send", required = false) boolean send
             ){
 
         Map<String, Object> responseMap = new HashMap<String, Object>();
@@ -52,7 +53,9 @@ public class ApnWS {
 
 
 
-        //APNService.send(token, message, badge);
+        if(send) {
+            APNService.send(token, message, badge);
+        }
 
 
         responseMap.put("message", message);
