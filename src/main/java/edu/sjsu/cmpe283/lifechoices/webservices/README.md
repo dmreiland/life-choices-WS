@@ -265,7 +265,72 @@ Response type: **application/json**
 {
   "latitude": 37.334679,
   "longitude": -121.881113,
-  "weather": null,
+  "weather": {
+        "response": {
+            "version": "0.1",
+            "features": {
+                "forecast": 1
+            },
+            "termsofService": "http://www.wunderground.com/weather/api/d/terms.html"
+        },
+        "forecast": {
+            "txt_forecast": {
+                "date": "8:00 PM PDT",
+                "forecastday": [
+                    {
+                        "period": 0,
+                        "icon": "clear",
+                        "title": "Monday",
+                        "icon_url": "http://icons-ak.wxug.com/i/c/k/clear.gif",
+                        "fcttext": "Clear in the morning, then partly cloudy. High of 81F. Winds from the NW at 5 to 15 mph."
+                    },
+                    {
+                        /* ... */
+                    }
+                ]
+            },
+            "simpleforecast": {
+                "forecastday": [
+                    {
+                        "date": {
+                            "epoch": "1397541600",
+                            "day": 14,
+                            "month": 4,
+                            "year": 2014,
+                            "hour": 23,
+                            "min": "00",
+                            "tz_short": "PDT"
+                        },
+                        "period": 1,
+                        "high": {
+                            "fahrenheit": "81",
+                            "celsius": "27"
+                        },
+                        "low": {
+                            "fahrenheit": "54",
+                            "celsius": "12"
+                        },
+                        "conditions": "Clear",
+                        "icon": "clear",
+                        "skyicon": "mostlysunny",
+                        "avehumidity": 62,
+                        "maxhumidity": 80,
+                        "minhumidity": 32,
+                        "icon_url": "http://icons-ak.wxug.com/i/c/k/clear.gif",
+                        "avewind": {
+                            "mph": 7,
+                            "kph": 11,
+                            "dir": "NW",
+                            "degrees": 315
+                        }
+                    },
+                    {
+                        /* ... */
+                    }
+                ]
+            }
+        }
+    },
   "destinations": [
     {
       "latitude": 37.390052,
