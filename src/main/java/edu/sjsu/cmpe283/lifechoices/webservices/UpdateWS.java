@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.sjsu.cmpe283.lifechoices.services.GoogleMapsService;
+import edu.sjsu.cmpe283.lifechoices.services.UpdatesService;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO;
 
 
@@ -21,7 +21,7 @@ public class UpdateWS {
     private static Log logger = LogFactory.getLog(UpdateWS.class);
 
     @Autowired
-    GoogleMapsService googleMapsService;
+    UpdatesService googleMapsService;
     
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity updates(
