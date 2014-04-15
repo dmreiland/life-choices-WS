@@ -27,9 +27,9 @@ import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO.Destinations;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.GoogleMapsDirections;
 
 @Service
-public class GoogleMapsService {
+public class UpdatesService {
     
-    private static Log logger = LogFactory.getLog(GoogleMapsService.class);
+    private static Log logger = LogFactory.getLog(UpdatesService.class);
     
     @Value("${google.places.apikey}")
     String GOOGLE_PLACES_API_KEY;
