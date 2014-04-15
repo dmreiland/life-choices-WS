@@ -6,6 +6,7 @@ import com.notnoop.apns.ApnsService;
 import java.net.URL;
 
 /**
+ * Singleton to communicate with Apple Push Notification Service
  * User: maksim
  * Date: 4/12/14 - 2:57 PM
  */
@@ -41,14 +42,18 @@ public class APNService {
 
     }
 
-    public static void send(String token, String message) {
+    public static void send(String token, String message, int badgeInt) {
 
         init();
         /**
          * The payload is a JSON formatted string (maximum 256 bytes)
          * carrying the information you want to send to your application.
          */
-        String payload = APNS.newPayload().alertBody(message).build();
+        String payload =
+                APNS.
+                        newPayload().badge(badgeInt).
+                        alertBody(message).
+                        build();
         service.push(token, payload);
     }
 
