@@ -1,3 +1,5 @@
+API for the all available Web Services
+
 New geo location
 ----------------------
 
@@ -74,103 +76,14 @@ Google Places Service
 |/v1/places/types                                                                                                                                  | GET        | List of ALL Place Types   |            |
 
 ###Google Places Types ( [Source](https://developers.google.com/places/documentation/supported_types) )
-
-- accounting
-- airport
-- amusement_park
-- aquarium
-- art_gallery
-- atm
-- bakery
-- bank
-- bar
-- beauty_salon
-- bicycle_store
-- book_store
-- bowling_alley
-- bus_station
-- cafe
-- campground
-- car_dealer
-- car_rental
-- car_repair
-- car_wash
-- casino
-- cemetery
-- church
-- city_hall
-- clothing_store
-- convenience_store
-- courthouse
-- dentist
-- department_store
-- doctor
-- electrician
-- electronics_store
-- embassy
-- establishment
-- finance
-- fire_station
-- florist
-- food
-- funeral_home
-- furniture_store
-- gas_station
-- general_contractor
-- grocery_or_supermarket
-- gym
-- hair_care
-- hardware_store
-- health
-- hindu_temple
-- home_goods_store
-- hospital
-- insurance_agency
-- jewelry_store
-- laundry
-- lawyer
-- library
-- liquor_store
-- local_government_office
-- locksmith
-- lodging
-- meal_delivery
-- meal_takeaway
-- mosque
-- movie_rental
-- movie_theater
-- moving_company
-- museum
-- night_club
-- painter
-- park
-- parking
-- pet_store
-- pharmacy
-- physiotherapist
-- place_of_worship
-- plumber
-- police
-- post_office
-- real_estate_agency
-- restaurant
-- roofing_contractor
-- rv_park
-- school
-- shoe_store
-- shopping_mall
-- spa
-- stadium
-- storage
-- store
-- subway_station
-- synagogue
-- taxi_stand
-- train_station
-- travel_agency
-- university
-- veterinary_care
-- zoo
+accounting, airport, amusement_park, aquarium, art_gallery, atm, bakery, bank, bar, beauty_salon, bicycle_store, book_store, bowling_alley,
+bus_station, cafe, campground, car_dealer, car_rental, car_repair, car_wash, casino, cemetery, church, city_hall, clothing_store, convenience_store,
+courthouse, dentist, department_store, doctor, electrician, electronics_store, embassy, establishment, finance, fire_station, florist, food, funeral_home,
+furniture_store, gas_station, general_contractor, grocery_or_supermarket, gym, hair_care, hardware_store, health, hindu_temple, home_goods_store,
+hospital, insurance_agency, jewelry_store, laundry, lawyer, library, liquor_store, local_government_office, locksmith, lodging, meal_delivery, meal_takeaway,
+mosque, movie_rental, movie_theater, moving_company, museum, night_club, painter, park, parking, pet_store, pharmacy, physiotherapist, place_of_worship,
+plumber, police, post_office, real_estate_agency, restaurant, roofing_contractor, rv_park, school, shoe_store, shopping_mall, spa, stadium, storage, store,
+subway_station, synagogue, taxi_stand, train_station, travel_agency, university, veterinary_care, zoo
 
 
 
@@ -190,6 +103,7 @@ Yelp Service
 Response type: **application/json**
 
 **Sample Response**:
+
 ```json
 {
    "region":{
@@ -243,10 +157,8 @@ Response type: **application/json**
          "is_closed":false,
          "rating_img_url_small":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png"
       }
-   
    ]
 }
-
 ```
 
 
@@ -261,6 +173,7 @@ User Updates
 Response type: **application/json**
 
 **Sample Response**:
+
 ```json
 {
   "latitude": 37.334679,
@@ -415,5 +328,24 @@ Response type: **application/json**
     }
   ]
 }
-
 ```
+
+APN (Apple Push Notification) Web Service
+------------------------------------------
+
+This webservice is to send Apple Push Notification to an iOS device. **All parameters are optional**
+
+| URI                                           |  Method    | RESPONSE    | Sample URI                                                                           | Notes          |
+|-----------------------------------------------|------------|-------------|--------------------------------------------------------------------------------------|----------------|
+|/v1/apn?badge={int}&token={str}&message={str}&send=true  | GET        | Status JSON | /v1/apn?badge=2&token=AAAAA+BBBBB+CCCCC+DDDDD+EEEEE+FFFFF&message=Traffic+on+101+N.  | **send** - true = send, otherwise message will not be send to the device, **token** - unique device token, **message** - message to be sent to the device, **badge** - is a notfication icon                |
+
+
+```json
+{
+    "message": "Traffic on 101 N.",
+    "time": "Mon Apr 3 20:38:45 PDT 2014",
+    "token": "AAAAA BBBBB CCCCC DDDDD EEEEE FFFFF",
+    "badge": 2
+}
+```
+
