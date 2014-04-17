@@ -2,37 +2,38 @@
 
 Architecture
 =============
-
-                                  +-----------------------------------+
-                                  |          Life Choices             |      +-------------------+
-                                  |       (Spring Boot v1.0)          |      |                   |
-                                  |                                   |      |                   |
-                                  |   +---------------------------+   |      |                   |
-                                  |   |    RESTful Web Services   |<--|-----+|     iOS Client    |
-                                  |   |    (Spring Web Services)  |+--|----->|                   |
-                                  |   +---------------------------+   |      |                   |
-     +------------------+         |         |             ^           |      |                   |
-     | Google Places API|+------+ |         v             |           |      +-------------------+
-     +------------------+       | |   +---------------------------+   |
-                                | |   |       Services            |   |
-                                +-|---+    (Business Logic)       |   |
-     +------------------+       | |   +---------------------------+   |
-     |    Yelp API      |+------+ |         |             ^           |
-     +------------------+         |         v             |           |
-                                  |   +---------------------------+   |
-                                  |   |       DB Repository       |   |
-                                  |   |  (Spring Data MongoDB)    |   |
-                                  |   +---------------------------+   |
-                                  |         |             ^           |
-                                  +-----------------------------------+
-                                            v             |
-                                      +---------------------------+
-                                      |                           |
-                                      |        MONGODB            |
-                                      | Hosted on www.mongohq.com |
-                                      |                           |
-                                      +---------------------------+
-
+```
+   
+                                +-----------------------------------+                           
+                                |          Life Choices             |      +-------------------+
+                                |       (Spring Boot v1.0)          |      |                   |
+                                |                                   |      |                   |
+                                |   +---------------------------+   |      |                   |
+   +------------------+         |   |    RESTful Web Services   |<--|-----++     iOS Client    |
+   | Google Places API+–––––+   |   |    (Spring Web Services)  ++--|----->|                   |
+   +------------------+     |   |   +---------------------------+   |      |                   |
+                            |   |         +             ^           |      |                   |
+                            |   |         v             +           |      +---------+---------+
+   +------------------+     |   |   +---------------------------+   |                ^          
+   |    Yelp API      +–––––––––+   |       Services            |   |                +          
+   +------------------+     |   |---|    (Business Logic)       +–––––––––+    +–––––+–––––+    
+                            |   |   +---------------------------+   |     |   /             \   
+                            |   |         +             ^           |     |  +   Apple Push  +  
+                            |   |         v             +           |     ++>|  Notification |  
+   +––––––––––––––––––+     |   |   +---------------------------+   |        +    Service    +  
+   | WUnderground API +–––––+   |   |       DB Repository       |   |         \             /   
+   +––––––––––––––––––+         |   |  (Spring Data MongoDB)    |   |          +–––––––––––+    
+                                |   +---------------------------+   |                           
+                                |         +             ^           |                           
+                                +-----------------------------------+                           
+                                          v             +                                       
+                                    +---------------------------+                               
+                                    |                           |                               
+                                    |        MONGODB            |                               
+                                    | Hosted on www.mongohq.com |                               
+                                    |                           |                               
+                                    +---------------------------+                               
+```
 
 
 *Edit diagram [HERE](http://www.asciiflow.com/#Draw916687349784866310/284750133)*
@@ -48,11 +49,11 @@ This project will only compile with Java 7 (1.7) [Download Here](http://www.orac
 
 #### RUN PROJECT: Using IDE (IntelliJ *PREFERABLE*)
 
-Install [lombok plugin](http://plugins.jetbrains.com/plugin/6317
+Install [lombok plugin](http://plugins.jetbrains.com/plugin/6317)
 
 Configure IDE to execute main method in LifeChoicesApp class
 
-Open this project in IDE and then configure it to run main program. You can just right click on the [LifeCoinceApp.java](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/java/edu/sjsu/cmpe283/lifechoices/LifeChoicesApp.java) class and run the program. Again, make sure Java 1.7 is configured.
+Open this project in IDE and then configure it to run main program. You can just right click on the [LifeChoiceApp.java](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/java/edu/sjsu/cmpe283/lifechoices/LifeChoicesApp.java) class and run the program. Again, make sure Java 1.7 is configured.
 
 #### RUN PROJECT: Using Maven
 To build and run a project artifact, you need to navigate to the web service root folder (`cd {$project location}/web-service/`) and perform following tasks using Maven:
@@ -139,10 +140,12 @@ All available commands for **supervisorctl**:
 
 - Try to access services
 
-    http://54.193.8.183:8080/v1/places/?latitude=-33.8665433&longitude=151.1956316&radiusinmeters=500
-    http://54.193.8.183:8080/v1/food/?latitude=-33.8665433&longitude=151.1956316&deals=true
-    http://54.193.8.183:8080/v1/geo/
-    http://54.193.8.183:8080/v1/updates/
+    - http://54.193.8.183:8080/v1/places/?latitude=-33.8665433&longitude=151.1956316&radiusinmeters=500
+    - http://54.193.8.183:8080/v1/food/?latitude=-33.8665433&longitude=151.1956316&deals=true
+    - http://54.193.8.183:8080/v1/events/?latitude=-33.8665433&longitude=151.1956316
+    - http://54.193.8.183:8080/v1/geo/
+    - http://54.193.8.183:8080/v1/updates/
+
 
 
 Spring Boot - Actuator
@@ -150,10 +153,10 @@ Spring Boot - Actuator
 
 | URL                                   | Description       |
 |---------------------------------------|-------------------|
-| http://54.193.8.183:8080/health       | Returns basic HTTP status of a server                  |
-| http://54.193.8.183:8080/trace        | View details of every call                  |
-| http://54.193.8.183:8080/metrics      | View stats of calls to the server                 |
-| http://54.193.8.183:8080/dump         | View detailed server info                  |
+| http://54.193.8.183:8080/health       | Returns basic HTTP status of a server |
+| http://54.193.8.183:8080/trace        | View details of every call  |
+| http://54.193.8.183:8080/metrics      | View stats of calls to the server |
+| http://54.193.8.183:8080/dump         | View detailed server info  |
 
 
 

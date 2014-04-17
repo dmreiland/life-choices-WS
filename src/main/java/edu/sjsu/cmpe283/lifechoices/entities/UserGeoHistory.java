@@ -42,4 +42,48 @@ public class UserGeoHistory {
         this.userName = userName;
     }
 
+    
+    public String getId() {
+        return id;
+    }
+
+    
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    
+    public double[] getPosition() {
+        return position;
+    }
+
+    
+    public void setPosition(double[] position) {
+        this.position = position;
+    }
+
+    
+    public String getUserName() {
+        return userName;
+    }
+
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
+    
+    
+    
+
 }
