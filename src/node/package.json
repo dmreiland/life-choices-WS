@@ -1,0 +1,9 @@
+{
+    "name": "life-choices-web-ui",
+    "description": "The most amazing UI",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "^3.5.1",
+        "connect": "^2.14.4"
+    }
+}
