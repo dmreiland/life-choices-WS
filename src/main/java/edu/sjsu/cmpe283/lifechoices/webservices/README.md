@@ -98,6 +98,7 @@ Yelp Service
 | URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
 |-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
 |/v1/food?latitude={double}&longitude={double}&keyword={string (defaults to 'restaurants'} (optional parameters: 'radius' - max distance in meters, 'deals' - boolean to list only places that have deals  | GET        | List of places | /v1/food?latitude=-33.8665433&longitude=151.1956316  |
+|/v1/events?latitude={double}&longitude={double}&keyword={string (defaults to 'events'} (optional parameters: 'radius' - max distance in meters, 'deals' - boolean to list only places that have deals  | GET        | List of places | /v1/events?latitude=-33.8665433&longitude=151.1956316  |
 
 
 Response type: **application/json**
