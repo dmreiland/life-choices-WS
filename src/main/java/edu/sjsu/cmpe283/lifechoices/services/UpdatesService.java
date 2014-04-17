@@ -40,9 +40,9 @@ public class UpdatesService {
         List<SimpleEntry<Double, Double>> seedData = new ArrayList<SimpleEntry<Double,Double>>();
         
         seedData.add(new SimpleEntry<Double, Double>(37.412985, -122.053472)); // MOFFETT FIELD
-        seedData.add(new SimpleEntry<Double, Double>(37.3212995, -121.8696786 )); // Spartan Stadium
+//        seedData.add(new SimpleEntry<Double, Double>(37.3212995, -121.8696786 )); // Spartan Stadium
         seedData.add(new SimpleEntry<Double, Double>(37.6191050, -122.3752372)); // SFO Intl 
-        seedData.add(new SimpleEntry<Double, Double>(37.3653473, -121.9157925)); // SJ Mineta Intl
+//        seedData.add(new SimpleEntry<Double, Double>(37.3653473, -121.9157925)); // SJ Mineta Intl
         seedData.add(new SimpleEntry<Double, Double>(37.390052, -121.9781685)); // Great America
         return seedData;
     }
