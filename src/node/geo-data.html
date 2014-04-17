@@ -15,14 +15,6 @@
 
 <div class="container" style="padding:40px 15px;" ng-controller="angularMapCtrl">
 
-
-    <div ng-repeat="g in geodata.history">
-        <div>ID: {{g.id}}</div>
-        <div>Time Stamp: {{g.timestamp}}</div>
-        <div>Position: {{g.position}}</div>
-        <div>User name: {{g.userName}}</div>
-    </div>
-
     <google-map center="map.center" zoom="map.zoom">
         <layer type="TrafficLayer"
                show="map.showTraffic"
@@ -40,6 +32,15 @@
         </markers>
 
     </google-map>
+
+    <div ng-repeat="g in geodata.history">
+        <div>ID: {{g.id}}</div>
+        <div>Time Stamp: {{g.timestamp}}</div>
+        <div>Position: {{g.position}}</div>
+        <div>User name: {{g.userName}}</div>
+    </div>
+
+
 
 
 

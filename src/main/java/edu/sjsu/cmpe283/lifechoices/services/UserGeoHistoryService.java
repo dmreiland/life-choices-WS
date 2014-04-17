@@ -27,6 +27,15 @@ public class UserGeoHistoryService {
     }
 
     /**
+     * Save Many User Geo Histories
+     * @param userGeoHistory Geo History object
+     * @return saved object with id
+     */
+    public List<UserGeoHistory> save(List<UserGeoHistory> userGeoHistory){
+        return userGeoHistoryRepository.save(userGeoHistory);
+    }
+
+    /**
      * Find all user location history between given time
      * @param starttime Start time
      * @param endtime End time

@@ -36,7 +36,7 @@ function angularMapCtrl($scope, $http) {
             latitude: 37.41025924682617,
             longitude: -122.08200073242188
         },
-        zoom: 8,
+        zoom: 10,
         showTraffic: true,
         dragging: false,
         markers:[]
