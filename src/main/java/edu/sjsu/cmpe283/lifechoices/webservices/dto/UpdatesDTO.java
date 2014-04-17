@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.GoogleMapsDirections;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.Weather;
 
 public class UpdatesDTO {
     @JsonProperty("latitude")
@@ -174,21 +175,6 @@ public class UpdatesDTO {
         public void setRawDirections(GoogleMapsDirections rawDirections) {
             this.rawDirections = rawDirections;
         }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    public static class Weather {
-        
-        
-        
     }
     
     
