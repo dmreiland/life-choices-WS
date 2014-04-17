@@ -2,7 +2,7 @@
 
 Architecture
 =============
-
+```
                              +-----------------------------------+                           
                              |          Life Choices             |      +-------------------+
                              |       (Spring Boot v1.0)          |      |                   |
@@ -32,6 +32,7 @@ Architecture
                                  | Hosted on www.mongohq.com |                               
                                  |                           |                               
                                  +---------------------------+                               
+```
 
 
 *Edit diagram [HERE](http://www.asciiflow.com/#Draw916687349784866310/284750133)*
