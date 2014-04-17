@@ -13,26 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * User: srkarra
- * Date: 3/16/14 - 4:00 PM
  */
 @RestController
-@RequestMapping("/v1/food")
-public class FoodWS {
-    private static Log logger = LogFactory.getLog(FoodWS.class);
+@RequestMapping("/v1/events")
+public class EventsWS {
+    private static Log logger = LogFactory.getLog(EventsWS.class);
 
     @Autowired
     YelpService yelpService;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity userFoods(
+    public ResponseEntity getEvents(
             @RequestParam("latitude") double latitude,
             @RequestParam("longitude") double longitude,
-            @RequestParam(value = "keyword", required = false) String searchTerm,
+            @RequestParam(value = "keyword", defaultValue = "events", required = false) String searchTerm,
             @RequestParam(value = "radius", required = false) Integer radius,
             @RequestParam(value = "deals", required = false) String hasDeals
 
     ) {
-        logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "], hasDeals=[" + hasDeals + "]");
+        logger.info("Events: latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "], hasDeals=[" + hasDeals + "]");
         String response = yelpService.getPlaces(searchTerm, latitude, longitude, radius, hasDeals);
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
