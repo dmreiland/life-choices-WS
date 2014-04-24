@@ -32,6 +32,11 @@ public class UserGeoHistory {
     private String userName;
 
     /**
+     * Mark this history as Check In history
+     */
+    private UserGeoHistoryType historyType;
+
+    /**
      * @param timestamp Time Stamp
      * @param position  Location point
      * @param userName
@@ -42,7 +47,18 @@ public class UserGeoHistory {
         this.userName = userName;
     }
 
-    
+    /**
+     * @param timestamp Time Stamp
+     * @param position  Location point
+     * @param userName
+     */
+    public UserGeoHistory(long timestamp, double[] position, String userName, UserGeoHistoryType historyType) {
+        this.timestamp = timestamp;
+        this.position = position;
+        this.userName = userName;
+        this.historyType = historyType;
+    }
+
     public String getId() {
         return id;
     }

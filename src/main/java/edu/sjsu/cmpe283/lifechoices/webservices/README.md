@@ -1,6 +1,6 @@
 API for the all available Web Services
 
-New geo location
+New geo location V1
 ----------------------
 
 URI: **/v1/geo/**
@@ -31,6 +31,82 @@ Response type: **application/json**
     "position":[37.41536331176758,-122.08980560302734],
     "userName":"maksim"
 }
+```
+
+Response Status: **201 Created**
+
+New geo location V2 with Check In/Out
+----------------------
+
+URI: **/v2/geo/**
+
+Method: **POST**
+
+Consume type: **application/json**
+
+Request Payload (three different samples of how to send data):
+Available types for geoHistoryType: `CHECKIN` - User checked in at this location, `CHECKOUT` - User checked out from this location, `null` - regular location data
+
+```json
+[
+  {
+	"userName":"MaksimTestingCHeckin",
+    "latitude":123.1232312312312,
+    "longitude":-12.12312312,
+    "timestamp":123456789,
+    "geoHistoryType":"CHECKIN"
+  },
+  {
+	"userName":"MaksimTestingCHeckin",
+    "latitude":123.1232312312312,
+    "longitude":-12.12312312,
+    "timestamp":123456790,
+    "geoHistoryType":"CHECKOUT"
+  },
+  {
+	"userName":"MaksimTestingCHeckin",
+    "latitude":123.1232312312312,
+    "longitude":-12.12312312,
+    "timestamp":123456791,
+    "geoHistoryType":null
+  },
+  {
+   	"userName":"MaksimTestingCHeckin",
+    "latitude":123.1232312312312,
+    "longitude":-12.12312312,
+    "timestamp":123456791
+   }
+]
+```
+
+Response type: **application/json**
+
+**Response** Payload Sample:
+
+```json
+[
+    {
+        "id":"5358979903640516292c2f3c",
+        "timestamp":123456789,
+        "position":[123.12322998046875,-12.123123168945312],
+        "userName":"MaksimTestingCHeckin",
+        "historyType":"CHECKIN"
+    },
+    {
+        "id":"5358979903640516292c2f3d",
+        "timestamp":123456790,
+        "position":[123.12322998046875,-12.123123168945312],
+        "userName":"MaksimTestingCHeckin",
+        "historyType":"CHECKOUT"
+    },
+    {
+        "id":"5358979a03640516292c2f3e",
+        "timestamp":123456791,
+        "position":[123.12322998046875,-12.123123168945312],
+        "userName":"MaksimTestingCHeckin",
+        "historyType":null
+    }
+]
 ```
 
 Response Status: **201 Created**
