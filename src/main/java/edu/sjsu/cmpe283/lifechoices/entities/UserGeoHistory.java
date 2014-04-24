@@ -36,6 +36,10 @@ public class UserGeoHistory {
      */
     private UserGeoHistoryType historyType;
 
+    public UserGeoHistory(){
+
+    }
+
     /**
      * @param timestamp Time Stamp
      * @param position  Location point
