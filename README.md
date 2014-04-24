@@ -135,7 +135,7 @@ All available commands for **supervisorctl**:
     ```
 
 
-
+- Automatically Checkout code and restart server, click [HERE](http://54.193.8.183:9999/pull-restart)
 - Restart the server `sudo reboot`
 
 - Try to access services
