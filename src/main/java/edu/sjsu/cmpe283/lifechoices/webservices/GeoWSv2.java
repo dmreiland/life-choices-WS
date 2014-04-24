@@ -1,6 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
+import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistoryType;
 import edu.sjsu.cmpe283.lifechoices.services.UserGeoHistoryService;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.GeoHistoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,9 @@ public class GeoWSv2 {
 
             double[] position = {lat, lon};
 
-            UserGeoHistory ugh = new UserGeoHistory(timestamp, position, username);
+            UserGeoHistoryType geoHistoryType = g.getGeoHistoryType();
+
+            UserGeoHistory ugh = new UserGeoHistory(timestamp, position, username, geoHistoryType);
 
             histories.add(ugh);
         }
