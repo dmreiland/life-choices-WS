@@ -105,6 +105,13 @@ Response type: **application/json**
         "position":[123.12322998046875,-12.123123168945312],
         "userName":"MaksimTestingCHeckin",
         "historyType":null
+    },
+    {
+        "id":"5358979a03640516292c2f3e",
+        "timestamp":123456791,
+        "position":[123.12322998046875,-12.123123168945312],
+        "userName":"MaksimTestingCHeckin",
+        "historyType":null
     }
 ]
 ```
