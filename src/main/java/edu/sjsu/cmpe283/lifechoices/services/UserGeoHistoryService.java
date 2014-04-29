@@ -3,9 +3,12 @@ package edu.sjsu.cmpe283.lifechoices.services;
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
 import edu.sjsu.cmpe283.lifechoices.repositories.UserGeoHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.geo.Circle;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: maksim
@@ -57,11 +60,25 @@ public class UserGeoHistoryService {
 
 
     /**
-     * Finds all history locations in the database
+     * Finds all history locations in the database for a given circle AND between start and end time AND user
      * @return  all location history
      */
     public List<UserGeoHistory> findAll(){
         return userGeoHistoryRepository.findAll();
+    }
+
+    public Map<String, Object> findByPositionWithinAndTimestampBetweenAndUserName(Circle circle, long starttime, long endtime, String... userIds ){
+
+        Map<String, Object> frieldsLocations = new HashMap<String, Object>();
+
+        for(String uId : userIds) {
+            List<UserGeoHistory> byPositionWithin = userGeoHistoryRepository.findByPositionWithinAndTimestampBetweenAndUserName(circle, starttime, endtime, uId);
+
+            frieldsLocations.put(uId, byPositionWithin);
+        }
+
+
+        return frieldsLocations;
     }
 
 }

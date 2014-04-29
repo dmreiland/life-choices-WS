@@ -433,3 +433,52 @@ This webservice is to send Apple Push Notification to an iOS device. **All param
 }
 ```
 
+
+Find Friends Around
+------------------------------------------
+
+This webservice is to finds all history locations in the database for a given circle AND between start and end time AND user
+
+URI: /v2/geo/friends-around?{PARAMETERS}
+
+| Parameter         | Description                       |
+|-------------------|-----------------------------------|
+| latitude          | Latitude                          |
+| longitude         | Longitude                         |
+| radius-in-meters  | Radius to search around in meters |
+| start-time        | Start time in milliseconds        |
+| end-time          | End time in milliseconds          |
+| friends           | ID(s) of friends                  |
+
+
+**Sample Request**
+`/v2/geo/friends-around?latitude=37.336639404296875&longitude=-121.88200378417969&radius-in-meters=20000&start-time=0&end-time=1497701769468&friends=demo`
+
+**Response**
+JSON of HashMap<UserId, List<GeoHistory>
+
+**Sample Response**
+
+```
+{
+ "demo":
+    [
+        {
+            "id":"534f3c31e4b0ec2b427c9479",
+            "timestamp":1397701679400,
+            "position":[ 37.33845901489258, -121.88189697265625],
+            "userName":"demo",
+            "historyType":null
+        },
+
+        {
+            "id":"534f3c8be4b0ec2b427c947a",
+            "timestamp":1397701769468,
+            "position":[ 37.336639404296875, -121.88200378417969],
+            "userName":"demo",
+            "historyType":null
+        }
+    ]
+}
+```
+
