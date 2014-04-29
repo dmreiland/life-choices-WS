@@ -455,7 +455,7 @@ URI: /v2/geo/friends-around?{PARAMETERS}
 `/v2/geo/friends-around?latitude=37.336639404296875&longitude=-121.88200378417969&radius-in-meters=20000&start-time=0&end-time=1497701769468&friends=demo`
 
 **Response**
-JSON of HashMap<UserId, List<GeoHistory>
+JSON of `HashMap<UserId, List<GeoHistory>`
 
 **Sample Response**
 
