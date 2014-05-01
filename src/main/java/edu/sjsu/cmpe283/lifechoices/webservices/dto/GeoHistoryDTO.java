@@ -15,6 +15,7 @@ public class GeoHistoryDTO {
     private float longitude;
     private long timestamp;
     private UserGeoHistoryType geoHistoryType;
+    private String yelpId;
     
     public String getUserName() {
         return userName;

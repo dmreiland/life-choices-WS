@@ -43,9 +43,11 @@ public class GeoWSv2 {
 
             double[] position = {lat, lon};
 
+            String yelpId = g.getYelpId();
+
             UserGeoHistoryType geoHistoryType = g.getGeoHistoryType();
 
-            UserGeoHistory ugh = new UserGeoHistory(timestamp, position, username, geoHistoryType);
+            UserGeoHistory ugh = new UserGeoHistory(timestamp, position, username, geoHistoryType, yelpId);
 
             histories.add(ugh);
         }

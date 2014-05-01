@@ -36,6 +36,8 @@ public class UserGeoHistory {
      */
     private UserGeoHistoryType historyType;
 
+    private String yelpId;
+
     public UserGeoHistory(){
 
     }
@@ -56,11 +58,12 @@ public class UserGeoHistory {
      * @param position  Location point
      * @param userName
      */
-    public UserGeoHistory(long timestamp, double[] position, String userName, UserGeoHistoryType historyType) {
+    public UserGeoHistory(long timestamp, double[] position, String userName, UserGeoHistoryType historyType, String yelpId) {
         this.timestamp = timestamp;
         this.position = position;
         this.userName = userName;
         this.historyType = historyType;
+        this.yelpId = yelpId;
     }
 
     public String getId() {
@@ -101,6 +104,8 @@ public class UserGeoHistory {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+
     
     
     
