@@ -54,14 +54,16 @@ Available types for geoHistoryType: `CHECKIN` - User checked in at this location
     "latitude":123.1232312312312,
     "longitude":-12.12312312,
     "timestamp":123456789,
-    "geoHistoryType":"CHECKIN"
+    "geoHistoryType":"CHECKIN",
+    "yelpId":"HI-ROB-THIS-IS-A-TEST1"
   },
   {
 	"userName":"MaksimTestingCHeckin",
     "latitude":123.1232312312312,
     "longitude":-12.12312312,
     "timestamp":123456790,
-    "geoHistoryType":"CHECKOUT"
+    "geoHistoryType":"CHECKOUT",
+    "yelpId":"HI-ROB-THIS-IS-A-TEST2"
   },
   {
 	"userName":"MaksimTestingCHeckin",
