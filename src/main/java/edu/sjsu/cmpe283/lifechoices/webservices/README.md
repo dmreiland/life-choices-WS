@@ -2,13 +2,13 @@ API for the all available Web Services
 
 
 - [New geo location V1](#new-geo-location)
-- [New geo location V2 with Check In/Out](new-geo-loc-v2)
-- [User Location History](user-loc-his)
-- [Google Places Service](google-places-service)
-- [Yelp Service](yelp-service)
-- [User Updates](user-update)
-- [APN (Apple Push Notification) Web Service](apn-ws)
-- [Find Friends In the Area](find-friends-in-the-area)
+- [New geo location V2 with Check In/Out](#new-geo-loc-v2)
+- [User Location History](#user-loc-his)
+- [Google Places Service](#google-places-service)
+- [Yelp Service](#yelp-service)
+- [User Updates](#user-update)
+- [APN (Apple Push Notification) Web Service](#apn-ws)
+- [Find Friends In the Area](#find-friends-in-the-area)
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
 
 
