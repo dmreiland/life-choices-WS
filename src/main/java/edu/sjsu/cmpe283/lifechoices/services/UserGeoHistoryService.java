@@ -1,6 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.services;
 
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
+import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistoryType;
 import edu.sjsu.cmpe283.lifechoices.repositories.UserGeoHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.geo.Circle;
@@ -79,6 +80,10 @@ public class UserGeoHistoryService {
 
 
         return frieldsLocations;
+    }
+
+    public List<UserGeoHistory> findByUserNameAndHistoryType(String userName, UserGeoHistoryType historyType){
+        return userGeoHistoryRepository.findByUserNameAndHistoryType(userName, historyType);
     }
 
 }

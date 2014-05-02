@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = LifeChoicesApp.class)
+@WebAppConfiguration
 public class UserGeoHistoryServiceTest {
 
     @Autowired
@@ -31,5 +33,17 @@ public class UserGeoHistoryServiceTest {
             System.out.println("User: " + userGeoHistory.getUserName() + ", Location: " + userGeoHistory.getId() );
         }
 
+    }
+
+    @Test
+    public void updateAlldemoUsersToRobsUser(){
+        List<UserGeoHistory> all = userGeoHistoryService.findByUserName("demo");
+
+        for(UserGeoHistory u : all){
+            u.setUserName("100008250583323");
+
+        }
+
+        userGeoHistoryService.save(all);
     }
 }

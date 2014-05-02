@@ -75,4 +75,15 @@ public class GeoWSv2 {
 
         return new ResponseEntity<Map>(byPositionWithinAndTimestampBetweenAndUserName, HttpStatus.FOUND);
     }
+
+    @RequestMapping(value = "/typed-location", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity asdf(@RequestParam(value = "uid", required = true) String userId,
+                               @RequestParam(value = "type", required = false) UserGeoHistoryType type){
+
+        List<UserGeoHistory> typedLocationHistorie = userGeoHistoryService.findByUserNameAndHistoryType(userId, type);
+
+
+        return new ResponseEntity<List>(typedLocationHistorie, HttpStatus.OK);
+
+    }
 }

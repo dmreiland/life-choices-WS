@@ -1,7 +1,19 @@
 API for the all available Web Services
 
-New geo location V1
-----------------------
+
+[New geo location V1](#new-geo-location)
+[New geo location V2 with Check In/Out](new-geo-loc-v2)
+[User Location History](user-loc-his)
+[Google Places Service](google-places-service)
+[Yelp Service](yelp-service)
+[User Updates](user-update)
+[APN (Apple Push Notification) Web Service](apn-ws)
+[Find Friends In the Area](find-friends-in-the-area)
+[Find all geo locations for user for a particular type](#find-all-geo-locations-for)
+
+
+
+# <a name="new-geo-location"></a> New geo location V1 #
 
 URI: **/v1/geo/**
 
@@ -35,7 +47,7 @@ Response type: **application/json**
 
 Response Status: **201 Created**
 
-New geo location V2 with Check In/Out
+New geo location V2 with Check In/Out <a name="new-geo-loc-v2"></a>
 ----------------------
 
 URI: **/v2/geo/**
@@ -120,7 +132,7 @@ Response type: **application/json**
 
 Response Status: **201 Created**
 
-User Location History
+User Location History <a name="user-loc-his"></a>
 ---------------------
 URI: **/v1/geo/history/{username}?starttime=123&endtime=234** *(starttime & endtime are optional. Default value will be a time BETWEEN now and 1 hr ago)*
 
@@ -152,7 +164,7 @@ Example URL: **/v1/geo/history/maksim?starttime=1394939000&endtime=1394939999**
 }
 ```
 
-Google Places Service
+Google Places Service <a name="google-places-service"></a>
 ----------------------
 
 | URI                                                                                                                                              |  Method    | RESPONSE                  | Sample URI |
@@ -178,7 +190,7 @@ subway_station, synagogue, taxi_stand, train_station, travel_agency, university,
 
 
 
-Yelp Service
+Yelp Service <a name="yelp-service"></a>
 ----------------------
 | URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
 |-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
@@ -249,7 +261,7 @@ Response type: **application/json**
 
 
 
-User Updates
+User Updates <a name="user-update"></a>
 ----------------------
 | URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
 |-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
@@ -416,7 +428,7 @@ Response type: **application/json**
 }
 ```
 
-APN (Apple Push Notification) Web Service
+APN (Apple Push Notification) Web Service <a name="apn-ws"></a>
 ------------------------------------------
 
 This webservice is to send Apple Push Notification to an iOS device. **All parameters are optional**
@@ -436,7 +448,7 @@ This webservice is to send Apple Push Notification to an iOS device. **All param
 ```
 
 
-Find Friends Around
+Find Friends In the Area <a name="find-friends-in-the-area"> </a>
 ------------------------------------------
 
 This webservice is to finds all history locations in the database for a given circle AND between start and end time AND user
@@ -484,3 +496,31 @@ JSON of `HashMap<UserId, List<GeoHistory>`
 }
 ```
 
+<a name="find-all-geo-locations-for"></a>Find all geo locations for user for a particular type
+------------------------------------------------------
+
+This web service will find all geo locations for a give user and a give geo location type
+
+URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
+
+
+| Parameter | Is required   | Description                       |
+|-----------|---|-----------------------------------|
+| uid       | Yes   | 100008250583323                   |
+| type      | No, Default value is `null`  | `CHECKIN` = User checked-in, `CHECKOUT` - User checked-out, `null` - Regular location point |
+
+**Sample request**
+`/v2/geo/typed-location?uid=100008250583323`
+
+**Sample response**
+
+```
+[
+    {"id":"534f3c31e4b0ec2b427c9479","timestamp":1397701679400,"position":[37.33845901489258,-121.88189697265625],"userName":"100008250583323","historyType":null,"yelpId":null},
+    {"id":"534f3c8be4b0ec2b427c947a","timestamp":1397701769468,"position":[37.336639404296875,-121.88200378417969],"userName":"100008250583323","historyType":null,"yelpId":null},
+    {"id":"534f3cc5e4b0ec2b427c947b","timestamp":1397701826521,"position":[37.33686828613281,-121.88200378417969],"userName":"100008250583323","historyType":null,"yelpId":null},
+    {"id":"534f3ccae4b0ec2b427c947c","timestamp":1397701833319,"position":[37.338050842285156,-121.8822021484375],"userName":"100008250583323","historyType":null,"yelpId":null},
+    {"id":"534f3cd7e4b0ec2b427c947d","timestamp":1397701845871,"position":[37.33884048461914,-121.88259887695312],"userName":"100008250583323","historyType":null,"yelpId":null},
+    {"id":"534f3cece4b0ec2b427c947e","timestamp":1397701856079,"position":[37.339149475097656,-121.88269805908203],"userName":"100008250583323","historyType":null,"yelpId":null}
+]
+```

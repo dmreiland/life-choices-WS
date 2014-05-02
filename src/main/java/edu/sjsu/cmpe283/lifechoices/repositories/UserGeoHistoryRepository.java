@@ -1,6 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.repositories;
 
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
+import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistoryType;
 import org.springframework.data.mongodb.core.geo.Circle;
 import org.springframework.data.mongodb.core.geo.Distance;
 import org.springframework.data.mongodb.core.geo.Point;
@@ -27,6 +28,8 @@ public interface UserGeoHistoryRepository extends MongoRepository<UserGeoHistory
     public List<UserGeoHistory> findByPositionWithin(Circle c);
 
     public List<UserGeoHistory> findByPositionWithin(Box b);
+
+    public List<UserGeoHistory> findByUserNameAndHistoryType(String userName, UserGeoHistoryType historyType);
 
 
 }
