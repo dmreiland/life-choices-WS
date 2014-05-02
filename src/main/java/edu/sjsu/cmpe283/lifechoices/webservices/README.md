@@ -1,19 +1,20 @@
 API for the all available Web Services
 
 
-[New geo location V1](#new-geo-location)
-[New geo location V2 with Check In/Out](new-geo-loc-v2)
-[User Location History](user-loc-his)
-[Google Places Service](google-places-service)
-[Yelp Service](yelp-service)
-[User Updates](user-update)
-[APN (Apple Push Notification) Web Service](apn-ws)
-[Find Friends In the Area](find-friends-in-the-area)
-[Find all geo locations for user for a particular type](#find-all-geo-locations-for)
+- [New geo location V1](#new-geo-location)
+- [New geo location V2 with Check In/Out](new-geo-loc-v2)
+- [User Location History](user-loc-his)
+- [Google Places Service](google-places-service)
+- [Yelp Service](yelp-service)
+- [User Updates](user-update)
+- [APN (Apple Push Notification) Web Service](apn-ws)
+- [Find Friends In the Area](find-friends-in-the-area)
+- [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
 
 
 
-# <a name="new-geo-location"></a> New geo location V1 #
+<a name="new-geo-location"></a> New geo location V1
+-----------------------------------------------------
 
 URI: **/v1/geo/**
 
@@ -47,7 +48,7 @@ Response type: **application/json**
 
 Response Status: **201 Created**
 
-New geo location V2 with Check In/Out <a name="new-geo-loc-v2"></a>
+<a name="new-geo-loc-v2"></a>New geo location V2 with Check In/Out
 ----------------------
 
 URI: **/v2/geo/**
@@ -132,7 +133,7 @@ Response type: **application/json**
 
 Response Status: **201 Created**
 
-User Location History <a name="user-loc-his"></a>
+<a name="user-loc-his"></a>User Location History
 ---------------------
 URI: **/v1/geo/history/{username}?starttime=123&endtime=234** *(starttime & endtime are optional. Default value will be a time BETWEEN now and 1 hr ago)*
 
@@ -164,7 +165,7 @@ Example URL: **/v1/geo/history/maksim?starttime=1394939000&endtime=1394939999**
 }
 ```
 
-Google Places Service <a name="google-places-service"></a>
+<a name="google-places-service"></a>Google Places Service
 ----------------------
 
 | URI                                                                                                                                              |  Method    | RESPONSE                  | Sample URI |
@@ -190,7 +191,7 @@ subway_station, synagogue, taxi_stand, train_station, travel_agency, university,
 
 
 
-Yelp Service <a name="yelp-service"></a>
+<a name="yelp-service"></a>Yelp Service
 ----------------------
 | URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
 |-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
@@ -261,7 +262,7 @@ Response type: **application/json**
 
 
 
-User Updates <a name="user-update"></a>
+<a name="user-update"></a>User Updates
 ----------------------
 | URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
 |-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
@@ -428,7 +429,7 @@ Response type: **application/json**
 }
 ```
 
-APN (Apple Push Notification) Web Service <a name="apn-ws"></a>
+<a name="apn-ws"></a>APN (Apple Push Notification) Web Service
 ------------------------------------------
 
 This webservice is to send Apple Push Notification to an iOS device. **All parameters are optional**
@@ -448,7 +449,7 @@ This webservice is to send Apple Push Notification to an iOS device. **All param
 ```
 
 
-Find Friends In the Area <a name="find-friends-in-the-area"> </a>
+<a name="find-friends-in-the-area"> </a>Find Friends In the Area
 ------------------------------------------
 
 This webservice is to finds all history locations in the database for a given circle AND between start and end time AND user
