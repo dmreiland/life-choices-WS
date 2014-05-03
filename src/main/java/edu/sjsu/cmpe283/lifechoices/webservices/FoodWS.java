@@ -1,6 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
 import edu.sjsu.cmpe283.lifechoices.services.YelpService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class FoodWS {
     @Autowired
     YelpService yelpService;
 
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity userFoods(
             @RequestParam("latitude") double latitude,

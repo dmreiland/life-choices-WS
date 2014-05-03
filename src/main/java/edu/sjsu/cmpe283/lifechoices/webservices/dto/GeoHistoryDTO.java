@@ -1,7 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.webservices.dto;
 
-import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistoryType;
 import lombok.Data;
+import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistoryType;
 
 /**
  * User: maksim
@@ -49,7 +49,20 @@ public class GeoHistoryDTO {
         this.timestamp = timestamp;
     }
 
-
+    public UserGeoHistoryType getGeoHistoryType() {
+        return geoHistoryType;
+    }
     
+    public void setGeoHistoryType(UserGeoHistoryType geoHistoryType) {
+        this.geoHistoryType = geoHistoryType;
+    }
+    
+    public String getYelpId() {
+        return yelpId;
+    }
+    
+    public void setYelpId(String yelpId) {
+        this.yelpId = yelpId;
+    }
     
 }

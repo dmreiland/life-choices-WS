@@ -17,3 +17,7 @@ Add **applications.properties** files to resources folder with the following var
 
     yelp.token.key={token key}
     yelp.token.secret={token secret}
+    
+    weather.api={api key}
+    
+    apn.iphone.key={apn key}

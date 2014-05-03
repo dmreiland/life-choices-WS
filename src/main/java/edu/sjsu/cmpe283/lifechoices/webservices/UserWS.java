@@ -2,6 +2,7 @@ package edu.sjsu.cmpe283.lifechoices.webservices;
 
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
 import edu.sjsu.cmpe283.lifechoices.services.UserGeoHistoryService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,7 @@ public class UserWS {
      * @param uTo Replacement user name
      * @return All saved users
      */
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/username", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity updateUser( @RequestParam(value = "username-from", required = true) String uFrom,
                                       @RequestParam(value = "username-to", required = true) String uTo) {

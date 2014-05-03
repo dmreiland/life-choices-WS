@@ -16,9 +16,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import edu.sjsu.cmpe283.lifechoices.utils.HTTPUtils;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTOV2;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO.Destinations;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.GoogleMapsDirections;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.Weather;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.WeatherV2;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.WeatherV2.Conditions;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.WeatherV2.Forecast;
 
 @Service
 public class UpdatesService {
@@ -40,9 +44,9 @@ public class UpdatesService {
         List<SimpleEntry<Double, Double>> seedData = new ArrayList<SimpleEntry<Double,Double>>();
         
         seedData.add(new SimpleEntry<Double, Double>(37.412985, -122.053472)); // MOFFETT FIELD
-//        seedData.add(new SimpleEntry<Double, Double>(37.3212995, -121.8696786 )); // Spartan Stadium
+        seedData.add(new SimpleEntry<Double, Double>(37.3212995, -121.8696786 )); // Spartan Stadium
         seedData.add(new SimpleEntry<Double, Double>(37.6191050, -122.3752372)); // SFO Intl 
-//        seedData.add(new SimpleEntry<Double, Double>(37.3653473, -121.9157925)); // SJ Mineta Intl
+        seedData.add(new SimpleEntry<Double, Double>(37.3653473, -121.9157925)); // SJ Mineta Intl
         seedData.add(new SimpleEntry<Double, Double>(37.390052, -121.9781685)); // Great America
         return seedData;
     }
@@ -62,7 +66,7 @@ public class UpdatesService {
      * @return
      * @throws IOException
      */
-    public UpdatesDTO getDirections(Double originLatitude, Double originLongitude, Integer width, Integer height) throws IOException {
+    public UpdatesDTO getUpdates(Double originLatitude, Double originLongitude, Integer width, Integer height) throws IOException {
         UpdatesDTO updates = new UpdatesDTO();
         updates.setLatitude(originLatitude);
         updates.setLongitude(originLongitude);
@@ -94,7 +98,47 @@ public class UpdatesService {
     
     
     
-    
+    /**
+     * Returns the directions/maps link/weather for all of the user's location 
+     * 
+     * 
+     * @param originLatitude
+     * @param originLongitude
+     * @param zoom
+     * @param width
+     * @param height
+     * @return
+     * @throws IOException
+     */
+    public UpdatesDTOV2 getUpdatesV2(Double originLatitude, Double originLongitude, String units, Integer forecastCount, Integer width, Integer height) throws IOException {
+        UpdatesDTOV2 updates = new UpdatesDTOV2();
+        updates.setLatitude(originLatitude);
+        updates.setLongitude(originLongitude);
+        updates.setWeather(getWeatherDataV2(originLatitude, originLongitude, units, forecastCount));
+        
+        for (SimpleEntry<Double, Double> seed : getRandomSeedDataForUpdates()) {
+            // NOTE: I'm "hacking" here, should move this to an object instead of the SimpleEntry Object
+            Destinations destination = new Destinations();
+            destination.setLatitude(seed.getKey());
+            destination.setLongitude(seed.getValue());
+            
+            // Get directions
+            destination.setRawDirections(getGoogleDirections(originLatitude, originLongitude, seed.getKey(), seed.getValue()));
+            destination.setDistanceToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDistance().getText());
+            destination.setTimeToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDuration().getText());
+            
+            // Get Static Map
+            destination.setGoogleMapsStaticLink(getGoogleStaticMapsURL(width, height, originLatitude, originLongitude, seed.getKey(), seed.getValue(), destination.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
+            
+            // Get Weather Info
+            destination.setWeather(getWeatherData(seed.getKey(), seed.getValue()));
+            
+            // Store Destination
+            updates.addDesination(destination);
+        }
+        
+        return updates;
+    }
     
     
     
@@ -175,4 +219,21 @@ public class UpdatesService {
         return weather;
     }
     
+    
+    public WeatherV2 getWeatherDataV2(Double latitude, Double longitude, String units, Integer forecastCount) throws IOException {
+        WeatherV2 weather = new WeatherV2();
+        
+        String conditionsURL = String.format("http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s", latitude, longitude);
+        String forecastURL = String.format("http://api.openweathermap.org/data/2.5/forecast/daily?lat=%s&lon=%s&units=%s&cnt=%s", latitude, longitude, units, forecastCount);
+        
+        logger.info("Conditions URL: " + conditionsURL);
+        logger.info("Forecast   URL: " + forecastURL);
+        
+        ObjectMapper mapper = new ObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES).enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
+        weather.setConditions(mapper.readValue(HTTPUtils.HTTPGet(conditionsURL), Conditions.class));
+        weather.setForecast(mapper.readValue(HTTPUtils.HTTPGet(forecastURL), Forecast.class));
+        return weather;
+    }
+    
 }
+

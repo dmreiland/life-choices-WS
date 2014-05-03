@@ -105,9 +105,25 @@ public class UserGeoHistory {
         this.userName = userName;
     }
 
+    
+    public UserGeoHistoryType getHistoryType() {
+        return historyType;
+    }
 
     
+    public void setHistoryType(UserGeoHistoryType historyType) {
+        this.historyType = historyType;
+    }
+
     
+    public String getYelpId() {
+        return yelpId;
+    }
+
+    
+    public void setYelpId(String yelpId) {
+        this.yelpId = yelpId;
+    }
     
     
 

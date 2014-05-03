@@ -3,6 +3,7 @@ package edu.sjsu.cmpe283.lifechoices.webservices;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.GeoHistoryDTO;
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
 import edu.sjsu.cmpe283.lifechoices.services.UserGeoHistoryService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +32,7 @@ public class GeoWS {
     @Autowired
     UserGeoHistoryService userGeoHistoryService;
 
-
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity postNewGeoHistory(@RequestBody(required = true) @Valid GeoHistoryDTO geoHistoryDTO) {
 
@@ -83,7 +85,7 @@ public class GeoWS {
         return new ResponseEntity<HashMap<String, Object>>(responseMap, HttpStatus.OK);
     }
 
-
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "text/plain")
     public ResponseEntity availableMethods() {
 

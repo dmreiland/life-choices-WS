@@ -1,8 +1,10 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
 import com.googlecode.placesapiclient.client.entity.Place;
+
 import edu.sjsu.cmpe283.lifechoices.services.GooglePlacesService;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.PlacesType;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,8 @@ public class PlacesWS {
 
     @Autowired
     GooglePlacesService googlePlacesService;
-
+    
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity userGeoHistory(
             @RequestParam("latitude") Double latitude,
@@ -45,6 +48,7 @@ public class PlacesWS {
         return new ResponseEntity<List<Place>>(googlePlaces, HttpStatus.OK);
     }
 
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/types", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity getGooglePlacesTypes() {
         PlacesType[] placesTypes = PlacesType.values();

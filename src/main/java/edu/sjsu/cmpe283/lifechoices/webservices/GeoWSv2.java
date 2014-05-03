@@ -4,6 +4,7 @@ import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistoryType;
 import edu.sjsu.cmpe283.lifechoices.services.UserGeoHistoryService;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.GeoHistoryDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.geo.Circle;
 import org.springframework.data.mongodb.core.geo.Point;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +32,8 @@ public class GeoWSv2 {
 
     @Autowired
     UserGeoHistoryService userGeoHistoryService;
-
+    
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity postNewGeoHistory(@RequestBody(required = true) @Valid GeoHistoryDTO[] geoHistoryDTO) {
 
@@ -58,6 +61,7 @@ public class GeoWSv2 {
     }
 
 
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/friends-around", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public ResponseEntity sadf(
             @RequestParam(value = "latitude", required = true) Double x,
@@ -75,7 +79,8 @@ public class GeoWSv2 {
 
         return new ResponseEntity<Map>(byPositionWithinAndTimestampBetweenAndUserName, HttpStatus.FOUND);
     }
-
+    
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "/typed-location", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity asdf(@RequestParam(value = "uid", required = true) String userId,
                                @RequestParam(value = "type", required = false) UserGeoHistoryType type){

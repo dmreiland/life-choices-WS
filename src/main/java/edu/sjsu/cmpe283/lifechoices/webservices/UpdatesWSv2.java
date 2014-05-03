@@ -11,25 +11,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.sjsu.cmpe283.lifechoices.services.UpdatesService;
-import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTOV2;
 
 
 @RestController
-@RequestMapping("/v1/updates")
-public class UpdateWS {
+@RequestMapping("/v2/updates")
+public class UpdatesWSv2 {
     
-    private static Log logger = LogFactory.getLog(UpdateWS.class);
+    private static Log logger = LogFactory.getLog(UpdatesWSv2.class);
 
     @Autowired
-    UpdatesService googleMapsService;
-    
+    UpdatesService updatesService;
+
     @SuppressWarnings("rawtypes")
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity updates(
             @RequestParam(value = "latitude", defaultValue = "37.334679", required = false) Double latitude,
             @RequestParam(value = "longitude", defaultValue = "-121.881113", required = false) Double longitude,
             @RequestParam(value = "width", defaultValue = "640", required = false) Integer width,
-            @RequestParam(value = "height", defaultValue = "480", required = false) Integer height
+            @RequestParam(value = "height", defaultValue = "480", required = false) Integer height,
+            @RequestParam(value = "units", defaultValue = "imperial", required = false) String units,
+            @RequestParam(value = "forecast", defaultValue = "3", required = false) Integer forecastCount
     ) {
         try {
 //            Sample Data:
@@ -40,7 +42,8 @@ public class UpdateWS {
 //            SJ Mineta Intl:   37.3653473, -121.9157925 
 //            Great America:    37.390052, -121.9781685 
 //            
-            return new ResponseEntity<UpdatesDTO>(googleMapsService.getUpdates(latitude, longitude, width, height), HttpStatus.OK);
+          //return new ResponseEntity<UpdatesDTOV2>(updatesService.getUpdatesV2(latitude, longitude, units, forecastCount, width, height), HttpStatus.OK);
+            return new ResponseEntity<UpdatesDTOV2>(updatesService.getUpdatesV2(latitude, longitude, units, forecastCount, width, height) , HttpStatus.OK);
         }
         catch (Exception e) {
             logger.error(e);

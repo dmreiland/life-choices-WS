@@ -1,6 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
 import edu.sjsu.cmpe283.lifechoices.utils.APNService;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +29,8 @@ public class ApnWS {
 
     @Value("${apn.token-to-robs-iphone}")
     String tokenToRobsIphone;
-
+    
+    @SuppressWarnings("rawtypes")
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity sendAPNToRob(
             @RequestParam(value = "message", required = false) String message,
