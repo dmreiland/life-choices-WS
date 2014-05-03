@@ -10,6 +10,7 @@ API for the all available Web Services
 - [APN (Apple Push Notification) Web Service](#apn-ws)
 - [Find Friends In the Area](#find-friends-in-the-area)
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
+- [Find user's most visited place](#most-visited-place)
 
 
 
@@ -738,7 +739,7 @@ JSON of `HashMap<UserId, List<GeoHistory>`
 
 This web service will find all geo locations for a give user and a give geo location type
 
-URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
+URI: `/v2/geo/typed-location?uid={user_id}&type={type}`
 
 
 | Parameter | Is required   | Description                       |
@@ -763,4 +764,83 @@ URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
     {"id":"534f3cd7e4b0ec2b427c947d","timestamp":1397701845871,"position":[37.33884048461914,-121.88259887695312],"userName":"1389900341294972","historyType":null,"yelpId":null},
     {"id":"534f3cece4b0ec2b427c947e","timestamp":1397701856079,"position":[37.339149475097656,-121.88269805908203],"userName":"1389900341294972","historyType":null,"yelpId":null}
 ]
+```
+
+
+<a name="most-visited-place"></a>Find user's most visited place
+------------------------------------------------------
+
+This web service will find the most visited place user visited.
+
+URI: `/v2/geo/most-visited-place?uid={user_id}`
+
+| Parameter | Is required   | Description                       |
+|-----------|---|-----------------------------------|
+| uid       | Yes   | 100008250583323                   |
+
+
+URI: `/v2/geo/most-visited-place?uid=1389900341294972`
+
+**Sample response**
+
+```
+{
+   "is_claimed":true,
+   "rating":3.5,
+   "mobile_url":"http://m.yelp.com/biz/banana-leaf-restaurant-milpitas",
+   "rating_img_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png",
+   "review_count":1634,
+   "name":"Banana Leaf Restaurant",
+   "snippet_image_url":"http://s3-media1.ak.yelpcdn.com/photo/UaihzCcGDAsjBCzzLEXE8Q/ms.jpg",
+   "rating_img_url_small":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png",
+   "url":"http://www.yelp.com/biz/banana-leaf-restaurant-milpitas",
+   "menu_date_updated":1387620347,
+   "reviews":[
+      {
+         "rating":5,
+         "excerpt":"Yuuum... great food.. always great food...\n\nSatay, salmon, roti, curry are just great.\n \nlong queue almost 90% time. book table before you reach there.",
+         "time_created":1397776566,
+         "rating_image_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png",
+         "rating_image_small_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png",
+         "user":{
+            "image_url":"http://s3-media1.ak.yelpcdn.com/photo/UaihzCcGDAsjBCzzLEXE8Q/ms.jpg",
+            "id":"Al1ClJ4HU6qUe-zpYAkBTA",
+            "name":"San P."
+         },
+         "rating_image_large_url":"http://s3-media3.ak.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png",
+         "id":"wsLuFOKfGw0kAqHBM2AtPQ"
+      }
+   ],
+   "phone":"4087199811",
+   "snippet_text":"Yuuum... great food.. always great food...\n\nSatay, salmon, roti, curry are just great.\n \nlong queue almost 90% time. book table before you reach there.",
+   "image_url":"http://s3-media1.ak.yelpcdn.com/bphoto/uvvN8OyvzSXAKOtb9HEhPw/ms.jpg",
+   "categories":[
+      [
+         "Asian Fusion",
+         "asianfusion"
+      ],
+      [
+         "Thai",
+         "thai"
+      ]
+   ],
+   "display_phone":"+1-408-719-9811",
+   "rating_img_url_large":"http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png",
+   "menu_provider":"single_platform",
+   "id":"banana-leaf-restaurant-milpitas",
+   "is_closed":false,
+   "location":{
+      "city":"Milpitas",
+      "display_address":[
+         "182 Ranch Dr",
+         "Milpitas, CA 95035"
+      ],
+      "postal_code":"95035",
+      "country_code":"US",
+      "address":[
+         "182 Ranch Dr"
+      ],
+      "state_code":"CA"
+   }
+}
 ```

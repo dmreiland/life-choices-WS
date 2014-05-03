@@ -39,6 +39,9 @@ public class YelpService {
     @Value("${yelp.api.url}")
     String YELP_API_URL;
 
+    @Value("${yelp.business.api.url}")
+    String YELP_BUSINESS_API_URL;
+
 
     /**
      * Returns Yelp Businesses
@@ -85,8 +88,33 @@ public class YelpService {
         }
         return response;
     }
-    
-    
+
+
+    /**
+     * Returns Yelp Businesses
+     * @param yelpId Yelp unique id
+     * @return Yelp JSON response
+     */
+    public String getYelpById(String yelpId) {
+        String response = "";
+        // Configure OAuth
+        if(service == null || accessToken == null) {
+            this.service = new ServiceBuilder().provider(YelpServiceProvider.class).apiKey(YELP_CONSUMER_KEY).apiSecret(YELP_COSUMER_SECRET).build();
+            this.accessToken = new Token(YELP_TOKEN_KEY, YELP_TOKEN_SECRET);
+        }
+
+
+        // Create and send request
+        OAuthRequest request = new OAuthRequest(Verb.GET, YELP_BUSINESS_API_URL + "/" + yelpId);
+        this.service.signRequest(this.accessToken, request);
+        try {
+            response =  request.send().getBody();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
     
     
     

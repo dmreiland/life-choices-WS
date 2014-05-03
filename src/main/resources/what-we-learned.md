@@ -15,6 +15,9 @@ Max Ustinov
 - APIs
   - Google Places API
   - Google Maps API
+- Google Guava
+  - Multimap
+  - Multiset
 - Node.JS, Angular, Express
 - Markdown (a lot of it)
 
