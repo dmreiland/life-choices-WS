@@ -31,5 +31,7 @@ public interface UserGeoHistoryRepository extends MongoRepository<UserGeoHistory
 
     public List<UserGeoHistory> findByUserNameAndHistoryType(String userName, UserGeoHistoryType historyType);
 
+    public List<UserGeoHistory> findByUserNameAndYelpIdAndHistoryType(String userName, String yelpId, UserGeoHistoryType historyType);
+
 
 }

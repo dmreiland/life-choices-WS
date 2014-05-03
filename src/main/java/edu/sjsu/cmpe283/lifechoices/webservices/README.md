@@ -6,6 +6,7 @@ API for the all available Web Services
 - [User Location History](#user-loc-his)
 - [Google Places Service](#google-places-service)
 - [Yelp Service](#yelp-service)
+- [Yelp Service with user info](#yelp-service-with-user-info)
 - [User Updates](#user-update)
 - [APN (Apple Push Notification) Web Service](#apn-ws)
 - [Find Friends In the Area](#find-friends-in-the-area)
@@ -261,6 +262,131 @@ Response type: **application/json**
 }
 ```
 
+
+<a name="yelp-service-with-user-info"></a>Yelp Service with user info
+------------------------------------------------------
+
+Same as above but will return additional info about user visits.
+New fields:
+
+- user-id: {STRING}
+- num-of-visits: {NUMBER}
+- has-been-visited: {BOOLEAN}
+
+**URI**
+
+/v1/food/user-details?keyword=Banana+Leaf+Restaurant&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972
+/v1/events/user-details?keyword=Fun+Places&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972
+
+**Sample Response**
+
+```
+   {
+      "total":19,
+      "region":{
+         "center":{
+            "longitude":-121.911780887845,
+            "latitude":37.43733442229005
+         },
+         "span":{
+            "latitude_delta":0.04001804903811035,
+            "longitude_delta":0.021892886740999984
+         }
+      },
+      "user-id":"1389900341294972",
+      "businesses":[
+         {
+            "rating_img_url_large":"http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png",
+            "snippet_text":"Yuuum... great food.. always great food...\n\nSatay, salmon, roti, curry are just great.\n \nlong queue almost 90% time. book table before you reach there.",
+            "phone":"4087199811",
+            "rating_img_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png",
+            "menu_date_updated":1387620347,
+            "menu_provider":"single_platform",
+            "review_count":1634,
+            "location":{
+               "state_code":"CA",
+               "display_address":[
+                  "182 Ranch Dr",
+                  "Milpitas, CA 95035"
+               ],
+               "address":[
+                  "182 Ranch Dr"
+               ],
+               "postal_code":"95035",
+               "country_code":"US",
+               "city":"Milpitas"
+            },
+            "is_closed":false,
+            "is_claimed":true,
+            "rating_img_url_small":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png",
+            "url":"http://www.yelp.com/biz/banana-leaf-restaurant-milpitas",
+            "id":"banana-leaf-restaurant-milpitas",
+            "distance":71.1508684582253,
+            "image_url":"http://s3-media1.ak.yelpcdn.com/bphoto/uvvN8OyvzSXAKOtb9HEhPw/ms.jpg",
+            "name":"Banana Leaf Restaurant",
+            "display_phone":"+1-408-719-9811",
+            "mobile_url":"http://m.yelp.com/biz/banana-leaf-restaurant-milpitas",
+            "snippet_image_url":"http://s3-media1.ak.yelpcdn.com/photo/UaihzCcGDAsjBCzzLEXE8Q/ms.jpg",
+            "categories":[
+               [
+                  "Asian Fusion",
+                  "asianfusion"
+               ],
+               [
+                  "Thai",
+                  "thai"
+               ]
+            ],
+            "rating":3.5,
+            "num-of-visits":1,
+            "has-been-visited":true
+         },
+         {
+            "rating_img_url_large":"http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+            "phone":"4082636788",
+            "snippet_text":"Great lunch spot in the Milpitas area.  Ample parking, usually not too crowded until 12:30ish.\n\nSolid Malaysian cuisine, excellent flavors (on the...",
+            "rating_img_url":"http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+            "review_count":494,
+            "location":{
+               "state_code":"CA",
+               "display_address":[
+                  "181 W Calaveras Blvd",
+                  "Milpitas, CA 95035"
+               ],
+               "address":[
+                  "181 W Calaveras Blvd"
+               ],
+               "postal_code":"95035",
+               "country_code":"US",
+               "city":"Milpitas"
+            },
+            "is_closed":false,
+            "is_claimed":true,
+            "rating_img_url_small":"http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+            "url":"http://www.yelp.com/biz/layang-layang-milpitas",
+            "id":"layang-layang-milpitas",
+            "distance":814.3213004365476,
+            "image_url":"http://s3-media2.ak.yelpcdn.com/bphoto/WUJQ-0GwdHhRDPxKZ6uU5w/ms.jpg",
+            "name":"Layang Layang",
+            "display_phone":"+1-408-263-6788",
+            "mobile_url":"http://m.yelp.com/biz/layang-layang-milpitas",
+            "snippet_image_url":"http://s3-media3.ak.yelpcdn.com/photo/kwcBFR46CQYwofsjZlOVCQ/ms.jpg",
+            "categories":[
+               [
+                  "Malaysian",
+                  "malaysian"
+               ]
+            ],
+            "rating":4.0,
+            "num-of-visits":0,
+            "has-been-visited":false
+         }
+      ]
+   }
+
+
+
+```
 
 
 <a name="user-update"></a>User Updates
