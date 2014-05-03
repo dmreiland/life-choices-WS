@@ -511,6 +511,7 @@ URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
 | type      | No, Default value is `null`  | `CHECKIN` = User checked-in, `CHECKOUT` - User checked-out, `null` - Regular location point |
 
 **Sample request**
+
 `/v2/geo/typed-location?uid=1389900341294972`
 
 `/v2/geo/typed-location?uid=1389900341294972&type=CHECKIN`
