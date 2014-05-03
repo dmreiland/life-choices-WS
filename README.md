@@ -145,8 +145,12 @@ All available commands for **supervisorctl**:
     - http://54.193.8.183:8080/v1/events/?latitude=-33.8665433&longitude=151.1956316
     - http://54.193.8.183:8080/v1/geo/
     - http://54.193.8.183:8080/v1/updates/
+    - http://54.193.8.183:8080/v2/updates/?maps=false
 
-
+- Domains:
+    - "life.srkarra.com"
+    - "life-choices.srkarra.com"
+    
 
 Spring Boot - Actuator
 ----------------------

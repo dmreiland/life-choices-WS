@@ -429,6 +429,242 @@ Response type: **application/json**
 }
 ```
 
+<a name="user-update-v2"></a>User Updates V2
+----------------------
+| URI                                                                                       |  Method    | RESPONSE       | Sample URI                                           |
+|-------------------------------------------------------------------------------------------|------------|----------------|------------------------------------------------------|
+|/v2/updates?maps={boolean}latitude={double}&longitude={double}&width={int}&height={height} Defaults to SJSU, 640x480              | GET        | List of Map/ETA/Distance/Weather for places | /v1/food?latitude=-33.8665433&longitude=151.1956316&width=320&240  |
+
+
+Response type: **application/json**
+
+**Sample Response**:
+
+```json
+{
+
+    "latitude": 37.334679,
+    "longitude": -121.881113,
+    "weather": {
+        "iconURL": "http://openweathermap.org/img/w/",
+        "conditions": {
+            "dt": 1399091808,
+            "name": "San Jose",
+            "weather": [
+                {
+                    "id": 802,
+                    "main": "Clouds",
+                    "description": "scattered clouds",
+                    "icon": "03n"
+                }
+            ],
+            "main": {
+                "temp": 289.03,
+                "pressure": 1017,
+                "humidity": 72,
+                "temp_min": 286.48,
+                "temp_max": 290.37
+            },
+            "wind": {
+                "speed": 1.16,
+                "gust": null,
+                "deg": 302
+            },
+            "rain": null,
+            "clouds": {
+                "all": 36
+            },
+            "coord": {
+                "lat": 37.33,
+                "lon": -121.88
+            },
+            "sys": {
+                "sunrise": 1399122558,
+                "sunset": 1399172360
+            }
+        },
+        "forecast": {
+            "cod": "200",
+            "city": {
+                "id": 5331587,
+                "name": "Buena Vista",
+                "country": "US",
+                "coord": {
+                    "lat": 37.321331,
+                    "lon": -121.916618
+                }
+            },
+            "cnt": 3,
+            "list": [
+                {
+                    "temp": {
+                        "day": 68.99,
+                        "min": 39.24,
+                        "max": 68.99,
+                        "night": 39.24,
+                        "eve": 57.63,
+                        "morn": 68.99
+                    },
+                    "pressure": 991.95,
+                    "humidity": 24,
+                    "weather": [
+                        {
+                            "id": 800,
+                            "main": "Clear",
+                            "description": "sky is clear",
+                            "icon": "02n"
+                        }
+                    ],
+                    "speed": 4.45,
+                    "deg": 289,
+                    "clouds": 8,
+                    "dt": 1399060800
+                }
+                /* , ... */
+            ]
+        }
+    },
+    "destinations": [
+        {
+            "latitude": 37.412985,
+            "longitude": -122.053472,
+            "weather": {
+                "iconURL": "http://openweathermap.org/img/w/",
+                "conditions": {
+                    "dt": 1399093226,
+                    "name": "Mountain View",
+                    "weather": [
+                        {
+                            "id": 802,
+                            "main": "Clouds",
+                            "description": "scattered clouds",
+                            "icon": "03n"
+                        }
+                    ],
+                    "main": {
+                        "temp": 288.39,
+                        "pressure": 1017,
+                        "humidity": 73,
+                        "temp_min": 285.37,
+                        "temp_max": 291.48
+                    },
+                    "wind": {
+                        "speed": 2.76,
+                        "gust": null,
+                        "deg": 327
+                    },
+                    "rain": null,
+                    "clouds": {
+                        "all": 44
+                    },
+                    "coord": {
+                        "lat": 37.41,
+                        "lon": -122.05
+                    },
+                    "sys": {
+                        "sunrise": 1399122590,
+                        "sunset": 1399172410
+                    }
+                },
+                "forecast": {
+                    "cod": "200",
+                    "city": {
+                        "id": 5375480,
+                        "name": "Mountain View",
+                        "country": "US",
+                        "coord": {
+                            "lat": 37.386051,
+                            "lon": -122.083847
+                        }
+                    },
+                    "cnt": 3,
+                    "list": [
+                        {
+                            "temp": {
+                                "day": 67.15,
+                                "min": 47.75,
+                                "max": 67.15,
+                                "night": 47.75,
+                                "eve": 67.15,
+                                "morn": 67.15
+                            },
+                            "pressure": 992.02,
+                            "humidity": 30,
+                            "weather": [
+                                {
+                                    "id": 801,
+                                    "main": "Clouds",
+                                    "description": "few clouds",
+                                    "icon": "02n"
+                                }
+                            ],
+                            "speed": 3.37,
+                            "deg": 293,
+                            "clouds": 20,
+                            "dt": 1399060800
+                        },
+                        {
+                            "temp": {
+                                "day": 69.21,
+                                "min": 47.46,
+                                "max": 69.21,
+                                "night": 47.46,
+                                "eve": 57.52,
+                                "morn": 51.73
+                            },
+                            "pressure": 990.78,
+                            "humidity": 38,
+                            "weather": [
+                                {
+                                    "id": 803,
+                                    "main": "Clouds",
+                                    "description": "broken clouds",
+                                    "icon": "04d"
+                                }
+                            ],
+                            "speed": 3.26,
+                            "deg": 285,
+                            "clouds": 76,
+                            "dt": 1399147200
+                        },
+                        {
+                            "temp": {
+                                "day": 68.5,
+                                "min": 46.89,
+                                "max": 68.5,
+                                "night": 46.89,
+                                "eve": 59.58,
+                                "morn": 51.76
+                            },
+                            "pressure": 991.98,
+                            "humidity": 49,
+                            "weather": [
+                                {
+                                    "id": 800,
+                                    "main": "Clear",
+                                    "description": "sky is clear",
+                                    "icon": "01d"
+                                }
+                            ],
+                            "speed": 4.04,
+                            "deg": 290,
+                            "clouds": 0,
+                            "dt": 1399233600
+                        }
+                    ]
+                }
+            },
+            "maps_url": null,
+            "distance": null,
+            "eta": null,
+            "raw_directions": null
+        }
+        /* , ... */
+    ]
+}
+```
+
+
 <a name="apn-ws"></a>APN (Apple Push Notification) Web Service
 ------------------------------------------
 

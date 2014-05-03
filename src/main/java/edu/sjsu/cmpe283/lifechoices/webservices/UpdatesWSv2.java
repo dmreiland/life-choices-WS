@@ -31,7 +31,8 @@ public class UpdatesWSv2 {
             @RequestParam(value = "width", defaultValue = "640", required = false) Integer width,
             @RequestParam(value = "height", defaultValue = "480", required = false) Integer height,
             @RequestParam(value = "units", defaultValue = "imperial", required = false) String units,
-            @RequestParam(value = "forecast", defaultValue = "3", required = false) Integer forecastCount
+            @RequestParam(value = "forecast", defaultValue = "3", required = false) Integer forecastCount,
+            @RequestParam(value = "maps", defaultValue = "true", required = false) Boolean getMaps
     ) {
         try {
 //            Sample Data:
@@ -42,8 +43,7 @@ public class UpdatesWSv2 {
 //            SJ Mineta Intl:   37.3653473, -121.9157925 
 //            Great America:    37.390052, -121.9781685 
 //            
-          //return new ResponseEntity<UpdatesDTOV2>(updatesService.getUpdatesV2(latitude, longitude, units, forecastCount, width, height), HttpStatus.OK);
-            return new ResponseEntity<UpdatesDTOV2>(updatesService.getUpdatesV2(latitude, longitude, units, forecastCount, width, height) , HttpStatus.OK);
+            return new ResponseEntity<UpdatesDTOV2>(updatesService.getUpdatesV2(getMaps, latitude, longitude, units, forecastCount, width, height) , HttpStatus.OK);
         }
         catch (Exception e) {
             logger.error(e);

@@ -18,6 +18,7 @@ import edu.sjsu.cmpe283.lifechoices.utils.HTTPUtils;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTOV2;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTO.Destinations;
+import edu.sjsu.cmpe283.lifechoices.webservices.dto.UpdatesDTOV2.DestinationsV2;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.GoogleMapsDirections;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.Weather;
 import edu.sjsu.cmpe283.lifechoices.webservices.dto.domain.WeatherV2;
@@ -99,18 +100,19 @@ public class UpdatesService {
     
     
     /**
-     * Returns the directions/maps link/weather for all of the user's location 
+     * Returns the directions/maps link/weather for all of the user's location
      * 
-     * 
+     * @param getMaps
      * @param originLatitude
      * @param originLongitude
-     * @param zoom
+     * @param units
+     * @param forecastCount
      * @param width
      * @param height
      * @return
      * @throws IOException
      */
-    public UpdatesDTOV2 getUpdatesV2(Double originLatitude, Double originLongitude, String units, Integer forecastCount, Integer width, Integer height) throws IOException {
+    public UpdatesDTOV2 getUpdatesV2(Boolean getMaps, Double originLatitude, Double originLongitude, String units, Integer forecastCount, Integer width, Integer height) throws IOException {
         UpdatesDTOV2 updates = new UpdatesDTOV2();
         updates.setLatitude(originLatitude);
         updates.setLongitude(originLongitude);
@@ -118,20 +120,22 @@ public class UpdatesService {
         
         for (SimpleEntry<Double, Double> seed : getRandomSeedDataForUpdates()) {
             // NOTE: I'm "hacking" here, should move this to an object instead of the SimpleEntry Object
-            Destinations destination = new Destinations();
+            DestinationsV2 destination = new DestinationsV2();
             destination.setLatitude(seed.getKey());
             destination.setLongitude(seed.getValue());
             
-            // Get directions
-            destination.setRawDirections(getGoogleDirections(originLatitude, originLongitude, seed.getKey(), seed.getValue()));
-            destination.setDistanceToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDistance().getText());
-            destination.setTimeToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDuration().getText());
-            
-            // Get Static Map
-            destination.setGoogleMapsStaticLink(getGoogleStaticMapsURL(width, height, originLatitude, originLongitude, seed.getKey(), seed.getValue(), destination.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
+            if(getMaps) {
+                // Get directions
+                destination.setRawDirections(getGoogleDirections(originLatitude, originLongitude, seed.getKey(), seed.getValue()));
+                destination.setDistanceToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDistance().getText());
+                destination.setTimeToDestination(destination.getRawDirections().getRoutes().get(0).getLegs().get(0).getDuration().getText());
+                
+                // Get Static Map
+                destination.setGoogleMapsStaticLink(getGoogleStaticMapsURL(width, height, originLatitude, originLongitude, seed.getKey(), seed.getValue(), destination.getRawDirections().getRoutes().get(0).getPolyLine().getPoints()));
+            }
             
             // Get Weather Info
-            destination.setWeather(getWeatherData(seed.getKey(), seed.getValue()));
+            destination.setWeather(getWeatherDataV2(seed.getKey(), seed.getValue(), units, forecastCount));
             
             // Store Destination
             updates.addDesination(destination);
