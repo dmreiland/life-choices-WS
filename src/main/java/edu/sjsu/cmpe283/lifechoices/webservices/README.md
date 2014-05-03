@@ -511,17 +511,17 @@ URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
 | type      | No, Default value is `null`  | `CHECKIN` = User checked-in, `CHECKOUT` - User checked-out, `null` - Regular location point |
 
 **Sample request**
-`/v2/geo/typed-location?uid=100008250583323`
+`/v2/geo/typed-location?uid=1389900341294972`
 
 **Sample response**
 
 ```
 [
-    {"id":"534f3c31e4b0ec2b427c9479","timestamp":1397701679400,"position":[37.33845901489258,-121.88189697265625],"userName":"100008250583323","historyType":null,"yelpId":null},
-    {"id":"534f3c8be4b0ec2b427c947a","timestamp":1397701769468,"position":[37.336639404296875,-121.88200378417969],"userName":"100008250583323","historyType":null,"yelpId":null},
-    {"id":"534f3cc5e4b0ec2b427c947b","timestamp":1397701826521,"position":[37.33686828613281,-121.88200378417969],"userName":"100008250583323","historyType":null,"yelpId":null},
-    {"id":"534f3ccae4b0ec2b427c947c","timestamp":1397701833319,"position":[37.338050842285156,-121.8822021484375],"userName":"100008250583323","historyType":null,"yelpId":null},
-    {"id":"534f3cd7e4b0ec2b427c947d","timestamp":1397701845871,"position":[37.33884048461914,-121.88259887695312],"userName":"100008250583323","historyType":null,"yelpId":null},
-    {"id":"534f3cece4b0ec2b427c947e","timestamp":1397701856079,"position":[37.339149475097656,-121.88269805908203],"userName":"100008250583323","historyType":null,"yelpId":null}
+    {"id":"534f3c31e4b0ec2b427c9479","timestamp":1397701679400,"position":[37.33845901489258,-121.88189697265625],"userName":"1389900341294972","historyType":null,"yelpId":null},
+    {"id":"534f3c8be4b0ec2b427c947a","timestamp":1397701769468,"position":[37.336639404296875,-121.88200378417969],"userName":"1389900341294972","historyType":null,"yelpId":null},
+    {"id":"534f3cc5e4b0ec2b427c947b","timestamp":1397701826521,"position":[37.33686828613281,-121.88200378417969],"userName":"1389900341294972","historyType":null,"yelpId":null},
+    {"id":"534f3ccae4b0ec2b427c947c","timestamp":1397701833319,"position":[37.338050842285156,-121.8822021484375],"userName":"1389900341294972","historyType":null,"yelpId":null},
+    {"id":"534f3cd7e4b0ec2b427c947d","timestamp":1397701845871,"position":[37.33884048461914,-121.88259887695312],"userName":"1389900341294972","historyType":null,"yelpId":null},
+    {"id":"534f3cece4b0ec2b427c947e","timestamp":1397701856079,"position":[37.339149475097656,-121.88269805908203],"userName":"1389900341294972","historyType":null,"yelpId":null}
 ]
 ```
