@@ -512,6 +512,7 @@ URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
 
 **Sample request**
 `/v2/geo/typed-location?uid=1389900341294972`
+`/v2/geo/typed-location?uid=1389900341294972&type=CHECKIN`
 
 **Sample response**
 
