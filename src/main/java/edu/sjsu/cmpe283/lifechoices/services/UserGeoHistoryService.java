@@ -86,4 +86,9 @@ public class UserGeoHistoryService {
         return userGeoHistoryRepository.findByUserNameAndHistoryType(userName, historyType);
     }
 
+
+    public List<UserGeoHistory> findByUserNameAndYelpIdAndHistoryType(String userName, String yelpId, UserGeoHistoryType historyType){
+        return userGeoHistoryRepository.findByUserNameAndYelpIdAndHistoryType(userName, yelpId, historyType);
+    }
+
 }

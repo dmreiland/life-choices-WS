@@ -15,6 +15,11 @@ Max Ustinov
 - APIs
   - Google Places API
   - Google Maps API
+  - Yelp API (injecting new properties into JSON)
+  - Wolfram Alpha API
+- Google Guava
+  - Multimap
+  - Multiset
 - Node.JS, Angular, Express
 - Markdown (a lot of it)
 

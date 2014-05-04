@@ -6,11 +6,15 @@ API for the all available Web Services
 - [User Location History](#user-loc-his)
 - [Google Places Service](#google-places-service)
 - [Yelp Service](#yelp-service)
+- [Yelp Service with user info](#yelp-service-with-user-info)
 - [User Updates](#user-update)
+- [New User Updates](#user-update-v2)
 - [APN (Apple Push Notification) Web Service](#apn-ws)
 - [Find Friends In the Area](#find-friends-in-the-area)
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
-
+- [Find user's most visited place](#most-visited-place)
+- [Search Service](#search-service)
+- [Events using Meetup](#v2-events)
 
 
 <a name="new-geo-location"></a> New geo location V1
@@ -260,6 +264,132 @@ Response type: **application/json**
 }
 ```
 
+
+<a name="yelp-service-with-user-info"></a>Yelp Service with user info
+------------------------------------------------------
+
+Same as above but will return additional info about user visits.
+New fields:
+
+- user-id: {STRING}
+- num-of-visits: {NUMBER}
+- has-been-visited: {BOOLEAN}
+
+**URI**
+
+`/v1/food/user-details?keyword=Banana+Leaf+Restaurant&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972`
+
+`/v1/events/user-details?keyword=Fun+Places&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972`
+
+**Sample Response**
+
+```
+   {
+      "total":19,
+      "region":{
+         "center":{
+            "longitude":-121.911780887845,
+            "latitude":37.43733442229005
+         },
+         "span":{
+            "latitude_delta":0.04001804903811035,
+            "longitude_delta":0.021892886740999984
+         }
+      },
+      "user-id":"1389900341294972",
+      "businesses":[
+         {
+            "rating_img_url_large":"http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png",
+            "snippet_text":"Yuuum... great food.. always great food...\n\nSatay, salmon, roti, curry are just great.\n \nlong queue almost 90% time. book table before you reach there.",
+            "phone":"4087199811",
+            "rating_img_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png",
+            "menu_date_updated":1387620347,
+            "menu_provider":"single_platform",
+            "review_count":1634,
+            "location":{
+               "state_code":"CA",
+               "display_address":[
+                  "182 Ranch Dr",
+                  "Milpitas, CA 95035"
+               ],
+               "address":[
+                  "182 Ranch Dr"
+               ],
+               "postal_code":"95035",
+               "country_code":"US",
+               "city":"Milpitas"
+            },
+            "is_closed":false,
+            "is_claimed":true,
+            "rating_img_url_small":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png",
+            "url":"http://www.yelp.com/biz/banana-leaf-restaurant-milpitas",
+            "id":"banana-leaf-restaurant-milpitas",
+            "distance":71.1508684582253,
+            "image_url":"http://s3-media1.ak.yelpcdn.com/bphoto/uvvN8OyvzSXAKOtb9HEhPw/ms.jpg",
+            "name":"Banana Leaf Restaurant",
+            "display_phone":"+1-408-719-9811",
+            "mobile_url":"http://m.yelp.com/biz/banana-leaf-restaurant-milpitas",
+            "snippet_image_url":"http://s3-media1.ak.yelpcdn.com/photo/UaihzCcGDAsjBCzzLEXE8Q/ms.jpg",
+            "categories":[
+               [
+                  "Asian Fusion",
+                  "asianfusion"
+               ],
+               [
+                  "Thai",
+                  "thai"
+               ]
+            ],
+            "rating":3.5,
+            "num-of-visits":1,
+            "has-been-visited":true
+         },
+         {
+            "rating_img_url_large":"http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png",
+            "phone":"4082636788",
+            "snippet_text":"Great lunch spot in the Milpitas area.  Ample parking, usually not too crowded until 12:30ish.\n\nSolid Malaysian cuisine, excellent flavors (on the...",
+            "rating_img_url":"http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png",
+            "review_count":494,
+            "location":{
+               "state_code":"CA",
+               "display_address":[
+                  "181 W Calaveras Blvd",
+                  "Milpitas, CA 95035"
+               ],
+               "address":[
+                  "181 W Calaveras Blvd"
+               ],
+               "postal_code":"95035",
+               "country_code":"US",
+               "city":"Milpitas"
+            },
+            "is_closed":false,
+            "is_claimed":true,
+            "rating_img_url_small":"http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png",
+            "url":"http://www.yelp.com/biz/layang-layang-milpitas",
+            "id":"layang-layang-milpitas",
+            "distance":814.3213004365476,
+            "image_url":"http://s3-media2.ak.yelpcdn.com/bphoto/WUJQ-0GwdHhRDPxKZ6uU5w/ms.jpg",
+            "name":"Layang Layang",
+            "display_phone":"+1-408-263-6788",
+            "mobile_url":"http://m.yelp.com/biz/layang-layang-milpitas",
+            "snippet_image_url":"http://s3-media3.ak.yelpcdn.com/photo/kwcBFR46CQYwofsjZlOVCQ/ms.jpg",
+            "categories":[
+               [
+                  "Malaysian",
+                  "malaysian"
+               ]
+            ],
+            "rating":4.0,
+            "num-of-visits":0,
+            "has-been-visited":false
+         }
+      ]
+   }
+
+
+
+```
 
 
 <a name="user-update"></a>User Updates
@@ -738,7 +868,7 @@ JSON of `HashMap<UserId, List<GeoHistory>`
 
 This web service will find all geo locations for a give user and a give geo location type
 
-URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
+URI: `/v2/geo/typed-location?uid={user_id}&type={type}`
 
 
 | Parameter | Is required   | Description                       |
@@ -764,6 +894,106 @@ URI: `/v2/geo/typed-location?uid=100008250583323&type=CHECKIN`
     {"id":"534f3cece4b0ec2b427c947e","timestamp":1397701856079,"position":[37.339149475097656,-121.88269805908203],"userName":"1389900341294972","historyType":null,"yelpId":null}
 ]
 ```
+
+
+<a name="most-visited-place"></a>Find user's most visited place
+------------------------------------------------------
+
+This web service will find the most visited place user visited.
+
+URI: `/v2/geo/most-visited-place?uid={user_id}`
+
+| Parameter | Is required   | Description                       |
+|-----------|---|-----------------------------------|
+| uid       | Yes   | 100008250583323                   |
+
+
+URI: `/v2/geo/most-visited-place?uid=1389900341294972`
+
+**Sample response**
+
+```
+{
+   "is_claimed":true,
+   "rating":3.5,
+   "mobile_url":"http://m.yelp.com/biz/banana-leaf-restaurant-milpitas",
+   "rating_img_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png",
+   "review_count":1634,
+   "name":"Banana Leaf Restaurant",
+   "snippet_image_url":"http://s3-media1.ak.yelpcdn.com/photo/UaihzCcGDAsjBCzzLEXE8Q/ms.jpg",
+   "rating_img_url_small":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png",
+   "url":"http://www.yelp.com/biz/banana-leaf-restaurant-milpitas",
+   "menu_date_updated":1387620347,
+   "reviews":[
+      {
+         "rating":5,
+         "excerpt":"Yuuum... great food.. always great food...\n\nSatay, salmon, roti, curry are just great.\n \nlong queue almost 90% time. book table before you reach there.",
+         "time_created":1397776566,
+         "rating_image_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png",
+         "rating_image_small_url":"http://s3-media1.ak.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png",
+         "user":{
+            "image_url":"http://s3-media1.ak.yelpcdn.com/photo/UaihzCcGDAsjBCzzLEXE8Q/ms.jpg",
+            "id":"Al1ClJ4HU6qUe-zpYAkBTA",
+            "name":"San P."
+         },
+         "rating_image_large_url":"http://s3-media3.ak.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png",
+         "id":"wsLuFOKfGw0kAqHBM2AtPQ"
+      }
+   ],
+   "phone":"4087199811",
+   "snippet_text":"Yuuum... great food.. always great food...\n\nSatay, salmon, roti, curry are just great.\n \nlong queue almost 90% time. book table before you reach there.",
+   "image_url":"http://s3-media1.ak.yelpcdn.com/bphoto/uvvN8OyvzSXAKOtb9HEhPw/ms.jpg",
+   "categories":[
+      [
+         "Asian Fusion",
+         "asianfusion"
+      ],
+      [
+         "Thai",
+         "thai"
+      ]
+   ],
+   "display_phone":"+1-408-719-9811",
+   "rating_img_url_large":"http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png",
+   "menu_provider":"single_platform",
+   "id":"banana-leaf-restaurant-milpitas",
+   "is_closed":false,
+   "location":{
+      "city":"Milpitas",
+      "display_address":[
+         "182 Ranch Dr",
+         "Milpitas, CA 95035"
+      ],
+      "postal_code":"95035",
+      "country_code":"US",
+      "address":[
+         "182 Ranch Dr"
+      ],
+      "state_code":"CA"
+   }
+}
+```
+
+
+<a name="search-service"></a>Search Service
+------------------------------------------------------
+
+This web service will perform search against Wolfram Alpha DB and return search results in image format.
+
+There are two different types of searches: raw and formatted.
+
+URI: `/v1/search?q={search_query}&raw={true or false, default false}`
+
+
+| Parameter | Is required   | Description                       |
+|-----------|---|-----------------------------------|
+| q       | Yes   | Text search query                   |
+| raw       | No   | If true then will return raw json, otherwise json will be formatted.|
+
+**Response Samples**
+
+- [Formatted](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-formatted.json)
+- [Raw](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-raw.json)
 
 
 <a name="v2-events"></a>Events
@@ -854,4 +1084,3 @@ URI: `/v2/events`
     }
 }
 ```
-
