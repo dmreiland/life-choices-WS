@@ -8,12 +8,13 @@ API for the all available Web Services
 - [Yelp Service](#yelp-service)
 - [Yelp Service with user info](#yelp-service-with-user-info)
 - [User Updates](#user-update)
+- [New User Updates](#user-update-v2)
 - [APN (Apple Push Notification) Web Service](#apn-ws)
 - [Find Friends In the Area](#find-friends-in-the-area)
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
 - [Find user's most visited place](#most-visited-place)
 - [Search Service](#search-service)
-
+- [Events using Meetup](#v2-events)
 
 
 <a name="new-geo-location"></a> New geo location V1
@@ -993,3 +994,93 @@ URI: `/v1/search?q={search_query}&raw={true or false, default false}`
 
 - [Formatted](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-formatted.json)
 - [Raw](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-raw.json)
+
+
+<a name="v2-events"></a>Events
+------------------------------------------------------
+
+Retrieve events using the Meet up API
+
+URI: `/v2/events`
+
+
+| Parameter | Is required   | Description  |
+|-----------|---|--------------------------|
+| latitude  | Yes, Defaults to SJSU  |  |
+| longitude | Yes, Defaults to SJSU  |  |
+| category  | no, Defaults to `null` | list of comma delimited categories  |
+| page 		| no, defaults to 20  | # of events to retrieve  |
+| radius 	| no | distance in miles to retrieve events  |
+      @RequestParam(value = "category",  required = false) String category,
+            @RequestParam(value = "page", defaultValue = "20", required = false) Integer page,
+            @RequestParam(value = "radius", required = false) Integer radius) {
+
+**Sample request**
+
+`/v2/events/`
+
+`/v2/events/?latitude=37.33845901489258&longitude=-121.88189697265625=page=50`
+
+`/v2/events/categories`
+
+**Sample response**
+
+```json
+{
+    "results": [
+        {
+            "status": "upcoming",
+            "visibility": "public",
+            "maybe_rsvp_count": 0,
+            "venue": {
+                "id": 4887182,
+                "zip": "95054",
+                "lon": -121.982994,
+                "repinned": false,
+                "name": "AMC Mercado 20",
+                "state": "CA",
+                "address_1": "3111 Mission College Blvd",
+                "lat": 37.388851,
+                "city": "Santa Clara",
+                "country": "us"
+            },
+            "id": "170118502",
+            "utc_offset": -28800000,
+            "distance": 6.745843410491943,
+            "duration": 17100000,
+            "time": 1450494000000,
+            "waitlist_count": 0,
+            "updated": 1398995166000,
+            "yes_rsvp_count": 9,
+            "created": 1394262588000,
+            "event_url": "http://www.meetup.com/timetoeat/events/170118502/",
+            "description": "<p>The Stars Wars Saga continues...Episode VII</p> <p>May The Force Be With You!</p> <p><br/><a href=\"http://starwars.com/\" class=\"linkified\">http://starwars.com/</a></p> <p>Movie Time: 8:15pm IMAX 3D</p> <p>Movie Theater: AMC Mercado 20<br/>3111 Mission College Blvd., Santa Clara, CA 95054</p> <p>Please buy your ticket in advance through Fandango once the movie show times are being announced.</p> <p><br/><a href=\"http://www.fandango.com/?full=1\" class=\"linkified\">http://www.fandango.com/?full=1</a></p> <p><br/><a href=\"http://mobile.fandango.com/home?&amp;from=inter_iphone&amp;aid=HAVEITLINK\" class=\"linkified\">http://mobile.fandango.com/home?&amp;from=inter_iphone&amp;aid=HAVEITLINK</a></p> <p><br/><a href=\"http://www.AMCTheatres.com/Mercado/\" class=\"linkified\">http://www.AMCTheatres.com/Mercado/</a></p> <p>Meeting Place: To Be Discussed</p> <p>Meeting Time: 7pm</p> <p><a href=\"http://m.imdb.com/title/tt2488496/\" class=\"linkified\">http://m.imdb.com/title/tt2488496/</a></p>",
+            "name": "Star Wars: Episode VII",
+            "headcount": 0,
+            "group": {
+                "id": 12406222,
+                "group_lat": 37.349998474121094,
+                "name": "(????)? Time to EAT and Make New Friends!!",
+                "group_lon": -121.95999908447266,
+                "join_mode": "approval",
+                "urlname": "timetoeat",
+                "who": "Foodies"
+            }
+        } /*, ... */
+    ],
+    "meta": {
+        "lon": -121.881113,
+        "count": 20,
+        "link": "https://api.meetup.com/2/open_events",
+        "next": "https://api.meetup.com/2/open_events?key=58ae7356571b50122529115542274&status=upcoming&radius=25.0&and_text=False&limited_events=False&desc=true&offset=1&format=json&lat=37.334679&page=20&lon=-121.881113",
+        "total_count": 1845,
+        "url": "https://api.meetup.com/2/open_events?key=58ae7356571b50122529115542274&status=upcoming&radius=25.0&and_text=False&limited_events=False&desc=true&offset=0&format=json&lat=37.334679&page=20&lon=-121.881113",
+        "id": "",
+        "title": "Meetup Open Events v2",
+        "updated": 1399182723829,
+        "description": "Searches for recent and upcoming public events hosted by Meetup groups. Its search window is the past one month through the next three months, and is subject to change. Open Events is optimized to search for current events by location, category, topic, or text, and only lists Meetups that have **3 or more RSVPs**. The number or results returned with each request is not guaranteed to be the same as the page size due to secondary filtering. If you're looking for a particular event or events within a particular group, use the standard [Events](/meetup_api/docs/2/events/) method.",
+        "method": "OpenEvents",
+        "lat": 37.334679
+    }
+}
+```
