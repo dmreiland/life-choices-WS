@@ -275,8 +275,9 @@ New fields:
 
 **URI**
 
-/v1/food/user-details?keyword=Banana+Leaf+Restaurant&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972
-/v1/events/user-details?keyword=Fun+Places&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972
+`/v1/food/user-details?keyword=Banana+Leaf+Restaurant&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972`
+
+`/v1/events/user-details?keyword=Fun+Places&latitude=37.4287133&longitude=-121.9204447&userId=1389900341294972`
 
 **Sample Response**
 
