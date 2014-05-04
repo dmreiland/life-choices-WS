@@ -14,7 +14,7 @@ API for the all available Web Services
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
 - [Find user's most visited place](#most-visited-place)
 - [Search Service](#search-service)
-- [Voice Search Service](#search-service)
+- [Voice Search Service](#voice-search-service)
 - [Events using Meetup](#v2-events)
 
 
@@ -997,7 +997,7 @@ URI: `GET /v1/search?q={search_query}&raw={true or false, default false}`
 - [Raw](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-raw.json)
 
 
-<a name="search-service"></a>Voice Search Service
+<a name="voice-search-service"></a>Voice Search Service
 ------------------------------------------------------
 This web service will perform search against Wolfram Alpha DB using audio file with a search phrase and return search results in image format.
 
