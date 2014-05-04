@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
@@ -19,6 +20,7 @@ import java.util.Arrays;
  */
 @Configuration
 @EnableMongoRepositories
+@PropertySource("classpath:/application.properties")
 public class DBConfig extends AbstractMongoConfiguration {
 
     private static Log logger = LogFactory.getLog(DBConfig.class);

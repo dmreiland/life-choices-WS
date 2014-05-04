@@ -971,3 +971,24 @@ URI: `/v2/geo/most-visited-place?uid=1389900341294972`
    }
 }
 ```
+
+
+<a name="search-service"></a>Search Service
+------------------------------------------------------
+
+This web service will perform search against Wolfram Alpha DB and return search results in image format.
+
+There are two different types of searches: raw and formatted.
+
+URI: `/v1/search?q={search_query}&raw={true or false, default false}`
+
+
+| Parameter | Is required   | Description                       |
+|-----------|---|-----------------------------------|
+| q       | Yes   | Text search query                   |
+| raw       | No   | If true then will return raw json, otherwise json will be formatted.|
+
+**Response Samples**
+
+- [Formatted](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-formatted.json)
+- [Raw](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-raw.json)

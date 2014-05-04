@@ -112,7 +112,7 @@
 			<artifactId>places-api-client</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-	
+
 		<!-- Sprockets (Wrapper for Google Places API) -->
 		<!--<dependency>-->
 			<!--<groupId>net.sf.sprockets</groupId>-->
@@ -140,6 +140,13 @@
             <version>1.1.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.wolfram.alpha</groupId>
+            <artifactId>WolframAlpha</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/WolframAlpha-1.1.jar</systemPath>
+        </dependency>
     </dependencies>
 	<repositories>
 		<repository>
