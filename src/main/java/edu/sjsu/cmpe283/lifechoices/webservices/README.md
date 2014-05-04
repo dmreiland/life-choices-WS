@@ -983,13 +983,14 @@ This web service will perform search against Wolfram Alpha DB and return search 
 
 There are two different types of searches: raw and formatted.
 
-URI: `GET /v1/search?q={search_query}&raw={true or false, default false}`
+URI: `GET /v1/search?q={search_query}&raw={true or false, default false}&uid=1389900341294972`
 
 
 | Parameter | Is required   | Description                       |
-|-----------|---|-----------------------------------|
-| q       | Yes   | Text search query                   |
-| raw       | No   | If true then will return raw json, otherwise json will be formatted.|
+|-----------|---------------|-----------------------------------|
+| q         | Yes           | Text search query                   |
+| uid       | No            | User Id to associate this search with a user |
+| raw       | No            | If true then will return raw json, otherwise json will be formatted.|
 
 **Response Samples**
 
@@ -1003,11 +1004,12 @@ This web service will perform search against Wolfram Alpha DB using audio file w
 
 Similarly to the text search, this web service can return two different types of the output, raw or formatted. Default is formatted.
 
-URI: `POST /v1/search?q-voice={multipart/form-data}&raw={true or false, default false}`
+URI: `POST /v1/search?q-voice={multipart/form-data}&raw={true or false, default false}&uid=1389900341294972`
 
 | Parameter | Is required   | Description                       |
 |-----------|---------------|-----------------------------------|
 | q-voice   | Yes           | Audio file with a search query. See below [supported audio formats](#audio-file-supp)  |
+| uid       | No            | User Id to associate this search with a user |
 | raw       | No            | If true then will return raw json, otherwise json will be formatted.|
 
 <a name="audio-file-supp"></a>The supported audio formats are:
@@ -1053,9 +1055,6 @@ URI: `/v2/events`
 | category  | no, Defaults to `null` | list of comma delimited categories  |
 | page 		| no, defaults to 20  | # of events to retrieve  |
 | radius 	| no | distance in miles to retrieve events  |
-      @RequestParam(value = "category",  required = false) String category,
-            @RequestParam(value = "page", defaultValue = "20", required = false) Integer page,
-            @RequestParam(value = "radius", required = false) Integer radius) {
 
 **Sample request**
 

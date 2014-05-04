@@ -1,7 +1,10 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
+import edu.sjsu.cmpe283.lifechoices.entities.UserSearchHistory;
 import edu.sjsu.cmpe283.lifechoices.services.ATTSpeechToTextService;
+import edu.sjsu.cmpe283.lifechoices.services.UserSearchHistoryService;
 import edu.sjsu.cmpe283.lifechoices.services.WolframAlphaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +29,13 @@ public class WolframWS {
     WolframAlphaService wolframAlphaService = new WolframAlphaService();
     ATTSpeechToTextService attSpeechToTextService = new ATTSpeechToTextService();
 
+    @Autowired
+    UserSearchHistoryService userSearchHistoryService;
+
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity getSearch(@RequestParam(value = "q", required = true) String queryString,
-                                    @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw) {
+                                    @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw,
+                                    @RequestParam(value = "uid", required = false) String userId) {
 
         String jsonResult = "";
 
@@ -38,12 +45,18 @@ public class WolframWS {
             jsonResult = wolframAlphaService.formattedJson(queryString);
         }
 
+        UserSearchHistory userSearchHistory = new UserSearchHistory();
+        userSearchHistory.setUserName(userId);
+        userSearchHistory.setSearchQuery(queryString);
+        userSearchHistoryService.save(userSearchHistory);
+
         return new ResponseEntity<String>(jsonResult, HttpStatus.OK);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity handleFileUpload(@RequestParam(value = "q-voice", required = true) MultipartFile file,
-                                           @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw) {
+                                           @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw,
+                                           @RequestParam(value = "uid", required = false) String userId) {
 
         String name = "/tmp/voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
         File f = new File(name);
@@ -59,7 +72,7 @@ public class WolframWS {
 
                 String searchQuery = attSpeechToTextService.getText(f);
 
-                ResponseEntity response = getSearch(searchQuery, isRaw);
+                ResponseEntity response = getSearch(searchQuery, isRaw, userId);
 
                 f.delete();
 
