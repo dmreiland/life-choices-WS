@@ -2,11 +2,13 @@ package edu.sjsu.cmpe283.lifechoices.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.boot.context.embedded.MultiPartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -64,6 +66,14 @@ public class AppConfig {
             characterEncodingFilter.setEncoding("UTF-8");
             characterEncodingFilter.setForceEncoding(true);
             return characterEncodingFilter;
+        }
+
+        @Bean
+        MultipartConfigElement multipartConfigElement() {
+            MultiPartConfigFactory factory = new MultiPartConfigFactory();
+            factory.setMaxFileSize("2MB");
+            factory.setMaxRequestSize("2MB");
+            return factory.createMultipartConfig();
         }
     }
 }

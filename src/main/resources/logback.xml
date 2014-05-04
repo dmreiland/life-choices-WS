@@ -5,6 +5,6 @@
 
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <logger name="sb" level="DEBUG"/>
+    <logger name="sb" level="INFO"/>
 
 </configuration>
