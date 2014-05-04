@@ -14,6 +14,7 @@ API for the all available Web Services
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
 - [Find user's most visited place](#most-visited-place)
 - [Search Service](#search-service)
+- [Voice Search Service](#search-service)
 - [Events using Meetup](#v2-events)
 
 
@@ -982,13 +983,54 @@ This web service will perform search against Wolfram Alpha DB and return search 
 
 There are two different types of searches: raw and formatted.
 
-URI: `/v1/search?q={search_query}&raw={true or false, default false}`
+URI: `GET /v1/search?q={search_query}&raw={true or false, default false}`
 
 
 | Parameter | Is required   | Description                       |
 |-----------|---|-----------------------------------|
 | q       | Yes   | Text search query                   |
 | raw       | No   | If true then will return raw json, otherwise json will be formatted.|
+
+**Response Samples**
+
+- [Formatted](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-formatted.json)
+- [Raw](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-raw.json)
+
+
+<a name="search-service"></a>Voice Search Service
+------------------------------------------------------
+This web service will perform search against Wolfram Alpha DB using audio file with a search phrase and return search results in image format.
+
+Similarly to the text search, this web service can return two different types of the output, raw or formatted. Default is formatted.
+
+URI: `POST /v1/search?q-voice={multipart/form-data}&raw={true or false, default false}`
+
+| Parameter | Is required   | Description                       |
+|-----------|---------------|-----------------------------------|
+| q-voice   | Yes           | Audio file with a search query. See below [supported audio formats](#audio-file-supp)  |
+| raw       | No            | If true then will return raw json, otherwise json will be formatted.|
+
+<a name="audio-file-supp"></a>The supported audio formats are:
+
+- 16-bit PCM WAV, linear coding, **single channel**, 8 kHz sampling
+- 16-bit PCM WAV, ulaw coding, **single channel**, 8 kHz sampling
+- 16-bit PCM WAV, linear coding, **single channel**, 16 kHz sampling
+- 16-bit PCM WAV, ulaw coding, **single channel**, 16 kHz sampling
+- AMR (narrowband), 12.2 kbit/s, 8 kHz sampling
+- AMR-WB (wideband), 12.65 kbit/s, 16khz sampling
+- OGG, speex encoding, 8kHz sampling
+- OGG, speex encoding, 16kHz sampling
+- Raw, linear coding, little-endian byte order, 8kHz sampling
+- Raw, linear coding, big-endian byte order, 8kHz sampling
+- Raw, ulaw coding, little-endian byte order, 8kHz sampling
+- Raw, ulaw coding, big-endian byte order, 8kHz sampling
+- Raw, linear coding, little-endian byte order, 16kHz sampling
+- Raw, linear coding, big-endian byte order, 16kHz sampling
+- Raw, ulaw coding, little-endian byte order, 16kHz sampling
+- Raw, ulaw coding, big-endian byte order, 16kHz sampling
+
+[Sample page to try this search](http://54.193.8.183:9999/voice-to-text-text.html). Use [ALPHABET](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/alphabet.wav) or [TIME](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/what-time-is-it-right-now.wav) sample files for the upload
+
 
 **Response Samples**
 
