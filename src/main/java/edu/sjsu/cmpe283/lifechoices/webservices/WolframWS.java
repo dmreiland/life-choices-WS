@@ -45,7 +45,7 @@ public class WolframWS {
     public ResponseEntity handleFileUpload(@RequestParam(value = "q-voice", required = true) MultipartFile file,
                                            @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw) {
 
-        String name = "uploaded" + new Date() + ".tmp";
+        String name = "/tmp/voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
         File f = new File(name);
 
 
