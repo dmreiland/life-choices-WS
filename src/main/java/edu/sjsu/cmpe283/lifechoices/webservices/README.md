@@ -12,6 +12,7 @@ API for the all available Web Services
 - [Find Friends In the Area](#find-friends-in-the-area)
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
 - [Find user's most visited place](#most-visited-place)
+- [Search Service](#search-service)
 
 
 
