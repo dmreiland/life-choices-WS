@@ -4,18 +4,18 @@ API for the all available Web Services
 - [New geo location V1](#new-geo-location)
 - [New geo location V2 with Check In/Out](#new-geo-loc-v2)
 - [User Location History](#user-loc-his)
-- [Google Places Service](#google-places-service)
-- [Yelp Service](#yelp-service)
-- [Yelp Service with user info](#yelp-service-with-user-info)
+- [Google Places Service](#google-places-service) - Google Places API
+- [Yelp Service](#yelp-service) - Yelp API
+- [Yelp Service with user info](#yelp-service-with-user-info) - Yelp API
 - [User Updates](#user-update)
 - [New User Updates](#user-update-v2)
-- [APN (Apple Push Notification) Web Service](#apn-ws)
+- [APN (Apple Push Notification) Web Service](#apn-ws) - Apple Push Notification
 - [Find Friends In the Area](#find-friends-in-the-area)
 - [Find all geo locations for user for a particular type](#find-all-geo-locations-for)
 - [Find user's most visited place](#most-visited-place)
-- [Search Service](#search-service)
-- [Voice Search Service](#voice-search-service)
-- [Events using Meetup](#v2-events)
+- [Search Service](#search-service) - Wolfram Alpha API
+- [Voice Search Service](#voice-search-service) - Voice-2-Text + Wolfram Alpha API
+- [Events using Meetup](#v2-events) - Meetup API
 
 
 <a name="new-geo-location"></a> New geo location V1

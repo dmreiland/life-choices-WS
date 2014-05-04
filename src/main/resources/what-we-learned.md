@@ -17,6 +17,7 @@ Max Ustinov
   - Google Maps API
   - Yelp API (injecting new properties into JSON)
   - Wolfram Alpha API
+  - AT&T Voice To Text service
 - Google Guava
   - Multimap
   - Multiset
@@ -39,3 +40,4 @@ Sai
   - Yelp API
   - Google Paces API
   - Open Weather API
+  - Meetups API
