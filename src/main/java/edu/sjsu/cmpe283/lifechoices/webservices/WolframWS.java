@@ -28,11 +28,11 @@ public class WolframWS {
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity getSearch(@RequestParam(value = "q", required = true) String queryString,
-                                    @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw){
+                                    @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw) {
 
         String jsonResult = "";
 
-        if(isRaw){
+        if (isRaw) {
             jsonResult = wolframAlphaService.rawJson(queryString);
         } else {
             jsonResult = wolframAlphaService.formattedJson(queryString);
@@ -41,16 +41,16 @@ public class WolframWS {
         return new ResponseEntity<String>(jsonResult, HttpStatus.OK);
     }
 
-    @RequestMapping(value="", method=RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity handleFileUpload(@RequestParam(value = "q-voice", required = true) MultipartFile file,
-                                           @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw){
+                                           @RequestParam(value = "raw", required = false, defaultValue = "false") Boolean isRaw) {
 
-        String name = "uploaded"+new Date()+".tmp";
+        String name = "uploaded" + new Date() + ".tmp";
+        File f = new File(name);
 
 
         if (!file.isEmpty()) {
             try {
-                File f = new File(name);
 
                 byte[] bytes = file.getBytes();
                 BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(f));
@@ -61,15 +61,16 @@ public class WolframWS {
 
                 ResponseEntity response = getSearch(searchQuery, isRaw);
 
+                f.delete();
+
                 return response;
             } catch (Exception e) {
-                return new ResponseEntity<String>("You failed to upload " + name + " => " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<String>("You failed to upload [" + f.getAbsolutePath() + "] => " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
             }
         } else {
             return new ResponseEntity<String>("You failed to upload " + name + " because the file was empty.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
 
 }
