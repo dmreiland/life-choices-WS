@@ -73,6 +73,7 @@ public class AppConfig {
             MultiPartConfigFactory factory = new MultiPartConfigFactory();
             factory.setMaxFileSize("2MB");
             factory.setMaxRequestSize("2MB");
+            factory.setLocation("/tmp");
             return factory.createMultipartConfig();
         }
     }
