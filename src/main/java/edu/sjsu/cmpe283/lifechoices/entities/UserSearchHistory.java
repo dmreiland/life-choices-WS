@@ -5,6 +5,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 /**
  * User: maksim
  * Date: 5/4/14 - 10:31 AM
@@ -20,7 +22,7 @@ public class UserSearchHistory {
      * Time stamp in milliseconds
      */
     @CreatedDate
-    private long timestamp;
+    private Date timestamp;
 
     /**
      * User to whom this location belong
