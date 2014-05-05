@@ -1,6 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.entities;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,6 +19,7 @@ public class UserSearchHistory {
     /**
      * Time stamp in milliseconds
      */
+    @CreatedDate
     private long timestamp;
 
     /**
