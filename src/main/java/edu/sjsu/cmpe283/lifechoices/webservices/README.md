@@ -15,6 +15,8 @@ API for the all available Web Services
 - [Find user's most visited place](#most-visited-place)
 - [Search Service](#search-service) - Wolfram Alpha API
 - [Voice Search Service](#voice-search-service) - Voice-2-Text + Wolfram Alpha API
+- [Comprehensive Voice Search Service](#comprehensive-voice-search-service) - Voice-2-Text + Yelp + Google Places + Google Map (traffic) + Open Weather
+- [Voice Search Service](#voice-to-text)
 - [Events using Meetup](#v2-events) - Meetup API
 
 
