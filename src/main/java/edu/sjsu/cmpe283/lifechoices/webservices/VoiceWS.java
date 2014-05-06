@@ -4,10 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.sjsu.cmpe283.lifechoices.entities.UserVoiceToTextHistory;
 import edu.sjsu.cmpe283.lifechoices.repositories.UserVoiceToTextHistoryRepository;
-import edu.sjsu.cmpe283.lifechoices.services.ATTSpeechToTextService;
-import edu.sjsu.cmpe283.lifechoices.services.GooglePlacesService;
-import edu.sjsu.cmpe283.lifechoices.services.UpdatesService;
-import edu.sjsu.cmpe283.lifechoices.services.YelpService;
+import edu.sjsu.cmpe283.lifechoices.services.*;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,6 +43,9 @@ public class VoiceWS {
 
     @Autowired
     UpdatesService updatesService;
+
+    @Autowired
+    MeetupService meetupService;
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity voiceToText(@RequestParam(value = "q-voice", required = true) MultipartFile file,
@@ -105,6 +105,7 @@ public class VoiceWS {
         String googleEventsStr = null;
         Object weatherAndTrafficJson = "";
         String weatherAndTrafficStr = null;
+        String meetupEventsStr = null;
 
         String hasDeals = "false";
 
@@ -140,10 +141,11 @@ public class VoiceWS {
                 }
 
                 if (transcribedText.contains("food") || transcribedText.contains("restaurant")) {
-                    yelpFoodStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
-                    yelpFoodJson = new JSONObject(yelpFoodStr);
-                    googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
-                    googleFoodStr = gson.toJson(googleFoodJson);
+//                    yelpFoodStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
+//                    yelpFoodJson = new JSONObject(yelpFoodStr);
+//                    googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
+//                    googleFoodStr = gson.toJson(googleFoodJson);
+                    meetupEventsStr = meetupService.getEvents(latitude, longitude, "1,15,20,23,30", "0d", "1d", "trending", true, "html", 20, null);
                 }
 
                 if (transcribedText.contains("weather") || transcribedText.contains("traffic")) {
@@ -194,9 +196,15 @@ public class VoiceWS {
                 }
 
                 if (weatherAndTrafficStr != null) {
-                    responseStr += "\"weather-traffic\":" + weatherAndTrafficStr;
+                    responseStr += "\"weather-traffic\":" + weatherAndTrafficStr + ",";
                 } else {
-                    responseStr += "\"weather-traffic\":null";
+                    responseStr += "\"weather-traffic\":null,";
+                }
+
+                if (meetupEventsStr != null) {
+                    responseStr += "\"meetup-events\":" + meetupEventsStr;
+                } else {
+                    responseStr += "\"meetup-events\":null";
                 }
 
                 responseStr += "}";
