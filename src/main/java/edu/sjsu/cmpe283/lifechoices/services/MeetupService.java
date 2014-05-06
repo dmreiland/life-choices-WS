@@ -23,13 +23,13 @@ public class MeetupService {
     private static final int MEETUP_RADIUS = 100; 
     
     
-    public String getEvents(Double latitude, Double longitude, String category, String from, String to, String mode, Integer page, Integer radius) throws IOException {
+    public String getEvents(Double latitude, Double longitude, String category, String from, String to, String sort, Boolean sortDesc, String mode, Integer page, Integer radius) throws IOException {
         if(radius != null &&    radius > MEETUP_RADIUS) {
             radius = MEETUP_RADIUS;
         }
         
-        String url =  String.format("%s/open_events?format=json&lat=%s&lon=%s&page=%s&time%s,%s&text_format=%s&desc=true%s%s&key=%s",MEETUP_API_URL,latitude,longitude,page,
-                from, to, mode, category != null ? "&category=" + category : "", radius != null ? "&radius=" + radius : "", MEETUP_API_KEY);
+        String url =  String.format("%s/open_events?format=json&lat=%s&lon=%s&page=%s&time%s,%s&text_format=%s&order=%s&desc=%s%s%s&key=%s",MEETUP_API_URL,latitude,longitude,page,
+                from, to, mode, sort, sortDesc, category != null ? "&category=" + category : "", radius != null ? "&radius=" + radius : "", MEETUP_API_KEY);
         
         logger.info(String.format("Fetching events with lat: '%s', long: '%s', category: '%s', page: '%s', radius: '%s'. URL: %s", latitude, longitude, category, page, radius, url));
         return HTTPUtils.HTTPGet(url);
