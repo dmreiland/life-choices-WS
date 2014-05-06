@@ -1077,7 +1077,7 @@ URI: `POST /v1/voice/search?uid=1389900341294972&latitude={xxxxxxxx}&longitude={
 - google-events
 - weather-traffic
 
-**Voice Commands*
+**Voice Commands**
 
 | Word(s)                       | Description                                                               |
 |-------------------------------|---------------------------------------------------------------------------|
