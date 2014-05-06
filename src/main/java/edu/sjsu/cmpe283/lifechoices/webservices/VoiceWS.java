@@ -129,7 +129,10 @@ public class VoiceWS {
                     hasDeals = "true";
                 }
 
-                if (transcribedText.contains("events") || transcribedText.contains("event")) {
+                if (transcribedText.contains("event")
+                        || transcribedText.contains("thing")
+                        || transcribedText.contains("todo")
+                        || transcribedText.contains("to do")) {
                     yelpEventsStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
                     yelpEventsJson = new JSONObject(yelpEventsStr);
                     googleEventsJson = googlePlacesService.getGooglePlaces("amusement_park|art_gallery|bowling_alley|movie_theater", latitude, longitude, radius);
