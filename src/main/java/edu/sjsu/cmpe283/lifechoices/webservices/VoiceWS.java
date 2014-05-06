@@ -134,18 +134,19 @@ public class VoiceWS {
                         || transcribedText.contains("thing")
                         || transcribedText.contains("todo")
                         || transcribedText.contains("to do")) {
-                    yelpEventsStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
-                    yelpEventsJson = new JSONObject(yelpEventsStr);
-                    googleEventsJson = googlePlacesService.getGooglePlaces("amusement_park|art_gallery|bowling_alley|movie_theater", latitude, longitude, radius);
-                    googleEventsStr = gson.toJson(googleEventsJson);
+//                    yelpEventsStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
+//                    yelpEventsJson = new JSONObject(yelpEventsStr);
+//                    googleEventsJson = googlePlacesService.getGooglePlaces("amusement_park|art_gallery|bowling_alley|movie_theater", latitude, longitude, radius);
+//                    googleEventsStr = gson.toJson(googleEventsJson);
+                    meetupEventsStr = meetupService.getEvents(latitude, longitude, "1,15,20,23,30", "0d", "1d", "trending", true, "html", 20, null);
+
                 }
 
                 if (transcribedText.contains("food") || transcribedText.contains("restaurant")) {
-//                    yelpFoodStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
-//                    yelpFoodJson = new JSONObject(yelpFoodStr);
-//                    googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
-//                    googleFoodStr = gson.toJson(googleFoodJson);
-                    meetupEventsStr = meetupService.getEvents(latitude, longitude, "1,15,20,23,30", "0d", "1d", "trending", true, "html", 20, null);
+                    yelpFoodStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
+                    yelpFoodJson = new JSONObject(yelpFoodStr);
+                    googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
+                    googleFoodStr = gson.toJson(googleFoodJson);
                 }
 
                 if (transcribedText.contains("weather") || transcribedText.contains("traffic")) {
