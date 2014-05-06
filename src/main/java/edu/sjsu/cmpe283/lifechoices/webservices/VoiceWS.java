@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import edu.sjsu.cmpe283.lifechoices.entities.UserVoiceToTextHistory;
 import edu.sjsu.cmpe283.lifechoices.repositories.UserVoiceToTextHistoryRepository;
 import edu.sjsu.cmpe283.lifechoices.services.ATTSpeechToTextService;
@@ -47,7 +49,7 @@ public class VoiceWS {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity voiceToText(@RequestParam(value = "q-voice", required = true) MultipartFile file,
-                                           @RequestParam(value = "uid", required = false) String userId) {
+                                      @RequestParam(value = "uid", required = false) String userId) {
 
         String name = "/tmp/voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
         File f = new File(name);
@@ -83,22 +85,26 @@ public class VoiceWS {
 
     @RequestMapping(value = "search", method = RequestMethod.POST)
     public ResponseEntity voiceSearch(@RequestParam(value = "q-voice", required = true) MultipartFile file,
-                                           @RequestParam(value = "uid", required = false, defaultValue = "1389900341294972") String userId,
-                                           @RequestParam(value = "latitude", required = false, defaultValue = "37.334679") double latitude,
-                                           @RequestParam(value = "longitude", required = false, defaultValue = "-121.881113") double longitude,
-                                           @RequestParam(value = "radius", required = false) Integer radius
+                                      @RequestParam(value = "uid", required = false, defaultValue = "1389900341294972") String userId,
+                                      @RequestParam(value = "latitude", required = false, defaultValue = "37.334679") double latitude,
+                                      @RequestParam(value = "longitude", required = false, defaultValue = "-121.881113") double longitude,
+                                      @RequestParam(value = "radius", required = false, defaultValue = "4830") Integer radius
     ) {
 
         String name = "/tmp/voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
         File f = new File(name);
-
+        Gson gson = new GsonBuilder().create();
         Map<String, Object> respMap = new HashMap<String, Object>();
-
         Object yelpFoodJson = "";
+        String yelpFoodStr = null;
         Object yelpEventsJson = "";
+        String yelpEventsStr = null;
         Object googleFoodJson = "";
+        String googleFoodStr = null;
         Object googleEventsJson = "";
+        String googleEventsStr = null;
         Object weatherAndTrafficJson = "";
+        String weatherAndTrafficStr = null;
 
         String hasDeals = "false";
 
@@ -112,31 +118,34 @@ public class VoiceWS {
 
                 String transcribedText = attSpeechToTextService.getText(f);
 
-                if(transcribedText != null){
+                if (transcribedText != null) {
                     transcribedText = transcribedText.toLowerCase();
                 }
 
 
                 assert transcribedText != null;
 
-                if(transcribedText.contains("deal")){
+                if (transcribedText.contains("deal")) {
                     hasDeals = "true";
                 }
 
-                if(transcribedText.contains("events") || transcribedText.contains("event")){
-                    String jsonStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
-                    yelpEventsJson = new JSONObject(jsonStr);
+                if (transcribedText.contains("events") || transcribedText.contains("event")) {
+                    yelpEventsStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
+                    yelpEventsJson = new JSONObject(yelpEventsStr);
                     googleEventsJson = googlePlacesService.getGooglePlaces("amusement_park|art_gallery|bowling_alley|movie_theater", latitude, longitude, radius);
+                    googleEventsStr = gson.toJson(googleEventsJson);
                 }
 
-                if(transcribedText.contains("food") || transcribedText.contains("restaurant")){
-                    String jsonStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
-                    yelpFoodJson = new JSONObject(jsonStr);
+                if (transcribedText.contains("food") || transcribedText.contains("restaurant")) {
+                    yelpFoodStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
+                    yelpFoodJson = new JSONObject(yelpFoodStr);
                     googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
+                    googleFoodStr = gson.toJson(googleFoodJson);
                 }
 
-                if(transcribedText.contains("weather") || transcribedText.contains("traffic")){
+                if (transcribedText.contains("weather") || transcribedText.contains("traffic")) {
                     weatherAndTrafficJson = updatesService.getUpdatesV2(true, latitude, longitude, "imperial", 3, 640, 480);
+                    weatherAndTrafficStr = gson.toJson(weatherAndTrafficJson);
                 }
 
                 UserVoiceToTextHistory userVoiceToTextHistory = new UserVoiceToTextHistory();
@@ -153,7 +162,42 @@ public class VoiceWS {
                 respMap.put("google-events", googleEventsJson);
                 respMap.put("weather-traffic", weatherAndTrafficJson);
 
-                return new ResponseEntity<Map>(respMap, HttpStatus.OK);
+//                return new ResponseEntity<Map>(respMap, HttpStatus.OK);
+                String responseStr;
+                responseStr = "{";
+
+                if (yelpFoodStr != null) {
+                    responseStr += "\"yelp-food\":" + yelpFoodStr + ",";
+                } else {
+                    responseStr += "\"yelp-food\":null,";
+                }
+
+                if (yelpEventsStr != null) {
+                    responseStr += "\"yelp-events\":" + yelpEventsStr + ",";
+                } else {
+                    responseStr += "\"yelp-events\":null,";
+                }
+
+                if (googleFoodStr != null) {
+                    responseStr += "\"google-food\":" + googleFoodStr + ",";
+                } else {
+                    responseStr += "\"google-food\":null,";
+                }
+
+                if (googleEventsStr != null) {
+                    responseStr += "\"google-events\":" + googleEventsStr + ",";
+                } else {
+                    responseStr += "\"google-events\":null,";
+                }
+
+                if (weatherAndTrafficStr != null) {
+                    responseStr += "\"weather-traffic\":" + weatherAndTrafficStr;
+                } else {
+                    responseStr += "\"weather-traffic\":null";
+                }
+
+                responseStr += "}";
+                return new ResponseEntity<String>(responseStr, HttpStatus.OK);
             } catch (Exception e) {
                 e.printStackTrace();
                 f.delete();
