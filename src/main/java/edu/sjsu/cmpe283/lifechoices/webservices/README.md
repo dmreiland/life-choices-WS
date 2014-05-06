@@ -36,7 +36,7 @@ Response type: **application/json**
 --------------------
 This web service is to update current user friends list. Usually this is done everything on the client when list of friends is refreshed.
 
-URI: **POST /v1/user?uid={userid}&friends=fid1,fid2,fid3,fid4,fid5** (userid = Social Network Id, friends = friends Social Network IDs)
+URI: **POST /v1/user?uid={userid}&name={user's name}&friends=fid1,fid2,fid3,fid4,fid5** (userid = Social Network Id, friends = friends Social Network IDs)
 
 **Body**: No body is expected
 

@@ -18,6 +18,7 @@ What we learned in this project
   - AT&T Voice To Text service
   - MeetUps API
   - Open Weather API
+  - Wunderground API
 - Google Guava
   - Multimap
   - Multiset
