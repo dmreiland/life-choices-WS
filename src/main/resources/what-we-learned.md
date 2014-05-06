@@ -3,7 +3,7 @@ What we learned in this project
 
 - Spring Boot
   - Setup & Configuration
-  - Annotations (zero-xml)
+  - Annotations (no xml configuration files - zip, nada, zilch, nil)
 - Spring Data MongoDb
   - CRUD
   - Geo Query
