@@ -1,5 +1,7 @@
 ### Instruction to start web service:
 
+Want to know what we learned? Read [HERE](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/what-we-learned.md)
+
 Architecture
 =============
 ```

@@ -52,7 +52,7 @@ public class YelpService {
      * @param hasDeals - filter for results if they have deals available
      * @return Yelp JSON response
      */
-    public String getPlaces(String searchTerm, double latitude, double longitude, Integer radius, String hasDeals ) {
+    public String getYelpResponseJson(String searchTerm, double latitude, double longitude, Integer radius, String hasDeals ) {
         String response = "";
         // Configure OAuth
         if(service == null || accessToken == null) {

@@ -48,7 +48,7 @@ public class EventsWS {
 
     ) {
         logger.info("Events: latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "], hasDeals=[" + hasDeals + "]");
-        String response = yelpService.getPlaces(searchTerm, latitude, longitude, radius, hasDeals);
+        String response = yelpService.getYelpResponseJson(searchTerm, latitude, longitude, radius, hasDeals);
         return new ResponseEntity<String>(response, HttpStatus.OK);
     }
 
@@ -66,7 +66,7 @@ public class EventsWS {
     ) throws ParseException {
         logger.info("latitude=[" + latitude + "], longitude=[" + longitude + "], keyword=[" + searchTerm + "], radius=[" + radius + "], hasDeals=[" + hasDeals + "]");
 
-        String responseJson = yelpService.getPlaces(searchTerm, latitude, longitude, radius, hasDeals);
+        String responseJson = yelpService.getYelpResponseJson(searchTerm, latitude, longitude, radius, hasDeals);
 
 
         JSONParser parser = new JSONParser();

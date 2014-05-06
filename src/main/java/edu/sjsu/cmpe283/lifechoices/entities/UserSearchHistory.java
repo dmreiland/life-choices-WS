@@ -1,8 +1,11 @@
 package edu.sjsu.cmpe283.lifechoices.entities;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 /**
  * User: maksim
@@ -18,7 +21,8 @@ public class UserSearchHistory {
     /**
      * Time stamp in milliseconds
      */
-    private long timestamp;
+    @CreatedDate
+    private Date timestamp;
 
     /**
      * User to whom this location belong

@@ -48,6 +48,7 @@ public class WolframWS {
         UserSearchHistory userSearchHistory = new UserSearchHistory();
         userSearchHistory.setUserName(userId);
         userSearchHistory.setSearchQuery(queryString);
+        userSearchHistory.setTimestamp(new Date());
         userSearchHistoryService.save(userSearchHistory);
 
         return new ResponseEntity<String>(jsonResult, HttpStatus.OK);
