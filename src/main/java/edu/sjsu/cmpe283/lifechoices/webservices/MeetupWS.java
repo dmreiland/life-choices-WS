@@ -28,11 +28,14 @@ public class MeetupWS {
             @RequestParam(value = "latitude", defaultValue = "37.334679", required = false) Double latitude,
             @RequestParam(value = "longitude", defaultValue = "-121.881113", required = false) Double longitude,
             @RequestParam(value = "category",  required = false) String category,
+            @RequestParam(value = "mode", defaultValue = "html",  required = false) String mode,
+            @RequestParam(value = "from", defaultValue = "0d", required = false) String from,
+            @RequestParam(value = "to", defaultValue = "1m", required = false) String to,
             @RequestParam(value = "page", defaultValue = "20", required = false) Integer page,
             @RequestParam(value = "radius", required = false) Integer radius) {
 
         try {
-          return new ResponseEntity<String>(meetingService.getEvents(latitude, longitude, category, page, radius), HttpStatus.OK);
+          return new ResponseEntity<String>(meetingService.getEvents(latitude, longitude, category, from, to, mode, page, radius), HttpStatus.OK);
       }
       catch (Exception e) {
           logger.error(e);

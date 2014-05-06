@@ -26,4 +26,47 @@ public class UserSearchHistory {
     private String userName;
 
     private String searchQuery;
+
+    
+    public String getId() {
+        return id;
+    }
+
+    
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    
+    public String getUserName() {
+        return userName;
+    }
+
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    
+    public String getSearchQuery() {
+        return searchQuery;
+    }
+
+    
+    public void setSearchQuery(String searchQuery) {
+        this.searchQuery = searchQuery;
+    }
+    
+    
+    
 }
