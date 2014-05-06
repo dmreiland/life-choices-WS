@@ -30,4 +30,45 @@ public class UserVoiceToTextHistory {
     private String userName;
 
     private String transcribedText;
+
+    
+    public String getId() {
+        return id;
+    }
+
+    
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    
+    public String getUserName() {
+        return userName;
+    }
+
+    
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    
+    public String getTranscribedText() {
+        return transcribedText;
+    }
+
+    
+    public void setTranscribedText(String transcribedText) {
+        this.transcribedText = transcribedText;
+    }
+    
 }

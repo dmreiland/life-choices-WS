@@ -42,12 +42,12 @@ public class UserSearchHistory {
     }
 
     
-    public long getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
     
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -70,7 +70,5 @@ public class UserSearchHistory {
     public void setSearchQuery(String searchQuery) {
         this.searchQuery = searchQuery;
     }
-    
-    
     
 }
