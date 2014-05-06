@@ -1099,7 +1099,7 @@ URI: `POST /v1/voice/search?uid=1389900341294972&latitude={xxxxxxxx}&longitude={
 - weather-traffic
 - meetup-events
 
-**Voice Commands**
+**Available Voice Commands**
 
 | Word(s)                       | Description                                                               |
 |-------------------------------|---------------------------------------------------------------------------|
