@@ -10,6 +10,6 @@ Mongo DB Service info on MongoHQ
 
 user: **lifechoicesuser**
 
-pass: **lifechoicesuserpa$5**
+pass: **xxxxxxxx**
 
 uri : **mongodb://<user>:<password>@oceanic.mongohq.com:10032/lifechoices_mdb**

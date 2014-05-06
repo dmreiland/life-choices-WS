@@ -1,6 +1,8 @@
 API for the all available Web Services
 
 
+- [Get User Details](#get-user-details)
+- [Refresh User Friends](#refresh-user-friends)
 - [New geo location V1](#new-geo-location)
 - [New geo location V2 with Check In/Out](#new-geo-loc-v2)
 - [User Location History](#user-loc-his)
@@ -20,12 +22,31 @@ API for the all available Web Services
 - [Events using Meetup](#v2-events) - Meetup API
 
 
+<a name="get-user-details"></a>Get User Details
+----------------
+
+This web service is to get user details by using user's Social Network ID
+
+URI: **GET /v1/user?uid={userid}** (userid = Social Network Id)
+
+Response type: **application/json**
+
+
+<a name="refresh-user-friends"></a>Refresh User Friends
+--------------------
+This web service is to update current user friends list. Usually this is done everything on the client when list of friends is refreshed.
+
+URI: **POST /v1/user?uid={userid}&friends=fid1,fid2,fid3,fid4,fid5** (userid = Social Network Id, friends = friends Social Network IDs)
+
+**Body**: No body is expected
+
+**Response**: User details JSON
+
+
 <a name="new-geo-location"></a> New geo location V1
 -----------------------------------------------------
 
-URI: **/v1/geo/**
-
-Method: **POST**
+URI: **POST /v1/geo/**
 
 Consume type: **application/json**
 

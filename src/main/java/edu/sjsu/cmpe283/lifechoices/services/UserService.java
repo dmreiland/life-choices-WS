@@ -29,7 +29,7 @@ public class UserService {
      * @param userId User Id
      * @return User
      */
-    public User find(Long userId){
+    public User find(String userId){
         return userRepository.findOne(userId);
     }
 }
