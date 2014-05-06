@@ -1040,6 +1040,52 @@ URI: `POST /v1/search?q-voice={multipart/form-data}&raw={true or false, default 
 - [Raw](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-raw.json)
 
 
+<a name="voice-to-text"></a>Voice Search Service
+------------------------------------------------------
+This web service will transcribe voice to text.
+
+URI: `POST /v1/voice?raw={true or false, default false}&uid=1389900341294972`
+
+Form file parameter name (`multipart/form-data`): `q-voice`
+
+Response will be JSON with the transcibed text inside
+
+
+
+<a name="comprehensive-voice-search-service"></a>Comprehensive Voice Search Service
+------------------------------------------------------
+This web service will perform search against Wolfram Alpha DB using audio file with a search phrase and return search results in image format.
+
+URI: `POST /v1/voice/search?uid=1389900341294972&latitude={xxxxxxxx}&longitude={yyyyyyy}&radius={zzz}`
+
+| Parameter                     | Is required                           | Description                       |
+|-------------------------------|---------------------------------------|-----------------------------------|
+| q-voice (form parameter)      | Yes                                   | Audio file with a search query. See below [supported audio formats](#audio-file-supp)  |
+| uid                           | No (default is Rob = 1389900341294972 | User Id to associate this search with a user |
+| latitude                      | No (default is SJSU = 37.334679)      | |
+| longitude                     | No (default is SJSU = -121.881113)    | |
+| radius                        | No (default = 1610 * 3 (meters in three miles) )               | distance in miles to retrieve.|
+
+
+**Response will be JSON with the following properties:**
+
+- yelp-food
+- yelp-events
+- google-food
+- google-events
+- weather-traffic
+
+**Voice Commands*
+
+| Word(s)                       | Description                                                               |
+|-------------------------------|---------------------------------------------------------------------------|
+| **deal**                      | Will enable deals search if this word is present in the command           |
+| **events**                    | Will enable events search in Google Places and Yelp                       |
+| **food** or **restaurant**    | Will enable food search in Google Places and Yelp                         |
+| **weather** or **traffic**    | Will enable weather and traffic search in Open Weather and Google Maps    |
+
+
+
 <a name="v2-events"></a>Events
 ------------------------------------------------------
 
