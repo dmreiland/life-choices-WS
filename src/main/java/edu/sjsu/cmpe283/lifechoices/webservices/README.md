@@ -1104,8 +1104,8 @@ URI: `POST /v1/voice/search?uid=1389900341294972&latitude={xxxxxxxx}&longitude={
 | Word(s)                       | Description                                                               |
 |-------------------------------|---------------------------------------------------------------------------|
 | **deal**                      | Will enable deals search if this word is present in the command           |
-| **event** or **thing** or **todo** or **to do**                    | Will enable events search in Google Places and Yelp                       |
-| **food** or **restaurant**    | Will enable food search in Google Places and Yelp                         |
+| **event** or **thing** or **todo** or **to do**                    | Will enable events search in MeetUps API                       |
+| **food** or **hungry** or **restaurant**    | Will enable food search in Google Places and Yelp                         |
 | **weather** or **traffic**    | Will enable weather and traffic search in Open Weather and Google Maps    |
 
 

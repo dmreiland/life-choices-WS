@@ -142,7 +142,7 @@ public class VoiceWS {
 
                 }
 
-                if (transcribedText.contains("food") || transcribedText.contains("restaurant")) {
+                if (transcribedText.contains("food") || transcribedText.contains("hungry")|| transcribedText.contains("restaurant")) {
                     yelpFoodStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
                     yelpFoodJson = new JSONObject(yelpFoodStr);
                     googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
