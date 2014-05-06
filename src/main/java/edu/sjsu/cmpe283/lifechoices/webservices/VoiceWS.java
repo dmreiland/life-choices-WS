@@ -6,6 +6,7 @@ import edu.sjsu.cmpe283.lifechoices.services.ATTSpeechToTextService;
 import edu.sjsu.cmpe283.lifechoices.services.GooglePlacesService;
 import edu.sjsu.cmpe283.lifechoices.services.UpdatesService;
 import edu.sjsu.cmpe283.lifechoices.services.YelpService;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -123,12 +124,14 @@ public class VoiceWS {
                 }
 
                 if(transcribedText.contains("events") || transcribedText.contains("event")){
-                    yelpEventsJson = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
+                    String jsonStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
+                    yelpEventsJson = new JSONObject(jsonStr);
                     googleEventsJson = googlePlacesService.getGooglePlaces("amusement_park|art_gallery|bowling_alley|movie_theater", latitude, longitude, radius);
                 }
 
                 if(transcribedText.contains("food") || transcribedText.contains("restaurant")){
-                    yelpFoodJson = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
+                    String jsonStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
+                    yelpFoodJson = new JSONObject(jsonStr);
                     googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
                 }
 
