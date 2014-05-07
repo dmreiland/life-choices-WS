@@ -1041,7 +1041,7 @@ This web service just converts text to speech.
 
 **URI**: `POST /v1/voice/textToSpeech&text={text here}`
 
-**Response**:` File in `audio/amr-wb` mime type
+**Response**: File in `audio/amr-wb` mime type
 
 
 <a name="voice-search-service"></a>Voice Search Service

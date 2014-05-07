@@ -102,7 +102,7 @@ public class ATTSpeechToTextService {
             TtsService ttsService = new TtsService(fqdn, token);
 
             // Send the request to obtain the audio
-            audio = ttsService.sendRequest("text/plain", text, "");
+            audio = ttsService.sendRequest("text/plain", text, "audio/x-wav");
 
             // If the request fails an exception is thrown, thus if we get here
             // we've succeeded.
