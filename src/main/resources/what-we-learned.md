@@ -24,9 +24,13 @@ What we learned in this project
   - Multiset
 - UI
   - iOS
-    - Small Device Page layout
+    - Microphone Power Level Monitoring
     - Voice Recording
-    - Communication with RESTful Web Services (Sync and Async)
+    - Communication with RESTful Web Services (Async)
+    - Dynamic Collection Views
+    - Facebook iOS SDK
+    - Google Maps iOS SDK
+    - Location Services
   - Node.JS, Angular, Express
 - Markdown Documentation (loooots and looots)
 
