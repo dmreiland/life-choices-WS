@@ -3,7 +3,7 @@ What we learned in this project
 
 - Spring Boot
   - Setup & Configuration
-  - Annotations (no xml configuration files - zip, nada, zilch, nil)
+  - Annotations (no xml configuration files - zip, nada, zilch, nil, except for pom.xml)
 - Spring Data MongoDb
   - CRUD
   - Geo Query
@@ -19,6 +19,7 @@ What we learned in this project
   - MeetUps API
   - Open Weather API
   - Wunderground API
+- Grouping Locations (not feasible)
 - Google Guava
   - Multimap
   - Multiset
