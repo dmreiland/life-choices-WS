@@ -19,6 +19,8 @@ API for the all available Web Services
 - [Voice Search Service](#voice-search-service) - Voice-2-Text + Wolfram Alpha API
 - [Comprehensive Voice Search Service](#comprehensive-voice-search-service) - Voice-2-Text + Yelp + Google Places + Google Map (traffic) + Open Weather
 - [Voice Search Service](#voice-to-text)
+- [Voice To Text](#plain-v2t) - Voice-2-Text
+- [Text to Voice](#plain-t2v) - Text-2-Voice
 - [Events using Meetup](#v2-events) - Meetup API
 
 
@@ -1020,6 +1022,26 @@ URI: `GET /v1/search?q={search_query}&raw={true or false, default false}&uid=138
 
 - [Formatted](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-formatted.json)
 - [Raw](https://github.com/cmpe273-indexzero/life-choices-WS/blob/master/src/main/resources/wolframalpharesponse-raw.json)
+
+
+
+<a name="plain-v2t"></a>Voice To Text
+--------------------------------------
+
+This web service just transcribes voice to text.
+
+**URI**: `POST /v1/voice`
+
+**Response**: JSON with the voice to text history
+
+<a name="plain-t2v"></a>Text to Voice
+--------------------------------------
+
+This web service just converts text to speech.
+
+**URI**: `POST /v1/voice/textToSpeech&text={text here}`
+
+**Response**:` File in `audio/amr-wb` mime type
 
 
 <a name="voice-search-service"></a>Voice Search Service
