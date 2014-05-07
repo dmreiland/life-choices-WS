@@ -100,7 +100,7 @@ public class VoiceWS {
                                       @RequestParam(value = "radius", required = false, defaultValue = "4830") Integer radius
     ) {
 
-        String name = "voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
+        String name = "/tmp/voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
         File f = new File(name);
         Gson gson = new GsonBuilder().create();
         String yelpFoodStr = null;
