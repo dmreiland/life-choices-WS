@@ -321,6 +321,7 @@ New fields:
          }
       },
       "user-id":"1389900341294972",
+      "user-info":{"USER JSON"},
       "businesses":[
          {
             "rating_img_url_large":"http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png",

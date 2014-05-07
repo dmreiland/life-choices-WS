@@ -76,6 +76,7 @@ public class FoodWS {
         Object obj = parser.parse(responseJson);
         JSONObject jsonObject = (JSONObject) obj;
         jsonObject.put("user-id", userId);
+        jsonObject.put("user-info", userService.find(userId));
 
         JSONArray businesses = (JSONArray) jsonObject.get("businesses");
 
@@ -91,7 +92,6 @@ public class FoodWS {
 
             businessJsonObj.put("num-of-visits", checkedInYelpPlaces.size());
             businessJsonObj.put("has-been-visited", checkedInYelpPlaces.size() > 0);
-            businessJsonObj.put("user-info", userService.find(userId));
         }
 
 
