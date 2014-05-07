@@ -134,7 +134,6 @@ public class VoiceWS {
                 }
 
                 if (transcribedText.contains("event")
-                        || transcribedText.contains("thing")
                         || transcribedText.contains("todo")
                         || transcribedText.contains("to do")) {
 //                    yelpEventsStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
