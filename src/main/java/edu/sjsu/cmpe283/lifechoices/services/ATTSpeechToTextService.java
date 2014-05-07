@@ -7,6 +7,7 @@ import com.att.api.speech.model.NLUHypothesis;
 import com.att.api.speech.model.OutComposite;
 import com.att.api.speech.model.SpeechResponse;
 import com.att.api.speech.service.SpeechService;
+import com.att.api.speech.service.TtsService;
 
 import java.io.File;
 import java.util.Iterator;
@@ -21,6 +22,12 @@ public class ATTSpeechToTextService {
     String appKey = "9rvk6aad6bxs02j3voj08ta0rtyaodi2";
     String appSecret = "qg2msukkhu0lqjdljlxdr2m98vctvurv";
 
+    final String fqdn = "https://api.att.com";
+    // Enter the value from 'App Key' field
+    final String clientId = appKey;
+    // Enter the value from 'Secret' field
+    final String clientSecret = appSecret;
+
 
     public String getText(final File AUDIO_FILE) throws Exception {
 
@@ -29,13 +36,8 @@ public class ATTSpeechToTextService {
         // Use the app settings from developer.att.com for the following
         // values. Make sure Speech is enabled for the app key/secret.
 
-        final String fqdn = "https://api.att.com";
 
-        // Enter the value from 'App Key' field
-        final String clientId = appKey;
 
-        // Enter the value from 'Secret' field
-        final String clientSecret = appSecret;
 
         // Create service for requesting an OAuth token
         OAuthService osrvc = new OAuthService(fqdn, clientId, clientSecret);
@@ -80,6 +82,40 @@ public class ATTSpeechToTextService {
 
 
         return srtResult;
+    }
+
+    public byte[] textToSpeech(final String text){
+
+        byte[] audio = null;
+
+        try {
+
+
+
+            // Create service for requesting an OAuth token
+            OAuthService osrvc = new OAuthService(fqdn, clientId, clientSecret);
+
+            // Get OAuth token using the Text To Speech scope
+            OAuthToken token = osrvc.getToken("TTS");
+
+            // Create service for interacting with the Speech api
+            TtsService ttsService = new TtsService(fqdn, token);
+
+            // Send the request to obtain the audio
+            audio = ttsService.sendRequest("text/plain", text, "");
+
+            // If the request fails an exception is thrown, thus if we get here
+            // we've succeeded.
+            System.out.println("Successfully got audio file!");
+
+        } catch (Exception re) {
+            // handle exceptions here
+            re.printStackTrace();
+        } finally {
+            // perform any clean up here
+        }
+
+        return audio;
     }
 
 
