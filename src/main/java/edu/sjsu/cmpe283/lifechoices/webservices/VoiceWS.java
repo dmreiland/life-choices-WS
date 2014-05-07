@@ -144,7 +144,11 @@ public class VoiceWS {
 
                 }
 
-                if (transcribedText.contains("food") || transcribedText.contains("hungry")|| transcribedText.contains("restaurant")) {
+                if (transcribedText.contains("food")
+                        || transcribedText.contains("eat")
+                        || transcribedText.contains("hungry")
+                        || transcribedText.contains("restaurant")
+                        ) {
                     String yelpFoodStrTmp = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
                     yelpFoodStr = userService.addPropsToJson(yelpFoodStrTmp, userId).toJSONString();
 
@@ -152,7 +156,14 @@ public class VoiceWS {
                     googleFoodStr = gson.toJson(googleFoodJson);
                 }
 
-                if (transcribedText.contains("weather") || transcribedText.contains("traffic")) {
+                if (transcribedText.contains("weather")
+                        || transcribedText.contains("traffic")
+                        || transcribedText.contains("temperature")
+                        || transcribedText.contains("cold")
+                        || transcribedText.contains("hot")
+                        || transcribedText.contains("outside")
+                        || transcribedText.contains("drive")
+                        ) {
                     Object weatherAndTrafficJson = updatesService.getUpdatesV2(true, latitude, longitude, "imperial", 3, 640, 480);
 //                    weatherAndTrafficStr = gson.toJson(weatherAndTrafficJson);
                     weatherAndTrafficStr = mapper.writeValueAsString(weatherAndTrafficJson);
