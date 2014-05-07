@@ -46,6 +46,9 @@ public class VoiceWS {
     UpdatesService updatesService;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     MeetupService meetupService;
 
     private final static ObjectMapper mapper;
@@ -97,19 +100,13 @@ public class VoiceWS {
                                       @RequestParam(value = "radius", required = false, defaultValue = "4830") Integer radius
     ) {
 
-        String name = "/tmp/voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
+        String name = "voice-search-upload-" + new Date().getTime() + "-" + file.getOriginalFilename();
         File f = new File(name);
         Gson gson = new GsonBuilder().create();
-        Map<String, Object> respMap = new HashMap<String, Object>();
-        Object yelpFoodJson = "";
         String yelpFoodStr = null;
-        Object yelpEventsJson = "";
         String yelpEventsStr = null;
-        Object googleFoodJson = "";
         String googleFoodStr = null;
-        Object googleEventsJson = "";
         String googleEventsStr = null;
-        Object weatherAndTrafficJson = "";
         String weatherAndTrafficStr = null;
         String meetupEventsStr = null;
 
@@ -141,22 +138,22 @@ public class VoiceWS {
                         || transcribedText.contains("todo")
                         || transcribedText.contains("to do")) {
 //                    yelpEventsStr = yelpService.getYelpResponseJson("events", latitude, longitude, radius, hasDeals);
-//                    yelpEventsJson = new JSONObject(yelpEventsStr);
-//                    googleEventsJson = googlePlacesService.getGooglePlaces("amusement_park|art_gallery|bowling_alley|movie_theater", latitude, longitude, radius);
+//                    Object    googleEventsJson = googlePlacesService.getGooglePlaces("amusement_park|art_gallery|bowling_alley|movie_theater", latitude, longitude, radius);
 //                    googleEventsStr = gson.toJson(googleEventsJson);
                     meetupEventsStr = meetupService.getEvents(latitude, longitude, "1,15,20,23,30", "0d", "1d", "trending", true, "html", 20, null);
 
                 }
 
                 if (transcribedText.contains("food") || transcribedText.contains("hungry")|| transcribedText.contains("restaurant")) {
-                    yelpFoodStr = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
-                    yelpFoodJson = new JSONObject(yelpFoodStr);
-                    googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
+                    String yelpFoodStrTmp = yelpService.getYelpResponseJson("restaurants", latitude, longitude, radius, hasDeals);
+                    yelpFoodStr = userService.addPropsToJson(yelpFoodStrTmp, userId).toJSONString();
+
+                    Object googleFoodJson = googlePlacesService.getGooglePlaces("bakery|bar|restaurant|food|funeral_home|meal_delivery|meal_takeaway|grocery_or_supermarket", latitude, longitude, radius);
                     googleFoodStr = gson.toJson(googleFoodJson);
                 }
 
                 if (transcribedText.contains("weather") || transcribedText.contains("traffic")) {
-                    weatherAndTrafficJson = updatesService.getUpdatesV2(true, latitude, longitude, "imperial", 3, 640, 480);
+                    Object weatherAndTrafficJson = updatesService.getUpdatesV2(true, latitude, longitude, "imperial", 3, 640, 480);
 //                    weatherAndTrafficStr = gson.toJson(weatherAndTrafficJson);
                     weatherAndTrafficStr = mapper.writeValueAsString(weatherAndTrafficJson);
                 }
@@ -168,12 +165,6 @@ public class VoiceWS {
                 userVoiceToTextHistoryRepository.save(userVoiceToTextHistory);
 
                 f.delete();
-
-                respMap.put("yelp-food", yelpFoodJson);
-                respMap.put("yelp-events", yelpEventsJson);
-                respMap.put("google-food", googleFoodJson);
-                respMap.put("google-events", googleEventsJson);
-                respMap.put("weather-traffic", weatherAndTrafficJson);
 
 //                return new ResponseEntity<Map>(respMap, HttpStatus.OK);
                 String responseStr;
