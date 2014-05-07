@@ -3,6 +3,7 @@ package edu.sjsu.cmpe283.lifechoices.webservices;
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistory;
 import edu.sjsu.cmpe283.lifechoices.entities.UserGeoHistoryType;
 import edu.sjsu.cmpe283.lifechoices.services.UserGeoHistoryService;
+import edu.sjsu.cmpe283.lifechoices.services.UserService;
 import edu.sjsu.cmpe283.lifechoices.services.YelpService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -35,6 +36,9 @@ public class FoodWS {
 
     @Autowired
     UserGeoHistoryService userGeoHistoryService;
+
+    @Autowired
+    UserService userService;
 
 
     @SuppressWarnings("rawtypes")
@@ -87,6 +91,7 @@ public class FoodWS {
 
             businessJsonObj.put("num-of-visits", checkedInYelpPlaces.size());
             businessJsonObj.put("has-been-visited", checkedInYelpPlaces.size() > 0);
+            businessJsonObj.put("user-info", userService.find(userId));
         }
 
 
