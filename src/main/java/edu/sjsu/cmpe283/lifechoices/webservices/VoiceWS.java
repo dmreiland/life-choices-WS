@@ -221,7 +221,7 @@ public class VoiceWS {
 
 
     @RequestMapping(value = "textToSpeech", method = RequestMethod.GET, produces = "audio/amr-wb")
-    public ResponseEntity getVoiceFromText(@RequestParam(value = "uid", required = false, defaultValue = "your majesty, how can I serve you?") String text){
+    public ResponseEntity getVoiceFromText(@RequestParam(value = "text", required = false, defaultValue = "your majesty, how can I serve you?") String text){
 
         byte[] voice = attSpeechToTextService.textToSpeech(text);
 
