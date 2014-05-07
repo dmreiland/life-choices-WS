@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe283.lifechoices.webservices;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.sjsu.cmpe283.lifechoices.entities.UserVoiceToTextHistory;
@@ -46,6 +47,11 @@ public class VoiceWS {
 
     @Autowired
     MeetupService meetupService;
+
+    private final static ObjectMapper mapper;
+    static {
+        mapper = new ObjectMapper();
+    }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity voiceToText(@RequestParam(value = "q-voice", required = true) MultipartFile file,
@@ -151,7 +157,8 @@ public class VoiceWS {
 
                 if (transcribedText.contains("weather") || transcribedText.contains("traffic")) {
                     weatherAndTrafficJson = updatesService.getUpdatesV2(true, latitude, longitude, "imperial", 3, 640, 480);
-                    weatherAndTrafficStr = gson.toJson(weatherAndTrafficJson);
+//                    weatherAndTrafficStr = gson.toJson(weatherAndTrafficJson);
+                    weatherAndTrafficStr = mapper.writeValueAsString(weatherAndTrafficJson);
                 }
 
                 UserVoiceToTextHistory userVoiceToTextHistory = new UserVoiceToTextHistory();
